@@ -26,3 +26,5 @@ A basic system to remind users of follow-ups, interviews, or deadlines related t
 Responsive Design:
 
 Ensure the website is mobile-friendly so users can track their applications on the go.
+
+Map with pins of all of the places you have applied to jobs, with grouping since you will likely apply to more than one job in a city
