@@ -1,6 +1,13 @@
+import React from 'react'
+import Sidebar from '@/components/Sidebar'
+import Navbar from '@/components/Navbar'
 
-export default function Home() {
+const Home = () => {
   return (
-    <div>Application landing page</div>
-  );
+    <div>
+      <Sidebar />
+      <Navbar />
+    </div>
+  )
 }
+export default Home
