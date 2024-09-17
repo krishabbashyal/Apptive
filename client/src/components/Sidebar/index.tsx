@@ -5,7 +5,7 @@ const Sidebar = () => {
   return (
     <div className='w-64 min-h-screen bg-blue-100 flex flex-col'>
       <div>
-        <p>sidebar</p>
+        <p className='text-3xl'>sidebar</p>
       </div>
       <div>
 
