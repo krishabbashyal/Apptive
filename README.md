@@ -28,3 +28,5 @@ Responsive Design:
 Ensure the website is mobile-friendly so users can track their applications on the go.
 
 Map with pins of all of the places you have applied to jobs, with grouping since you will likely apply to more than one job in a city
+
+I am thinking postgres and prisma for the database - Need to find some online hosted postgres database for a good price since I don't want to work off of a local one.
