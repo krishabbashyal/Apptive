@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "@/(components)/Sidebar";
+import Sidebar from "@/components/Sidebar";
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
