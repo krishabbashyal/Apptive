@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Archive, Bug, CalendarDots, GearSix, House, IconProps, MapTrifold, SignOut } from "@phosphor-icons/react";
+import { Archive, Bug, GearSix, House, IconProps, SignOut } from "@phosphor-icons/react";
 
 const SidebarProfileTab = () => {
   return (
