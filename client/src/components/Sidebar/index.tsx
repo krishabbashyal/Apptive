@@ -42,8 +42,8 @@ const Sidebar = () => {
         <div className="flex mt-8 flex-col flex-grow">
           <div className="flex flex-col gap-y-2.5 flex-grow">
             <SidebarTab icon={House} label="Home" customStyle="border-blue-500"/>
-            <SidebarTab icon={CalendarDots} label="Timeline" />
-            <SidebarTab icon={MapTrifold} label="Map" />
+            {/* <SidebarTab icon={CalendarDots} label="Timeline" />
+            <SidebarTab icon={MapTrifold} label="Map" /> */}
             <SidebarTab icon={Archive} label="Archive" />
             <SidebarTab icon={GearSix} label="Settings" />
           </div>
