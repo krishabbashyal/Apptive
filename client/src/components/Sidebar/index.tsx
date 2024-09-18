@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { Archive, Bug, CalendarDots, GearSix, House, IconProps, MapTrifold, SignOut } from "@phosphor-icons/react";
+import { useRouter } from "next/navigation";
 
 const SidebarProfileTab = () => {
   return (
@@ -22,16 +23,18 @@ interface SidebarTabProps {
   label: string;
   customStyle?: string;
   icon: React.ComponentType<IconProps>;
+  route: string;
 }
 
-const SidebarTab = ({ label, icon: Icon, customStyle }: SidebarTabProps) => {
+const SidebarTab = ({ label, icon: Icon, customStyle, route }: SidebarTabProps) => {
+  const router = useRouter()
   return (
-    <div className={`h-12 flex  items-center bg-background cursor-pointer border-l-4 hover:bg-slate-700 rounded-md border-background ${customStyle || ""}`}>
+    <button type="button" onClick={() => router.push(route)} className={`h-12 flex  items-center bg-background cursor-pointer border-l-4 hover:bg-slate-700 rounded-md border-background ${customStyle || ""}`}>
       <div className="flex ml-[30px] items-center">
         <Icon color="#fff" size={24} />
         <p className="ml-4">{label}</p>
       </div>
-    </div>
+    </button>
   );
 };
 const Sidebar = () => {
@@ -41,18 +44,18 @@ const Sidebar = () => {
         <SidebarProfileTab />
         <div className="flex mt-8 flex-col flex-grow">
           <div className="flex flex-col gap-y-2.5 flex-grow">
-            <SidebarTab icon={House} label="Home" customStyle="border-blue-500"/>
-            <SidebarTab icon={CalendarDots} label="Timeline" />
-            <SidebarTab icon={MapTrifold} label="Map" />
-            <SidebarTab icon={Archive} label="Archive" />
-            <SidebarTab icon={GearSix} label="Settings" />
+            <SidebarTab route="/" icon={House} label="Home" customStyle="border-blue-500"/>
+            <SidebarTab route="/timeline" icon={CalendarDots} label="Timeline" />
+            <SidebarTab route="/map" icon={MapTrifold} label="Map" />
+            <SidebarTab route="/archive" icon={Archive} label="Archive" />
+            <SidebarTab route="/settings" icon={GearSix} label="Settings" />
           </div>
           {/* Spacer div to push the bottom tabs to the bottom */}
           <div className="flex-grow"></div>
           {/* End of comment */}
           <div className="mb-8 flex flex-col gap-y-2.5">
-            <SidebarTab icon={Bug} label="Feedback" />
-            <SidebarTab icon={SignOut} label="Sign out" />
+            <SidebarTab route="/feedback" icon={Bug} label="Feedback" />
+            <SidebarTab route="/logout" icon={SignOut} label="Sign out" />
           </div>
         </div>
       </div>
