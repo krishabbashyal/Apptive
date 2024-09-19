@@ -1,4 +1,6 @@
-import { createServerClient, type CookieOptions } from '@supabase/ssr'
+// import { createServerClient, type CookieOptions } from '@supabase/ssr' Commented out this line to see if the CookieOptions does anything
+import { createServerClient } from '@supabase/ssr'
+
 import { cookies } from 'next/headers'
 
 export function createClient() {
