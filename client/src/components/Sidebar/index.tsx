@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Archive, Bug, CalendarDots, GearSix, House, IconProps, MapTrifold, SignOut } from "@phosphor-icons/react";
 import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const SidebarProfileTab = () => {
   return (
@@ -21,15 +22,24 @@ const SidebarProfileTab = () => {
 
 interface SidebarTabProps {
   label: string;
-  customStyle?: string;
   icon: React.ComponentType<IconProps>;
   route: string;
 }
 
-const SidebarTab = ({ label, icon: Icon, customStyle, route }: SidebarTabProps) => {
-  const router = useRouter()
+const SidebarTab = ({ label, icon: Icon, route }: SidebarTabProps) => {
+  const pathname = usePathname();
+  const [isActiveTab, setIsActiveTab] = useState(false);
+
+  useEffect(() => {
+    setIsActiveTab(pathname === route);
+  }, [pathname, route]);
+
+  const router = useRouter();
   return (
-    <button type="button" onClick={() => router.push(route)} className={`h-12 flex  items-center bg-background cursor-pointer border-l-4 hover:bg-slate-700 rounded-md border-background ${customStyle || ""}`}>
+    <button
+      type="button"
+      onClick={() => router.push(route)}
+      className={`h-12 flex  items-center bg-background cursor-pointer border-l-4 hover:bg-slate-700 rounded-md border-background ${isActiveTab ? "border-blue-400" : ""}`}>
       <div className="flex ml-[30px] items-center">
         <Icon color="#fff" size={24} />
         <p className="ml-4">{label}</p>
@@ -44,7 +54,7 @@ const Sidebar = () => {
         <SidebarProfileTab />
         <div className="flex mt-8 flex-col flex-grow">
           <div className="flex flex-col gap-y-2.5 flex-grow">
-            <SidebarTab route="/" icon={House} label="Home" customStyle="border-blue-500"/>
+            <SidebarTab route="/" icon={House} label="Home" />
             <SidebarTab route="/timeline" icon={CalendarDots} label="Timeline" />
             <SidebarTab route="/map" icon={MapTrifold} label="Map" />
             <SidebarTab route="/archive" icon={Archive} label="Archive" />
