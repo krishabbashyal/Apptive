@@ -8,11 +8,11 @@ import { usePathname } from "next/navigation";
 
 const SidebarProfileTab = () => {
   return (
-    <div className="w-full h-20 mt-4 rounded-md flex justify-center cursor-pointer bg-background">
-      <div className="flex gap-x-4 items-center">
-        <Image src="/images/profile.jpg" className="rounded-full" width={48} height={48} alt="Profile Picture" />
+    <div className="w-full h-20 rounded-md flex justify-center cursor-pointer bg-background">
+      <div className="flex gap-x-3 items-center">
+        <Image src="/images/profile.jpg" className="rounded-full" width={42} height={42} alt="Profile Picture" />
         <div>
-          <p>Krishab Bashyal</p>
+          <p className="font-medium">Krishab Bashyal</p>
           <p className="text-xs -mt-0.5 text-gray-400">Developer</p>
         </div>
       </div>
@@ -49,8 +49,12 @@ const SidebarTab = ({ label, icon: Icon, route }: SidebarTabProps) => {
 };
 const Sidebar = () => {
   return (
-    <div className="w-64 min-h-screen bg-foreground flex flex-col">
-      <div className="flex flex-col mt-16 mx-4 flex-grow">
+    <div className="w-60 min-h-screen bg-foreground flex flex-col flex-shrink-0">
+      <div className="h-16 flex items-center justify-center">
+        <p className="text-3xl font-black">AppTrack</p>
+      </div>
+      <div></div>
+      <div className="flex flex-col mt-2.5 mx-4 flex-grow">
         <SidebarProfileTab />
         <div className="flex mt-8 flex-col flex-grow">
           <div className="flex flex-col gap-y-2.5 flex-grow">
