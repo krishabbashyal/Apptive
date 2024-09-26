@@ -5,7 +5,7 @@ export default function LoginPage() {
   return (
     <div className='flex min-h-screen justify-center items-center w-full gap-x-4'>
       <form className='flex bg-white p-8 rounded-lg w-96 flex-col'>
-      <h1 className='text-5xl text-black font-black mb-4'>Log in</h1>
+      <h1 className='text-3xl text-black font-bold mb-4 text-center'>Login</h1>
         <label htmlFor="email">Email:</label>
         <input  className="h-12 rounded pl-4" id="email" name="email" type="email" required />
         <label className='mt-2' htmlFor="password">Password:</label>
