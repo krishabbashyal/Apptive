@@ -1,6 +1,7 @@
 # AppTrack
 
 AppTrack is a website version of the job application tracking speadsheet that I have been using to keep track of and manage all of the open roles that I have applied to.
+This site is built with a Next.js frontend and styled by TailWind
 
 User Authentication:
 
