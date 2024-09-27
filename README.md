@@ -1,5 +1,7 @@
 # AppTrack
 
+AppTrack is a website version of the job application tracking speadsheet that I have been using to keep track of and manage all of the open roles that I have applied to.
+
 User Authentication:
 
 Users should be able to sign up, log in, and manage their profiles. You could use something like Firebase Authentication for simplicity.
