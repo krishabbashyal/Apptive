@@ -11,7 +11,10 @@ const config: Config = {
       colors: {
         background: "#f5f5f5",
         foreground: "#ffffff",
-        accent: "#fca311",
+        accent: "#947BD6",
+        accentLight: "#B8A0FF",
+        accentDark: "#684FB1",
+        bittersweet: "#f25757",
       },
     },
   },
