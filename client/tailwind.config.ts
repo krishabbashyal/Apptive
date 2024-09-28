@@ -14,6 +14,7 @@ const config: Config = {
         accent: "#947BD6",
         accentLight: "#B8A0FF",
         accentDark: "#684FB1",
+        cadetGray: "#8A919F",
         bittersweet: "#f25757",
       },
     },
