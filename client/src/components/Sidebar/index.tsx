@@ -29,6 +29,7 @@ interface SidebarTabProps {
 const SidebarTab = ({ label, icon: Icon, route }: SidebarTabProps) => {
   const pathname = usePathname();
   const [isActiveTab, setIsActiveTab] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     setIsActiveTab(pathname === route);
@@ -39,10 +40,14 @@ const SidebarTab = ({ label, icon: Icon, route }: SidebarTabProps) => {
     <button
       type="button"
       onClick={() => router.push(route)}
-      className={`h-12 flex  items-center cursor-pointer hover:bg-accent rounded-md ${isActiveTab ? "border-accent" : ""}`}>
-      <div className="flex ml-[30px] items-center">
-        <Icon color="#000" size={28} />
-        <p className="ml-4 ">{label}</p>
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`h-12 flex border-l-[6px] border-white items-center cursor-pointerentLight hover:text-accentLight rounded-md ${
+        isActiveTab ? " border-accentLight border text-lg text-accentLight" : ""
+      }`}>
+      <div className="flex ml-[20px] items-center">
+        <Icon color={isHovered || isActiveTab ? "#B8A0FF" : "black"} size={isActiveTab ? 30 : 28} />
+        <p className="ml-5">{label}</p>
       </div>
     </button>
   );
