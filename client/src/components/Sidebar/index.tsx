@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 
 const SidebarProfileTab = () => {
   return (
-    <div className="w-full h-20 rounded-md flex justify-center cursor-pointer bg-background">
+    <div className="w-full h-20 rounded-md flex justify-center cursor-pointer ">
       <div className="flex gap-x-3 items-center">
         <Image src="/images/profile.jpg" className="rounded-full" width={42} height={42} alt="Profile Picture" />
         <div>
@@ -39,10 +39,10 @@ const SidebarTab = ({ label, icon: Icon, route }: SidebarTabProps) => {
     <button
       type="button"
       onClick={() => router.push(route)}
-      className={`h-12 flex  items-center bg-background cursor-pointer border-l-4 hover:bg-slate-700 rounded-md border-background ${isActiveTab ? "border-blue-400" : ""}`}>
+      className={`h-12 flex  items-center cursor-pointer hover:bg-accent rounded-md ${isActiveTab ? "border-accent" : ""}`}>
       <div className="flex ml-[30px] items-center">
-        <Icon color="#fff" size={24} />
-        <p className="ml-4">{label}</p>
+        <Icon color="#000" size={28} />
+        <p className="ml-4 ">{label}</p>
       </div>
     </button>
   );
