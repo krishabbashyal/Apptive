@@ -7,7 +7,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <html lang="en">
       <body>
-        <DashboardWrapper> {children}</DashboardWrapper>
+        <DashboardWrapper>{children}</DashboardWrapper>
       </body>
     </html>
   );
