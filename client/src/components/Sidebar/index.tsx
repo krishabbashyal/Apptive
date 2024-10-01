@@ -42,10 +42,10 @@ const SidebarTab = ({ label, icon: Icon, route, isDanger }: SidebarTabProps) => 
       type="button"
       onClick={() => router.push(route)}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}                                                                                                     // Adding accentLight makes the border not show up
-      className={`h-12 flex  items-center cursor-pointer border-l-[6px] ${ isDanger && isHovered ? "hover:text-bittersweet" : "hover:text-accentLight"} rounded-md ${ isActiveTab ? "border-accentLight text-lg text-accentLight" : "border-white"}`}>
+      onMouseLeave={() => setIsHovered(false)} // Adding accentLight makes the border not show up
+      className={`h-12 flex  items-center cursor-pointer border-l-[6px] ${isDanger && isHovered ? "hover:text-bittersweet" : "hover:text-accentLight"} rounded-md ${isActiveTab ? "border-accentLight text-lg text-accentLight" : "border-white"}`}>
       <div className="flex ml-[20px] items-center">
-        <Icon color={isHovered && !isDanger || isActiveTab ? "#B8A0FF" : isDanger && isHovered ? "#f25757" : "black"} size={isActiveTab ? 30 : 28} />
+        <Icon color={(isHovered && !isDanger) || isActiveTab ? "#B8A0FF" : isDanger && isHovered ? "#f25757" : "black"} size={isActiveTab ? 30 : 28} />
         <p className="ml-5">{label}</p>
       </div>
     </button>
@@ -61,7 +61,7 @@ const Sidebar = () => {
       <div className="flex flex-col mt-2.5 mx-4 flex-grow">
         <SidebarProfileTab />
         <div className="flex mt-8 flex-col flex-grow">
-          <div className="flex flex-col gap-y-2.5 flex-grow">
+          <div className="flex flex-col gap-y-2 flex-grow">
             <SidebarTab route="/" icon={House} label="Home" />
             <SidebarTab route="/timeline" icon={CalendarDots} label="Timeline" />
             <SidebarTab route="/map" icon={MapTrifold} label="Map" />
@@ -71,7 +71,7 @@ const Sidebar = () => {
           {/* Spacer div to push the bottom tabs to the bottom */}
           <div className="flex-grow"></div>
           {/* End of comment */}
-          <div className="mb-8 flex flex-col gap-y-2.5">
+          <div className="mb-8 flex flex-col gap-y-2">
             <SidebarTab route="/feedback" icon={Bug} label="Feedback" />
             <SidebarTab isDanger={true} route="/logout" icon={SignOut} label="Sign out" />
           </div>
