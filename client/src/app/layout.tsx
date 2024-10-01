@@ -1,14 +1,10 @@
 import React from "react";
 import "./globals.css";
 
-import DashboardWrapper from "./dashboardWrapper";
-
-const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
-      <body>
-        <DashboardWrapper>{children}</DashboardWrapper>
-      </body>
+      <body className="bg-background">{children}</body>
     </html>
   );
 };
