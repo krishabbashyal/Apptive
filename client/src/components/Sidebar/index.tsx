@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { Archive, Bug, CalendarDots, GearSix, House, IconProps, MapTrifold, SignOut } from "@phosphor-icons/react";
+import { Archive, Bug, CalendarDots, GearSix, Briefcase, IconProps, MapTrifold, SignOut } from "@phosphor-icons/react";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 
 const SidebarProfileTab = () => {
   return (
-    <div className="w-full h-20 rounded-md flex justify-center cursor-pointer ">
+    <div className="w-full flex justify-center border-b border-graySeperator py-6 cursor-pointer">
       <div className="flex gap-x-3 items-center">
         <Image src="/images/profile.jpg" className="rounded-full" width={42} height={42} alt="Profile Picture" />
         <div>
@@ -60,9 +60,9 @@ const Sidebar = () => {
       <div></div>
       <div className="flex flex-col mt-2.5 mx-4 flex-grow">
         <SidebarProfileTab />
-        <div className="flex mt-8 flex-col flex-grow">
+        <div className="flex mt-6 flex-col flex-grow">
           <div className="flex flex-col gap-y-2 flex-grow">
-            <SidebarTab route="/" icon={House} label="Home" />
+            <SidebarTab route="/dashboard" icon={Briefcase} label="Dashboard" />
             <SidebarTab route="/timeline" icon={CalendarDots} label="Timeline" />
             <SidebarTab route="/map" icon={MapTrifold} label="Map" />
             <SidebarTab route="/archive" icon={Archive} label="Archive" />
