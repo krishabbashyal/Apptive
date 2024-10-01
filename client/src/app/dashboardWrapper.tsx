@@ -10,13 +10,12 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
       <div className="flex w-full flex-col bg-foreground">
         {/* Navbar */}
         <Navbar />
-        <div className="w-full bg-background h-full">
-        { children }
-
+        <div className="h-full w-full bg-background">
+          {children}
         </div>
       </div>
     </div>
-  ); 
+  );
 };
 
 export default DashboardWrapper;

@@ -2,31 +2,31 @@ import React from "react";
 
 const LoginForm = () => {
   return (
-    <form className="flex bg-foreground p-8 rounded-l-lg w-96 flex-col">
-      <h1 className="text-3xl font-bold mb-4 text-center">Log in</h1>
-      <label className="text-cadetGray font-medium" htmlFor="email">
+    <form className="flex w-96 flex-col rounded-l-lg bg-foreground p-8">
+      <h1 className="mb-4 text-center text-3xl font-bold">Log in</h1>
+      <label className="font-medium text-cadetGray" htmlFor="email">
         Email
       </label>
       <input
-        className="h-12 rounded-lg border bg-background border-cadetGray pl-4 mt-1 "
+        className="mt-1 h-12 rounded-lg border border-cadetGray bg-background pl-4"
         placeholder="Enter your email"
         id="email"
         name="email"
         type="email"
         required
       />
-      <label className="mt-3 text-cadetGray font-medium" htmlFor="password">
+      <label className="mt-3 font-medium text-cadetGray" htmlFor="password">
         Password
       </label>
       <input
-        className="h-12 rounded-lg pl-4 mt-1 border bg-background border-cadetGray "
+        className="mt-1 h-12 rounded-lg border border-cadetGray bg-background pl-4"
         placeholder="Enter your password"
         id="password"
         name="password"
         type="password"
         required
       />
-      <button className="bg-accent text-white font-medium h-12 py-2 px-4 rounded-lg mt-12">
+      <button className="mt-12 h-12 rounded-lg bg-accent px-4 py-2 font-medium text-white">
         Log in
       </button>
     </form>
