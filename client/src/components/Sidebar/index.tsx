@@ -24,9 +24,10 @@ interface SidebarTabProps {
   label: string;
   icon: React.ComponentType<IconProps>;
   route: string;
+  isDanger?: boolean;
 }
 
-const SidebarTab = ({ label, icon: Icon, route }: SidebarTabProps) => {
+const SidebarTab = ({ label, icon: Icon, route, isDanger }: SidebarTabProps) => {
   const pathname = usePathname();
   const [isActiveTab, setIsActiveTab] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -42,9 +43,9 @@ const SidebarTab = ({ label, icon: Icon, route }: SidebarTabProps) => {
       onClick={() => router.push(route)}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}                                                                                                     // Adding accentLight makes the border not show up
-      className={`h-12 flex border-l-[6px] border-white items-center cursor-pointerentLight hover:text-accentLight rounded-md ${ isActiveTab ? "border-accentLight  text-lg text-accentLight" : ""}`}>
+      className={`h-12 flex  items-center cursor-pointer border-l-[6px] ${ isDanger && isHovered ? "hover:text-bittersweet" : "hover:text-accentLight"} rounded-md ${ isActiveTab ? "border-accentLight text-lg text-accentLight" : "border-white"}`}>
       <div className="flex ml-[20px] items-center">
-        <Icon color={isHovered || isActiveTab ? "#B8A0FF" : "black"} size={isActiveTab ? 30 : 28} />
+        <Icon color={isHovered && !isDanger || isActiveTab ? "#B8A0FF" : isDanger && isHovered ? "#f25757" : "black"} size={isActiveTab ? 30 : 28} />
         <p className="ml-5">{label}</p>
       </div>
     </button>
@@ -72,7 +73,7 @@ const Sidebar = () => {
           {/* End of comment */}
           <div className="mb-8 flex flex-col gap-y-2.5">
             <SidebarTab route="/feedback" icon={Bug} label="Feedback" />
-            <SidebarTab route="/logout" icon={SignOut} label="Sign out" />
+            <SidebarTab isDanger={true} route="/logout" icon={SignOut} label="Sign out" />
           </div>
         </div>
       </div>
