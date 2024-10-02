@@ -9,9 +9,9 @@ import SidebarTab from './SidebarTab';
 const SideNavbar = () => {
   return (
     <div className="w-60 min-h-screen bg-foreground flex flex-col flex-shrink-0">
-      <div className="h-16 flex items-center justify-center">
-        <Image src="/images/logo.png" className="rounded-full" width={42} height={42} alt="Logo" />
-        <p className="text-3xl font-black">AppTrack</p>
+      <div className="h-16 flex items-center justify-center gap-x-2 mt-2.5">
+        <Image src="/images/logo.png" className="rounded-full" width={44} height={44} alt="Logo" />
+        <p className="text-2xl font-extrabold">AppTrack</p>
       </div>
       <div></div>
       <div className="flex flex-col mt-2.5 mx-4 flex-grow">
