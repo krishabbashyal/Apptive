@@ -27,11 +27,11 @@ const SidebarTab = ({ label, icon: Icon, route, isDanger }: SidebarTabProps) => 
       type="button"
       onClick={() => router.push(route)}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)} // Adding accentLight makes the border not show up
-      className={`h-12 flex  items-center cursor-pointer border-l-[6px] ${isDanger && isHovered ? "hover:text-bittersweet" : "hover:text-accentLight"} rounded-md ${isActiveTab ? "border-accentLight text-lg text-accentLight" : "border-white"}`}>
-      <div className="flex ml-[20px] items-center">
-        <Icon color={(isHovered && !isDanger) || isActiveTab ? "#B8A0FF" : isDanger && isHovered ? "#f25757" : "black"} size={isActiveTab ? 30 : 28} />
-        <p className="ml-5">{label}</p>
+      onMouseLeave={() => setIsHovered(false)}
+      className={`h-11 flex items-center cursor-pointer rounded-lg ${isActiveTab ? "bg-accentLight bg-opacity-30 border border-opacity-30 border-accentLight" : isDanger ? "hover:text-bittersweet" : "hover:text-accentLight"}`}>
+      <div className="flex items-center mx-4">
+        <Icon color={isHovered && isDanger ? "#f25757" : isHovered && !isActiveTab ? "#B8A0FF" : "#000000"} size={28} />
+        <p className="ml-4 font-medium">{label}</p>
       </div>
     </button>
   );
