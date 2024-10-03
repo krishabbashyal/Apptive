@@ -1,6 +1,6 @@
 import React from "react";
 import SideNavbar from "@/components/Sidebar/SideNavbar";
-import Navbar from "@/components/Navbar";
+// import Navbar from "@/components/Navbar";
 
 
 const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
@@ -10,7 +10,7 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
       <SideNavbar />
       <div className="flex w-full flex-col">
         {/* Navbar */}
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="w-full">
           {children}
         </div>
