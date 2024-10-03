@@ -1,8 +1,12 @@
 import React from 'react'
+import Image from 'next/image'
 
 const AuthCard = () => {
   return (
-    <div className='w-full h-full bg-fuchsia-300'>AuthCard</div>
+<div className='w-full h-full bg-gradient-to-tr from-accentDark to-accentLight rounded-xl overflow-hidden'>
+
+</div>
+
   )
 }
 

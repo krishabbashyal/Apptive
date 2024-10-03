@@ -23,7 +23,7 @@ const SignupForm = () => {
                   type="text"
                   placeholder="First name"
                 />
-                <p className="text-xs text-red-500">First name is required</p>
+
               </div>
               <div className="flex flex-col w-full">
                 <input
@@ -31,7 +31,7 @@ const SignupForm = () => {
                   type="text"
                   placeholder="Last name"
                 />
-                <p className="text-xs text-red-500">Last name is required</p>
+          
               </div>
             </div>
             <div className="mt-4 flex flex-col gap-y-4">
