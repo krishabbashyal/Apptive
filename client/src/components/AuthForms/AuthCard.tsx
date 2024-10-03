@@ -2,7 +2,7 @@ import React from 'react'
 
 const AuthCard = () => {
   return (
-    <div>AuthCard</div>
+    <div className='w-full h-full bg-fuchsia-300'>AuthCard</div>
   )
 }
 
