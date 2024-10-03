@@ -11,7 +11,7 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
       <div className="flex w-full flex-col">
         {/* Navbar */}
         <Navbar />
-        <div className="h-full w-full">
+        <div className="w-full">
           {children}
         </div>
       </div>

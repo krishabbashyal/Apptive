@@ -2,54 +2,41 @@ import React from "react";
 
 const SignupForm = () => {
   return (
-    <form className="flex bg-foreground p-8 rounded-l-lg w-96 flex-col">
-      <h1 className="text-3xl font-bold mb-4 text-center">Sign up</h1>
-      <label className="text-cadetGray font-medium" htmlFor="email">
-        Email
-      </label>
-      <input
-        className="h-12 rounded-lg border bg-background border-cadetGray pl-4 mt-1 "
-        placeholder="Enter your email"
-        id="email"
-        name="email"
-        type="email"
-        required
-      />
-      <label className="mt-3 text-cadetGray font-medium" htmlFor="username">
-        Username
-      </label>
-      <input
-        className="h-12 rounded-lg pl-4 mt-1 border bg-background border-cadetGray "
-        placeholder="Enter your username"
-        id="username"
-        name="username"
-        type="text"
-        required
-      />
-      <label className="mt-3 text-cadetGray font-medium" htmlFor="password">
-        Password
-      </label>
-      <input
-        className="h-12 rounded-lg pl-4 mt-1 border bg-background border-cadetGray "
-        placeholder="Enter your password"
-        id="password"
-        name="password"
-        type="password"
-        required
-      />
-      <label className="mt-3 text-cadetGray font-medium" htmlFor="confirmPassword">
-        Confirm Password
-      </label>
-      <input
-        className="h-12 rounded-lg pl-4 mt-1 border bg-background border-cadetGray "
-        placeholder="Confirm your password"
-        id="confirmPassword"
-        name="password"
-        type="password"
-        required
-      />
-      <button className="bg-accent hover:bg-blue-700 text-white font-medium h-12 py-2 px-4 rounded-lg mt-12">
-        Sign up
+    <form className="flex w-96 flex-col rounded-l-lg bg-foreground p-8">
+      <h1 className="text-left text-3xl font-medium">Create an account</h1>
+      <p className="mt-4 text-sm">
+        Already have an account?{" "}
+        <span className="text-accent underline">Log in</span>
+      </p>
+
+      <div>
+        <div className="mt-4 flex gap-x-4">
+          <input
+            className="h-10 w-full rounded border border-cadetGray pl-3 outline-2 outline-accent placeholder:text-cadetGray"
+            type="text "
+            placeholder="First name"
+          />
+          <input
+            className="h-10 w-full rounded border border-cadetGray pl-3 outline-2 outline-accent placeholder:text-cadetGray"
+            type="text "
+            placeholder="Last name"
+          />
+        </div>
+        <div className="mt-4 flex flex-col gap-y-4">
+          <input
+            className="h-10 w-full rounded border border-cadetGray pl-3 outline-2 outline-accent placeholder:text-cadetGray"
+            type="email "
+            placeholder="Email"
+          />
+          <input
+            type="text "
+            className="h-10 w-full rounded border border-cadetGray pl-3 outline-2 outline-accent placeholder:text-cadetGray"
+            placeholder="Password"
+          />
+        </div>
+      </div>
+      <button className="mt-12 h-12 rounded-md bg-accent px-4 py-2 font-medium text-white hover:bg-blue-700">
+        Create account
       </button>
     </form>
   );

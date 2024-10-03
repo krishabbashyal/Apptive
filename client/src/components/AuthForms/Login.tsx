@@ -2,7 +2,7 @@ import React from "react";
 
 const LoginForm = () => {
   return (
-    <form className="flex w-96 flex-col rounded-l-lg bg-foreground p-8">
+    <form className="flex w-96 flex-col rounded-l-lg bg-foreground">
       <h1 className="mb-4 text-center text-3xl font-bold">Log in</h1>
       <label className="font-medium text-cadetGray" htmlFor="email">
         Email
