@@ -13,13 +13,13 @@ const SignupForm = () => {
           <h1 className="text-left text-2xl sm:text-3xl font-medium">Create an account</h1>
           <p className="mt-2 sm:mt-4 text-sm">
             Already have an account?{" "}
-            <span className="cursor-pointer text-accent underline">Log in</span>
+            <span className="cursor-pointer text-accent ">Log in</span>
           </p>
           <div>
             <div className="mt-4 flex flex-col sm:flex-row gap-4">
               <div className="flex flex-col w-full">
                 <input
-                  className="h-10 w-full rounded border border-cadetGray pl-3 outline-2 outline-accent placeholder:text-cadetGray"
+                  className="h-10 bg-background w-full rounded border border-cadetGray pl-3 outline-2 outline-accent placeholder:text-white"
                   type="text"
                   placeholder="First name"
                 />
@@ -27,7 +27,7 @@ const SignupForm = () => {
               </div>
               <div className="flex flex-col w-full">
                 <input
-                  className="h-10 w-full rounded border border-cadetGray pl-3 outline-2 outline-accent placeholder:text-cadetGray"
+                  className="h-10 bg-background w-full rounded border border-cadetGray pl-3 outline-2 outline-accent placeholder:text-white"
                   type="text"
                   placeholder="Last name"
                 />
@@ -36,25 +36,25 @@ const SignupForm = () => {
             </div>
             <div className="mt-4 flex flex-col gap-y-4">
               <input
-                className="h-10 w-full rounded border border-cadetGray pl-3 outline-2 outline-accent placeholder:text-cadetGray"
+                className="h-10 bg-background w-full rounded border border-cadetGray pl-3 outline-2 outline-accent placeholder:text-white"
                 type="email"
                 placeholder="Email"
               />
               <input
                 type="password"
-                className="h-10 w-full rounded border border-cadetGray pl-3 outline-2 outline-accent placeholder:text-cadetGray"
+                className="h-10 bg-background w-full rounded border border-cadetGray pl-3 outline-2 outline-accent placeholder:text-white"
                 placeholder="Password"
               />
             </div>
           </div>
           <div className="mt-4 flex items-center gap-x-2">
             <input
-              className="h-4 w-4 cursor-pointer accent-accent"
+              className="h-5 w-5 cursor-pointer text-background accent-accent"
               type="checkbox"
             />
             <p className="text-sm">
               I agree to the{" "}
-              <span className="cursor-pointer text-accent underline">
+              <span className="cursor-pointer text-accent ">
                 Terms and Conditions
               </span>
             </p>
@@ -63,7 +63,7 @@ const SignupForm = () => {
             Create account
           </button>
           <div className="mt-5 border-b border-cadetGray text-center text-sm relative">
-            <span className="bg-white px-3 text-cadetGray absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <span className="bg-foreground px-3 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
               Or register with
             </span>
           </div>
