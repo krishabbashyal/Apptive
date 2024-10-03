@@ -4,11 +4,11 @@ import AuthCard from "./AuthCard";
 
 const SignupForm = () => {
   return (
-    <div className="flex flex-col lg:flex-row justify-between rounded-xl lg:rounded-r-xl border border-graySeperator bg-foreground w-full max-w-4xl mx-auto">
-      <div className="w-full lg:w-3/5 p-2">
+    <div className="flex flex-row justify-between rounded-xl lg:rounded-r-xl border border-graySeperator bg-foreground w-full max-w-4xl mx-auto">
+      <div className="hidden md:block lg:w-3/5 p-2">
         <AuthCard />
       </div>
-      <div className="w-full lg:w-2/5">
+      <div className="w-full lg:w-1/2">
         <form className="p-4 sm:p-6 md:p-8 lg:p-10 flex flex-col">
           <h1 className="text-left text-2xl sm:text-3xl font-medium">Create an account</h1>
           <p className="mt-2 sm:mt-4 text-sm">
