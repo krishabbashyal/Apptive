@@ -28,9 +28,9 @@ const SidebarTab = ({ label, icon: Icon, route, isDanger }: SidebarTabProps) => 
       onClick={() => router.push(route)}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`h-11 flex items-center cursor-pointer rounded-lg ${isActiveTab ? "bg-accentLight bg-opacity-30 border border-opacity-30 border-accentLight" : isDanger ? "hover:text-bittersweet" : "hover:text-accentLight"}`}>
+      className={`h-11 flex items-center cursor-pointer rounded-lg ${isActiveTab ? "bg-accent bg-opacity-10  text-accent border border-opacity-30 border-accentLight" : isDanger ? "hover:text-bittersweet" : "hover:text-accent"}`}>
       <div className="flex items-center mx-4">
-        <Icon color={isHovered && isDanger ? "#f25757" : isHovered && !isActiveTab ? "#B8A0FF" : "#000000"} size={28} />
+        <Icon color={isHovered && isDanger ? "#f25757" : isHovered || isActiveTab ? "#bb86fc" : "#FFFFFF"} size={28} />
         <p className="ml-4 font-medium">{label}</p>
       </div>
     </button>

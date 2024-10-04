@@ -6,7 +6,7 @@ import { GeistMono } from 'geist/font/mono'
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className="bg-background">{children}</body>
+      <body className="bg-background min-h-screen text-white">{children}</body>
     </html>
   );
 };
