@@ -3,11 +3,11 @@
 import React from "react";
 import OAuthProvider from "./OAuthProvider";
 import AuthCard from "./AuthCard";
+import { useRouter } from "next/navigation";
 
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { error } from "console";
 
 const signUpSchema = z.object({
   firstName: z.string().min(2, "Must be at least 2 characters"),
@@ -36,6 +36,8 @@ const SignupForm = () => {
     reset();
   };
 
+  const router = useRouter();
+
   const inputFieldClasses =
     "h-10 w-full rounded border border-cadetGray bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent";
 
@@ -59,7 +61,7 @@ const SignupForm = () => {
           </h1>
           <p className="mt-2 text-sm sm:mt-4">
             Already have an account?{" "}
-            <span className="cursor-pointer text-accent">Log in</span>
+            <span className="cursor-pointer text-accent" onClick={() => router.push("/login")}>Log in</span>
           </p>
           <div>
             <div className="mt-4 flex flex-col gap-4 sm:flex-row">
