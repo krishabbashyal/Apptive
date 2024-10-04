@@ -5,29 +5,51 @@ import OAuthProvider from "./OAuthProvider";
 import AuthCard from "./AuthCard";
 
 import { FieldValues, useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { error } from "console";
+
+const signUpSchema = z.object({
+  firstName: z.string().min(2, "Must be at least 2 characters"),
+  lastName: z.string().min(2, "Must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
+  termsAndConditions: z.boolean().refine((val) => val === true, {
+    message: "You must agree to the terms and conditions",
+  }),
+});
+
+type SignUpSchemaType = z.infer<typeof signUpSchema>;
+
 const SignupForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm();
+  } = useForm<SignUpSchemaType>({
+    resolver: zodResolver(signUpSchema),
+  });
 
   const onSubmit = async (data: FieldValues) => {
-    await new Promise((resolve) => setTimeout(resolve, 1500));
     console.log(data);
     reset();
   };
 
   const inputFieldClasses =
-    "h-10 w-full rounded border border-cadetGray bg-background pl-3 outline-2 outline-accent placeholder:text-white";
+    "h-10 w-full rounded border border-cadetGray bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent";
+
+    const inputFieldErrorClasses =
+    "h-10 w-full rounded border border-bittersweetDark bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent animate-shake";
+
+  const errorMessageClasses = "text-bittersweetDark text-sm mt-1";
 
   return (
-    <div className="mx-auto flex w-full max-w-4xl flex-row justify-between rounded-xl border border-graySeperator bg-foreground lg:rounded-r-xl">
-      <div className="hidden p-2 md:block lg:w-3/5">
+    <div className="mx-4 flex w-full max-w-[60rem] flex-row justify-between  rounded-xl border border-graySeperator bg-foreground lg:rounded-r-xl">
+      <div className="hidden p-2 md:block lg:w-7/12">
         <AuthCard />
       </div>
-      <div className="w-full lg:w-1/2">
+      <div className="w-full lg:w-8/12">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col p-4 sm:p-6 md:p-8 lg:p-10"
@@ -42,54 +64,73 @@ const SignupForm = () => {
           <div>
             <div className="mt-4 flex flex-col gap-4 sm:flex-row">
               <div className="flex w-full flex-col">
+                {/* First Name Input */}
                 <input
-                  {...register("firstName", {
-                    required: "First name is required",
-                  })}
-                  className={inputFieldClasses}
+                  {...register("firstName")}
+                  className={errors.firstName ? inputFieldErrorClasses : inputFieldClasses}
                   type="text"
                   placeholder="First name"
                 />
+                {errors.firstName && (
+                  <p className={errorMessageClasses}>
+                    {errors.firstName.message}
+                  </p>
+                )}
               </div>
               <div className="flex w-full flex-col">
+                {/* Last Name Input */}
                 <input
-                  {...register("lastName", {
-                    required: "Last name is required",
-                  })}
-                  className={inputFieldClasses}
+                  {...register("lastName")}
+                  className={errors.lastName ? inputFieldErrorClasses : inputFieldClasses}
                   type="text"
                   placeholder="Last name"
                 />
+                {errors.lastName && (
+                  <p className={errorMessageClasses}>
+                    {errors.lastName.message}
+                  </p>
+                )}
               </div>
             </div>
             <div className="mt-4 flex flex-col gap-y-4">
-              <input
-                {...register("email", {
-                  required: "Email is required",
-                })}
-                className={inputFieldClasses}
-                type="email"
-                placeholder="Email"
-              />
-              <input
-                {...register("password", {
-                  required: "Password is required",
-                })}
-                type="password"
-                className={inputFieldClasses}
-                placeholder="Password"
-              />
+              <div>
+                {/* Email Input */}
+                <input
+                  {...register("email")}
+                  className={errors.email ? inputFieldErrorClasses : inputFieldClasses}
+                  type="email"
+                  placeholder="Email"
+                />
+                {errors.email && (
+                  <p className={`${errorMessageClasses}`}>
+                    {errors.email.message}
+                  </p>
+                )}
+              </div>
+              <div>
+                {/* Password Input */}
+                <input
+                  {...register("password")}
+                  type="password"
+                  className={errors.password ? inputFieldErrorClasses : inputFieldClasses}
+                  placeholder="Password"
+                />
+                {errors.password && (
+                  <p className={errorMessageClasses}>
+                    {errors.password.message}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
           <div className="mt-4 flex items-center gap-x-2">
+            {/* Terms and Conditions Checkbox */}
             <input
-              {...register("termsAndConditions", {
-                required: "You must agree to the terms and conditions",
-              })}
-              className="h-5 w-5 cursor-pointer text-background accent-accent"
+              {...register("termsAndConditions")}
+              className={`h-5 w-5 accent-accent rounded-md cursor-pointer ${errors.termsAndConditions ? "animate-shake" : ""}`}
               type="checkbox"
             />
-            <p className="text-sm">
+            <p className={ errors.termsAndConditions ? "animate-shake text-bittersweetDark" : "text-cadetGrayLight"}>
               I agree to the{" "}
               <span className="cursor-pointer text-accent">
                 Terms and Conditions
@@ -97,7 +138,7 @@ const SignupForm = () => {
             </p>
           </div>
           <button
-            className="mt-6 h-12 rounded-md enabled:bg-gradient-to-tr from-accent to-accentDark px-4 py-2 font-medium text-white disabled:cursor-not-allowed disabled:bg-cadetGray sm:mt-8"
+            className="mt-6 h-12 rounded-md from-accent to-accentDark px-4 py-2 font-medium text-white enabled:bg-gradient-to-tr disabled:cursor-not-allowed disabled:bg-cadetGray sm:mt-8"
             disabled={isSubmitting}
           >
             Create account
