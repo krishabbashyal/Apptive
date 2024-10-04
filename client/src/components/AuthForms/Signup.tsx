@@ -1,69 +1,109 @@
+"use client";
+
 import React from "react";
 import OAuthProvider from "./OAuthProvider";
 import AuthCard from "./AuthCard";
 
+import { FieldValues, useForm } from "react-hook-form";
 const SignupForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm();
+
+  const onSubmit = async (data: FieldValues) => {
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    console.log(data);
+    reset();
+  };
+
+  const inputFieldClasses =
+    "h-10 w-full rounded border border-cadetGray bg-background pl-3 outline-2 outline-accent placeholder:text-white";
+
   return (
-    <div className="flex flex-row justify-between rounded-xl lg:rounded-r-xl border border-graySeperator bg-foreground w-full max-w-4xl mx-auto">
-      <div className="hidden md:block lg:w-3/5 p-2">
+    <div className="mx-auto flex w-full max-w-4xl flex-row justify-between rounded-xl border border-graySeperator bg-foreground lg:rounded-r-xl">
+      <div className="hidden p-2 md:block lg:w-3/5">
         <AuthCard />
       </div>
       <div className="w-full lg:w-1/2">
-        <form className="p-4 sm:p-6 md:p-8 lg:p-10 flex flex-col">
-          <h1 className="text-left text-2xl sm:text-3xl font-medium">Create an account</h1>
-          <p className="mt-2 sm:mt-4 text-sm">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col p-4 sm:p-6 md:p-8 lg:p-10"
+        >
+          <h1 className="text-left text-2xl font-medium sm:text-3xl">
+            Create an account
+          </h1>
+          <p className="mt-2 text-sm sm:mt-4">
             Already have an account?{" "}
-            <span className="cursor-pointer text-accent ">Log in</span>
+            <span className="cursor-pointer text-accent">Log in</span>
           </p>
           <div>
-            <div className="mt-4 flex flex-col sm:flex-row gap-4">
-              <div className="flex flex-col w-full">
+            <div className="mt-4 flex flex-col gap-4 sm:flex-row">
+              <div className="flex w-full flex-col">
                 <input
-                  className="h-10 bg-background w-full rounded border border-cadetGray pl-3 outline-2 outline-accent placeholder:text-white"
+                  {...register("firstName", {
+                    required: "First name is required",
+                  })}
+                  className={inputFieldClasses}
                   type="text"
                   placeholder="First name"
                 />
-
               </div>
-              <div className="flex flex-col w-full">
+              <div className="flex w-full flex-col">
                 <input
-                  className="h-10 bg-background w-full rounded border border-cadetGray pl-3 outline-2 outline-accent placeholder:text-white"
+                  {...register("lastName", {
+                    required: "Last name is required",
+                  })}
+                  className={inputFieldClasses}
                   type="text"
                   placeholder="Last name"
                 />
-          
               </div>
             </div>
             <div className="mt-4 flex flex-col gap-y-4">
               <input
-                className="h-10 bg-background w-full rounded border border-cadetGray pl-3 outline-2 outline-accent placeholder:text-white"
+                {...register("email", {
+                  required: "Email is required",
+                })}
+                className={inputFieldClasses}
                 type="email"
                 placeholder="Email"
               />
               <input
+                {...register("password", {
+                  required: "Password is required",
+                })}
                 type="password"
-                className="h-10 bg-background w-full rounded border border-cadetGray pl-3 outline-2 outline-accent placeholder:text-white"
+                className={inputFieldClasses}
                 placeholder="Password"
               />
             </div>
           </div>
           <div className="mt-4 flex items-center gap-x-2">
             <input
+              {...register("termsAndConditions", {
+                required: "You must agree to the terms and conditions",
+              })}
               className="h-5 w-5 cursor-pointer text-background accent-accent"
               type="checkbox"
             />
             <p className="text-sm">
               I agree to the{" "}
-              <span className="cursor-pointer text-accent ">
+              <span className="cursor-pointer text-accent">
                 Terms and Conditions
               </span>
             </p>
           </div>
-          <button className="mt-6 sm:mt-8 h-12 rounded-md bg-accent px-4 py-2 font-medium text-white hover:bg-accentDark">
+          <button
+            className="mt-6 h-12 rounded-md enabled:bg-gradient-to-tr from-accent to-accentDark px-4 py-2 font-medium text-white disabled:cursor-not-allowed disabled:bg-cadetGray sm:mt-8"
+            disabled={isSubmitting}
+          >
             Create account
           </button>
-          <div className="mt-5 border-b border-cadetGray text-center text-sm relative">
-            <span className="bg-foreground px-3 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div className="relative mt-5 border-b border-cadetGray text-center text-sm">
+            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform bg-foreground px-3 text-white">
               Or register with
             </span>
           </div>
