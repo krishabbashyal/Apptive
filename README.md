@@ -1,6 +1,6 @@
-# AppTrack
+# Apptive
 
-**AppTrack** is a web application designed to help users manage and track job applications effectively. It is based on a job application tracking spreadsheet, built with a **Next.js** frontend and styled using **Tailwind CSS**.
+**Apptive** is a web application designed to help users manage and track job applications effectively. It is based on a job application tracking spreadsheet, built with a **Next.js** frontend and styled using **Tailwind CSS**.
 
 ## Key Features
 
@@ -42,7 +42,7 @@
 - Map includes grouping for cities where multiple job applications have been made.
 
 ### 8. **Responsive Design**
-- **AppTrack** is fully responsive and optimized for mobile use, allowing users to manage their job applications on the go.
+- **Apptive** is fully responsive and optimized for mobile use, allowing users to manage their job applications on the go.
 
 ---
 
@@ -66,4 +66,4 @@ To avoid working with a local database, you can look for affordable, hosted Post
 
 ---
 
-**AppTrack** aims to simplify the job search process, giving users an intuitive platform to track, manage, and update their job applications from anywhere.
+**Apptive** aims to simplify the job search process, giving users an intuitive platform to track, manage, and update their job applications from anywhere.
