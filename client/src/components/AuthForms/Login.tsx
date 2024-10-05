@@ -57,7 +57,7 @@ const LoginForm = () => {
             Log in to your account
           </h1>
           <p className="mt-2 text-sm sm:mt-4">
-            Don't have an account?{" "}
+            {"Don't have an account?"}{" "}
             <span className="cursor-pointer text-accent" onClick={() => router.push("/signup")}>Sign up</span>
           </p>
           <div>
