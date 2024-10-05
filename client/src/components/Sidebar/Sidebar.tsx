@@ -6,7 +6,7 @@ import { Archive, Bug, CalendarDots, GearSix, Briefcase, MapTrifold, SignOut } f
 // import SidebarProfileTab from './SidebarProfileTab';
 import SidebarTab from './SidebarTab';
 
-const SideNavbar = () => {
+const Sidebar = () => {
   return (
     <div className="w-60 min-h-screen bg-foreground flex flex-col flex-shrink-0">
       <div className="h-16 flex items-center justify-center gap-x-2 mt-2.5">
@@ -39,4 +39,4 @@ const SideNavbar = () => {
   );
 };
 
-export default SideNavbar;
+export default Sidebar;

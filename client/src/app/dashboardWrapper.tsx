@@ -1,5 +1,5 @@
 import React from "react";
-import SideNavbar from "@/components/Sidebar/SideNavbar";
+import Sidebar from "@/components/Sidebar/Sidebar";
 // import Navbar from "@/components/Navbar";
 
 
@@ -7,7 +7,7 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex min-h-screen w-full">
       {/* Sidebar */}
-      <SideNavbar />
+      <Sidebar />
       <div className="flex w-full flex-col">
         {/* Navbar */}
         {/* <Navbar /> */}
