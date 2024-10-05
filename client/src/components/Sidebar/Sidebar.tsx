@@ -6,12 +6,12 @@ import { Archive, Bug, CalendarDots, GearSix, Briefcase, MapTrifold, SignOut } f
 // import SidebarProfileTab from './SidebarProfileTab';
 import SidebarTab from './SidebarTab';
 
-const SideNavbar = () => {
+const Sidebar = () => {
   return (
     <div className="w-60 min-h-screen bg-foreground flex flex-col flex-shrink-0">
       <div className="h-16 flex items-center justify-center gap-x-2 mt-2.5">
         <Image src="/images/logo.png" className="rounded-full" width={44} height={44} alt="Logo" />
-        <p className="text-2xl font-extrabold">AppTrack</p>
+        <p className="text-2xl font-extrabold">Apptive</p>
       </div>
       <div></div>
       <div className="flex flex-col mt-2.5 mx-4 flex-grow">
@@ -39,4 +39,4 @@ const SideNavbar = () => {
   );
 };
 
-export default SideNavbar;
+export default Sidebar;
