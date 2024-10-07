@@ -2,7 +2,6 @@
 
 import { signUpSchema, SignUpSchemaType } from "@/lib/schemas"
 
-
 export const logFormData = (data: SignUpSchemaType) => {
   const validatedData = signUpSchema.safeParse(data)
   if (validatedData.success) {
