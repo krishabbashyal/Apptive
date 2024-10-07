@@ -3,7 +3,7 @@
 import React from "react";
 import OAuthProvider from "./OAuthProvider";
 import AuthCard from "./AuthCard";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpSchema, SignUpSchemaType } from "@/lib/schemas";
@@ -24,7 +24,7 @@ const SignupForm = () => {
     signupUser(data);
   };
 
-  const router = useRouter();
+
   return (
     <div className="mx-4 flex w-full max-w-[60rem] flex-row justify-between  rounded-xl border border-graySeperator bg-foreground lg:rounded-r-xl">
       <div className="hidden p-2 md:block lg:w-7/12">
@@ -41,7 +41,7 @@ const SignupForm = () => {
           </h1>
           <p className="mt-2 text-sm sm:mt-4">
             Already have an account?{" "}
-            <span className="cursor-pointer text-accent" onClick={() => router.push("/login")}>Log in</span>
+            <span className="cursor-pointer text-accent"><Link href={"/login"}>Log in</Link></span>
           </p>
           <div>
             <div className="mt-4 flex flex-col gap-4 sm:flex-row">
