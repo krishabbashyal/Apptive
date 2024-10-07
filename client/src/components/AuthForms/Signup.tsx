@@ -21,7 +21,6 @@ const SignupForm = () => {
 
   const onSubmit = async (data: SignUpSchemaType) => {
     logFormData(data);
-    // reset();
   };
 
   const router = useRouter();
