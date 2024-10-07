@@ -50,7 +50,8 @@ const LoginForm = () => {
       </div>
       <div className="w-full lg:w-8/12">
         <form
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(onSubmit)} 
+          noValidate
           className="flex flex-col p-4 sm:p-6 md:p-8 lg:p-10"
         >
           <h1 className="text-left text-2xl font-medium sm:text-3xl">
