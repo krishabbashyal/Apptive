@@ -4,26 +4,24 @@ import React from "react";
 import OAuthProvider from "./OAuthProvider";
 import AuthCard from "./AuthCard";
 import { useRouter } from "next/navigation";
-import { FieldValues, useForm } from "react-hook-form";
-import { z } from "zod";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signUpSchema } from "@/lib/schemas";
+import { signUpSchema, SignUpSchemaType } from "@/lib/schemas";
+import { logFormData } from "@/app/(auth)/actions";
 
-type SignUpSchemaType = z.infer<typeof signUpSchema>;
 
 const SignupForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    reset,
   } = useForm<SignUpSchemaType>({
     resolver: zodResolver(signUpSchema),
   });
 
-  const onSubmit = async (data: FieldValues) => {
-    console.log(data);
-    reset();
+  const onSubmit = async (data: SignUpSchemaType) => {
+    logFormData(data);
+    // reset();
   };
 
   const router = useRouter();
