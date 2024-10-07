@@ -1,5 +1,9 @@
 # Apptive
 
+You could include a feature that helps users compare the salaries they’re entering against industry averages or trends based on location and title.
+
+
+
 **Apptive** is a web application designed to help users manage and track job applications effectively. It is based on a job application tracking spreadsheet, built with a **Next.js** frontend and styled using **Tailwind CSS**.
 
 ## Key Features
