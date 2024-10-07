@@ -8,10 +8,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { logInSchema, LogInSchemaType } from "@/lib/schemas";
 import { loginUser } from "@/app/(auth)/actions";
-import { inputFieldClass, inputFieldErrorClass, errorMessageClass } from "@/lib/classes";
-
- 
-
 
 const LoginForm = () => {
   const {
@@ -25,6 +21,10 @@ const LoginForm = () => {
   const onSubmit = async (data: LogInSchemaType) => {
     loginUser(data);
   };
+
+  const inputFieldClass = "h-10 w-full rounded border border-cadetGray bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent";
+  const inputFieldErrorClass = "h-10 w-full rounded border border-bittersweetDark bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent animate-shake";
+  const errorMessageClass = "text-bittersweetDark text-sm mt-1";
 
 
 
