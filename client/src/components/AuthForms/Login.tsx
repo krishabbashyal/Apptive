@@ -4,17 +4,12 @@ import React from "react";
 import OAuthProvider from "./OAuthProvider";
 import AuthCard from "./AuthCard";
 import { useRouter } from "next/navigation";
-
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { logInSchema } from "@/lib/schemas";
 
 
-const logInSchema = z.object({
-  email: z.string().email("Please enter a valid email"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
-
-});
 
 type LogInSchemaType = z.infer<typeof logInSchema>;
 
