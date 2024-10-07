@@ -16,3 +16,5 @@ export const signUpSchema = z.object({
       message: "You must agree to the terms and conditions",
     }),
 });
+
+export type SignUpSchemaType = z.infer<typeof signUpSchema>;
