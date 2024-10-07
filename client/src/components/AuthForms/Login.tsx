@@ -3,15 +3,11 @@
 import React from "react";
 import OAuthProvider from "./OAuthProvider";
 import AuthCard from "./AuthCard";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { logInSchema, LogInSchemaType } from "@/lib/schemas";
 import { loginUser } from "@/app/(auth)/actions";
-import { inputFieldClass, inputFieldErrorClass, errorMessageClass } from "@/lib/classes";
-
- 
-
 
 const LoginForm = () => {
   const {
@@ -26,7 +22,11 @@ const LoginForm = () => {
     loginUser(data);
   };
 
-  const router = useRouter();
+  const inputFieldClass = "h-10 w-full rounded border border-cadetGray bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent";
+  const inputFieldErrorClass = "h-10 w-full rounded border border-bittersweetDark bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent animate-shake";
+  const errorMessageClass = "text-bittersweetDark text-sm mt-1";
+
+
 
   return (
     <div className="mx-4 flex w-full max-w-[60rem] flex-row justify-between  rounded-xl border border-graySeperator bg-foreground lg:rounded-r-xl">
@@ -44,7 +44,7 @@ const LoginForm = () => {
           </h1>
           <p className="mt-2 text-sm sm:mt-4">
             {"Don't have an account?"}{" "}
-            <span className="cursor-pointer text-accent" onClick={() => router.push("/signup")}>Sign up</span>
+            <span className="cursor-pointer text-accent"><Link href={"/signup"}>Sign up</Link></span>
           </p>
           <div>
             <div className="mt-4 flex flex-col gap-4 sm:flex-row">

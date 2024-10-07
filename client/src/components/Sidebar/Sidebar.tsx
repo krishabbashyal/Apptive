@@ -31,7 +31,7 @@ const Sidebar = () => {
           <p className='text-xs font-semibold mb-2.5'>ADDITIONAL</p>
           <div className="mb-8 flex flex-col gap-y-1">
             <SidebarTab route="/feedback" icon={Bug} label="Feedback" />
-            <SidebarTab isDanger={true} route="/logout" icon={SignOut} label="Sign out" />
+            <SidebarTab isDanger={true} route="/" icon={SignOut} label="Sign out" />
           </div>
         </div>
       </div>

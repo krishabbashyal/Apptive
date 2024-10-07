@@ -2,9 +2,8 @@
 
 import { IconProps } from "@phosphor-icons/react";
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
-
+import Link from "next/link";
 interface SidebarTabProps {
   label: string;
   icon: React.ComponentType<IconProps>;
@@ -21,11 +20,9 @@ const SidebarTab = ({ label, icon: Icon, route, isDanger }: SidebarTabProps) => 
     setIsActiveTab(pathname === route);
   }, [pathname, route]);
 
-  const router = useRouter();
   return (
-    <button
-      type="button"
-      onClick={() => router.push(route)}
+    <Link
+      href={route}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={`h-11 flex items-center cursor-pointer rounded-lg ${isActiveTab ? "bg-accent bg-opacity-10  text-accent border border-opacity-30 border-accentLight" : isDanger ? "hover:text-bittersweet" : "hover:text-accent"}`}>
@@ -33,7 +30,7 @@ const SidebarTab = ({ label, icon: Icon, route, isDanger }: SidebarTabProps) => 
         <Icon color={isHovered && isDanger ? "#f25757" : isHovered || isActiveTab ? "#bb86fc" : "#FFFFFF"} size={28} />
         <p className="ml-4 font-medium">{label}</p>
       </div>
-    </button>
+    </Link>
   );
 };
 
