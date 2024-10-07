@@ -4,44 +4,29 @@ import React from "react";
 import OAuthProvider from "./OAuthProvider";
 import AuthCard from "./AuthCard";
 import { useRouter } from "next/navigation";
-
-import { FieldValues, useForm } from "react-hook-form";
-import { z } from "zod";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { logInSchema, LogInSchemaType } from "@/lib/schemas";
+import { loginUser } from "@/app/(auth)/actions";
+import { inputFieldClass, inputFieldErrorClass, errorMessageClass } from "@/lib/classes";
 
+ 
 
-const logInSchema = z.object({
-  email: z.string().email("Please enter a valid email"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
-
-});
-
-type LogInSchemaType = z.infer<typeof logInSchema>;
 
 const LoginForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    reset,
   } = useForm<LogInSchemaType>({
     resolver: zodResolver(logInSchema),
   });
 
-  const onSubmit = async (data: FieldValues) => {
-    console.log(data);
-    reset();
+  const onSubmit = async (data: LogInSchemaType) => {
+    loginUser(data);
   };
 
   const router = useRouter();
-
-  const inputFieldClasses =
-    "h-10 w-full rounded border border-cadetGray bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent";
-
-    const inputFieldErrorClasses =
-    "h-10 w-full rounded border border-bittersweetDark bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent animate-shake";
-
-  const errorMessageClasses = "text-bittersweetDark text-sm mt-1";
 
   return (
     <div className="mx-4 flex w-full max-w-[60rem] flex-row justify-between  rounded-xl border border-graySeperator bg-foreground lg:rounded-r-xl">
@@ -71,12 +56,12 @@ const LoginForm = () => {
                 {/* Email Input */}
                 <input
                   {...register("email")}
-                  className={errors.email ? inputFieldErrorClasses : inputFieldClasses}
+                  className={errors.email ? inputFieldErrorClass : inputFieldClass}
                   type="email"
                   placeholder="Email"
                 />
                 {errors.email && (
-                  <p className={`${errorMessageClasses}`}>
+                  <p className={`${errorMessageClass}`}>
                     {errors.email.message}
                   </p>
                 )}
@@ -86,11 +71,11 @@ const LoginForm = () => {
                 <input
                   {...register("password")}
                   type="password"
-                  className={errors.password ? inputFieldErrorClasses : inputFieldClasses}
+                  className={errors.password ? inputFieldErrorClass : inputFieldClass}
                   placeholder="Password"
                 />
                 {errors.password && (
-                  <p className={errorMessageClasses}>
+                  <p className={errorMessageClass}>
                     {errors.password.message}
                   </p>
                 )}

@@ -4,48 +4,27 @@ import React from "react";
 import OAuthProvider from "./OAuthProvider";
 import AuthCard from "./AuthCard";
 import { useRouter } from "next/navigation";
-
-import { FieldValues, useForm } from "react-hook-form";
-import { z } from "zod";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { signUpSchema, SignUpSchemaType } from "@/lib/schemas";
+import { signupUser } from "@/app/(auth)/actions";
+import { inputFieldClass, inputFieldErrorClass, errorMessageClass } from "@/lib/classes";
 
-const signUpSchema = z.object({
-  firstName: z.string().min(2, "Must be at least 2 characters"),
-  lastName: z.string().min(2, "Must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
-  termsAndConditions: z.boolean().refine((val) => val === true, {
-    message: "You must agree to the terms and conditions",
-  }),
-});
-
-type SignUpSchemaType = z.infer<typeof signUpSchema>;
 
 const SignupForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    reset,
   } = useForm<SignUpSchemaType>({
     resolver: zodResolver(signUpSchema),
   });
 
-  const onSubmit = async (data: FieldValues) => {
-    console.log(data);
-    reset();
+  const onSubmit = async (data: SignUpSchemaType) => {
+    signupUser(data);
   };
 
   const router = useRouter();
-
-  const inputFieldClasses =
-    "h-10 w-full rounded border border-cadetGray bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent";
-
-    const inputFieldErrorClasses =
-    "h-10 w-full rounded border border-bittersweetDark bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent animate-shake";
-
-  const errorMessageClasses = "text-bittersweetDark text-sm mt-1";
-
   return (
     <div className="mx-4 flex w-full max-w-[60rem] flex-row justify-between  rounded-xl border border-graySeperator bg-foreground lg:rounded-r-xl">
       <div className="hidden p-2 md:block lg:w-7/12">
@@ -70,12 +49,12 @@ const SignupForm = () => {
                 {/* First Name Input */}
                 <input
                   {...register("firstName")}
-                  className={errors.firstName ? inputFieldErrorClasses : inputFieldClasses}
+                  className={errors.firstName ? inputFieldErrorClass : inputFieldClass}
                   type="text"
                   placeholder="First name"
                 />
                 {errors.firstName && (
-                  <p className={errorMessageClasses}>
+                  <p className={errorMessageClass}>
                     {errors.firstName.message}
                   </p>
                 )}
@@ -84,12 +63,12 @@ const SignupForm = () => {
                 {/* Last Name Input */}
                 <input
                   {...register("lastName")}
-                  className={errors.lastName ? inputFieldErrorClasses : inputFieldClasses}
+                  className={errors.lastName ? inputFieldErrorClass : inputFieldClass}
                   type="text"
                   placeholder="Last name"
                 />
                 {errors.lastName && (
-                  <p className={errorMessageClasses}>
+                  <p className={errorMessageClass}>
                     {errors.lastName.message}
                   </p>
                 )}
@@ -100,12 +79,12 @@ const SignupForm = () => {
                 {/* Email Input */}
                 <input
                   {...register("email")}
-                  className={errors.email ? inputFieldErrorClasses : inputFieldClasses}
+                  className={errors.email ? inputFieldErrorClass : inputFieldClass}
                   type="email"
                   placeholder="Email"
                 />
                 {errors.email && (
-                  <p className={`${errorMessageClasses}`}>
+                  <p className={`${errorMessageClass}`}>
                     {errors.email.message}
                   </p>
                 )}
@@ -115,11 +94,11 @@ const SignupForm = () => {
                 <input
                   {...register("password")}
                   type="password"
-                  className={errors.password ? inputFieldErrorClasses : inputFieldClasses}
+                  className={errors.password ? inputFieldErrorClass : inputFieldClass}
                   placeholder="Password"
                 />
                 {errors.password && (
-                  <p className={errorMessageClasses}>
+                  <p className={errorMessageClass}>
                     {errors.password.message}
                   </p>
                 )}
