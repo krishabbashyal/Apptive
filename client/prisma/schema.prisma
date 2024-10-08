@@ -12,3 +12,33 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id             Int      @id @default(autoincrement())
+  email          String   @unique
+  firstName      String
+  lastName       String
+  password       String
+  profilePicture String?
+  createdAt      DateTime @default(now())
+  googleId       String?
+  githubId       String?
+}
+
+model Application {
+  id              Int      @id @default(autoincrement())
+  applicationDate DateTime @default(now())
+  title           String
+  company         String
+  location        String?
+  salary          Int?
+  status          String // Pending, Interviewing, Rejected, 
+  style String?
+  archived Boolean @default(false)
+  applicationMethod String?
+  referral String?
+  notes String? 
+  resume String?
+  applicationUrl  String?
+  
+}
