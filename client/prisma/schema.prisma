@@ -49,6 +49,7 @@ model Application {
 model ApplicationBoard {
   id           Int           @id @default(autoincrement())
   boardTitle   String
-  user         User          @relation(fields: [id], references: [id])
+  user         User          @relation(fields: [userId], references: [id])
+  userId  Int
   applications Application[]
 }
