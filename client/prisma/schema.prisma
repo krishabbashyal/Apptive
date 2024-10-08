@@ -35,7 +35,7 @@ model Application {
   location           String?
   salary             Int?
   status             String // Pending, Interviewing, Rejected, 
-  style              String?
+  style              String? // Onsite, Remote, Hybrid
   archived           Boolean           @default(false)
   applicationMethod  String?
   referral           String?
