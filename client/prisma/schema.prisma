@@ -14,31 +14,41 @@ datasource db {
 }
 
 model User {
-  id             Int      @id @default(autoincrement())
-  email          String   @unique
-  firstName      String
-  lastName       String
-  password       String
-  profilePicture String?
-  createdAt      DateTime @default(now())
-  googleId       String?
-  githubId       String?
+  id                Int                @id @default(autoincrement())
+  email             String             @unique
+  firstName         String
+  lastName          String
+  password          String
+  profilePicture    String?
+  createdAt         DateTime           @default(now())
+  googleId          String?
+  githubId          String?
+  role              String             @default("user")
+  applicationBoards ApplicationBoard[]
 }
 
 model Application {
-  id              Int      @id @default(autoincrement())
-  applicationDate DateTime @default(now())
-  title           String
-  company         String
-  location        String?
-  salary          Int?
-  status          String // Pending, Interviewing, Rejected, 
-  style String?
-  archived Boolean @default(false)
-  applicationMethod String?
-  referral String?
-  notes String? 
-  resume String?
-  applicationUrl  String?
-  
+  id                 Int               @id @default(autoincrement())
+  applicationDate    DateTime          @default(now())
+  title              String
+  company            String
+  location           String?
+  salary             Int?
+  status             String // Pending, Interviewing, Rejected, 
+  style              String?
+  archived           Boolean           @default(false)
+  applicationMethod  String?
+  referral           String?
+  notes              String?
+  resume             String?
+  applicationUrl     String?
+  applicationBoard   ApplicationBoard? @relation(fields: [applicationBoardId], references: [id])
+  applicationBoardId Int?
+}
+
+model ApplicationBoard {
+  id           Int           @id @default(autoincrement())
+  boardTitle   String
+  user         User          @relation(fields: [id], references: [id])
+  applications Application[]
 }
