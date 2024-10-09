@@ -9,8 +9,8 @@ const LandingPage = () => {
       <div className='flex flex-col md:flex-row h-[calc(100vh-6rem)] w-full bg-foreground'>
         <div className='md:w-3/5'>
           <div className='mx-4 md:mx-32'>
-            <div className='mt-2 md:mt-16'>
-              <h1 className='text-5xl md:text-8xl 2xl font-semibold'>Applications</h1>
+            <div className='mt-10 md:mt-16'>
+              <h1 className='text-5xl md:text-8xl font-semibold'>Applications</h1>
               <h1 className='text-5xl md:text-8xl font-semibold'>Managed</h1>
               <h1 className='text-5xl md:text-8xl font-semibold'>Easily</h1>
             </div>
