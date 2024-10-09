@@ -28,7 +28,7 @@ const SignupForm = () => {
   const errorMessageClass = "text-bittersweetDark text-sm mt-1";
 
   return (
-    <div className="mx-4 flex w-full max-w-[60rem] flex-row justify-between  rounded-xl border border-graySeperator bg-foreground lg:rounded-r-xl">
+    <div className="md:mx-4 flex w-full max-w-[60rem] flex-row justify-between  rounded-xl md:border border-graySeperator bg-foreground lg:rounded-r-xl">
       <div className="hidden p-2 md:block lg:w-7/12">
         <AuthCard />
       </div>
