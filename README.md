@@ -1,7 +1,3 @@
-Here's a cleaner and more polished version of your README in Markdown:
-
----
-
 # Apptive
 
 **Apptive** is a web application designed to help users effectively manage and track their job applications. Based on a job application tracking spreadsheet, Apptive provides a streamlined, intuitive interface to assist users in their job search journey.
