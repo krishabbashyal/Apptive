@@ -10,7 +10,7 @@ Note: While the application is mobile friendly, the mobile version of the applic
 Application will include a PWA for users to go on mobile devices
 
 ### 1. User Authentication
-- Secure user registration and login.
+- Secure user registration and login with Email and Password, or Google and Github.
 - Manage profiles easily.
 - Authentication handled through **Firebase Authentication** (or other preferred providers).
 
