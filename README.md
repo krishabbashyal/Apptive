@@ -23,7 +23,6 @@ Application will include a PWA for users to go on mobile devices
 
 ### 3. Job Status Tracking
 - Update the status of each application as it progresses.
-- Track every step of the job application process.
 
 ### 4. Dashboard/Overview
 - A central dashboard provides a snapshot of all job applications.
