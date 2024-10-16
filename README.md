@@ -18,7 +18,7 @@ Application will include a PWA for users to go on mobile devices
   - **Job Title**
   - **Company Name**
   - **Application Date**
-  - **Job Description Link**
+  - **Job Application Link**
   - **Application Status** (e.g., “Applied,” “Interviewing,” “Offer,” “Rejected”)
 
 ### 3. Job Status Tracking
