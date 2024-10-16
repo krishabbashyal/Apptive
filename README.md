@@ -7,6 +7,7 @@ Built with a **Next.js** frontend and styled using **Tailwind CSS**, Apptive off
 ## Key Features
 
 Note: While the application is mobile friendly, the mobile version of the application does not include all features and is meant for more of a viewing only.
+Application will include a PWA for users to go on mobile devices
 
 ### 1. User Authentication
 - Secure user registration and login.
