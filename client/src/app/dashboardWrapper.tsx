@@ -2,7 +2,6 @@ import React from "react";
 import Sidebar from "@/components/Sidebar/Sidebar";
 // import Navbar from "@/components/Navbar";
 
-
 const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex min-h-screen w-full">
@@ -11,7 +10,7 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
       <div className="flex w-full flex-col">
         {/* Navbar */}
         {/* <Navbar /> */}
-        <div className="w-full h-full bg-background">
+        <div className="flex h-full w-full items-center justify-center bg-background">
           {children}
         </div>
       </div>
