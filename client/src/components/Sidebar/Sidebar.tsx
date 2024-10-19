@@ -28,12 +28,14 @@ const Sidebar = () => {
 
   return (
     <>
-      <button
-        className={`fixed top-4 left-4 z-50 rounded-md md:hidden ${isOpen ? 'hidden' : 'block'}`}
-        onClick={toggleSidebar}
-      >
-        <List size={24} color='white' />
-      </button>
+      <div className='bg-blue-400'>
+        <button
+          className={`fixed h-12 w-full bg-foreground z-20 md:hidden block`}
+          onClick={toggleSidebar}
+        >
+          <List className='ml-8' size={24} color='white' />
+        </button>
+      </div>
 
       {/* Overlay */}
       {isOpen && (
