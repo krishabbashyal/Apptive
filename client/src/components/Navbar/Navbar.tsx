@@ -2,8 +2,10 @@
 
 import { PlusCircle } from "@phosphor-icons/react";
 
+
 import React from "react";
 import Link from "next/link";
+
 
 const Navbar = () => {
   const userExists = true; // Change this depending on your logic for user authentication
