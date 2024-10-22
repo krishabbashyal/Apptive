@@ -10,9 +10,9 @@ const LandingPage = () => {
         <div className='md:w-3/5'>
           <div className='mx-4 md:mx-32'>
             <div className='mt-10 md:mt-16'>
-              <h1 className='text-5xl md:text-8xl font-semibold'>Applications</h1>
-              <h1 className='text-5xl md:text-8xl font-semibold'>Managed</h1>
-              <h1 className='text-5xl md:text-8xl font-semibold'>Easily</h1>
+              <h1 className='text-5xl md:text-6xl lg:text-8xl font-semibold'>Applications</h1>
+              <h1 className='text-5xl md:text-6xl lg:text-8xl font-semibold'>Managed</h1>
+              <h1 className='text-5xl md:text-6xl lg:text-8xl font-semibold'>Easily</h1>
             </div>
 
             <div>
@@ -23,7 +23,7 @@ const LandingPage = () => {
             </div>
           </div>
         </div>
-        <div className='md:w-2/5 mt-8 bg-background'>
+        <div className='md:w-2/5 mt-8 md:mt-0 bg-background'>
           Right Side Content
         </div>
       </div>
