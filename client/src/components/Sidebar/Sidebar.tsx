@@ -30,7 +30,7 @@ const Sidebar = () => {
     <>
       <div className='bg-blue-400'>
         <button
-          className={`fixed h-12 w-full bg-foreground z-20 md:hidden block`}
+          className={`fixed h-16 w-full bg-foreground z-40 md:hidden block`}
           onClick={toggleSidebar}
         >
           <List className='ml-8' size={24} color='white' />
@@ -55,7 +55,7 @@ const Sidebar = () => {
         <div className="flex flex-col mt-2.5 mx-4 flex-grow">
           <div className="flex mt-4 flex-col justify-between flex-grow">
             <div>
-              <p className='text-xs font-semibold mb-2.5'>GENERAL</p>
+              <p className='text-xs font-semibold mb-2.5 opacity-50'>GENERAL</p>
               <div className="flex flex-col gap-y-1">
                 <SidebarTab route="/dashboard" icon={Briefcase} label="Dashboard" />
                 <SidebarTab route="/timeline" icon={CalendarDots} label="Timeline" />
@@ -65,7 +65,7 @@ const Sidebar = () => {
               </div>
             </div>
             <div className='mb-16 md:mb-0'>
-              <p className='text-xs font-semibold mb-2.5'>ADDITIONAL</p>
+              <p className='text-xs font-semibold mb-2.5 opacity-50'>ADDITIONAL</p>
               <div className="mb-8 flex flex-col gap-y-1">
                 <SidebarTab route="/feedback" icon={Bug} label="Feedback" />
                 <SidebarTab isDanger={true} route="/" icon={SignOut} label="Sign out" />

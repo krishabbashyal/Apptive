@@ -10,7 +10,7 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
       <div className="flex w-full flex-col">
         {/* Navbar */}
         {/* <Navbar /> */}
-        <div className="flex h-full w-full items-center justify-center bg-background">
+        <div className="h-full w-full bg-background">
           {children}
         </div>
       </div>
