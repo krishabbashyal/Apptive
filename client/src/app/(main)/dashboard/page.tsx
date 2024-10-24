@@ -7,7 +7,9 @@ const Dashboard = () => {
     <div className=''>
       <Navbar />
       <div className='m-4'>
-        <ApplicationForm />
+        <div className='h-full w-full bg-red-100'>
+          <ApplicationForm />
+        </div>
       </div>
     </div>
   )
