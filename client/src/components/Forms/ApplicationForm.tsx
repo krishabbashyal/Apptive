@@ -1,6 +1,11 @@
 import React from "react";
 
 function ApplicationForm() {
+
+  const inputFieldClass = "h-10 w-full rounded border border-cadetGray bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent";
+  // const inputFieldErrorClass = "h-10 w-full rounded border border-bittersweetDark bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent animate-shake";
+  // const errorMessageClass = "text-bittersweetDark text-sm mt-1";
+
   return (
     <div className="w-[36rem] bg-foreground">
       <form noValidate className="flex flex-col p-4 sm:p-6 md:p-8 lg:p-10">
@@ -14,42 +19,42 @@ function ApplicationForm() {
           <div className="mt-4 flex flex-col gap-y-4">
             <div>
               <input
-                className="w-full rounded-md border border-gray-300 p-2"
+                className={inputFieldClass}
                 placeholder="Job title"
               />
             </div>
             <div>
               <input
-                className="w-full rounded-md border border-gray-300 p-2"
+                className={inputFieldClass}
                 placeholder="Company name"
               />
             </div>
             <div>
               <input
-                className="w-full rounded-md border border-gray-300 p-2"
+                className={inputFieldClass}
                 placeholder="Location"
               />
             </div>
             <div>
               <input
-                className="w-full rounded-md border border-gray-300 p-2"
+                className={inputFieldClass}
                 placeholder="Salary"
               />
             </div>
             <div>
               <input
-                className="w-full rounded-md border border-gray-300 p-2"
+                className={inputFieldClass}
                 placeholder="Email"
               />
             </div>
             <div>
               <input
-                className="w-full rounded-md border border-gray-300 p-2"
+                className={inputFieldClass}
                 placeholder="Job listing URL"
               />
             </div>            <div>
               <input
-                className="w-full h-24 rounded-md border border-gray-300 p-2"
+                className={inputFieldClass + " h-28"}
                 placeholder="Addional notes"
               />
             </div>
