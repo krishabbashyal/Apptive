@@ -23,8 +23,8 @@ const SignupForm = () => {
     signupUser(data);
   };
 
-  const inputFieldClass = "h-10 w-full rounded border border-cadetGray bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent";
-  const inputFieldErrorClass = "h-10 w-full rounded border border-bittersweetDark bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent animate-shake";
+  const inputFieldClass = "h-10 w-full rounded border border-cadetGray bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent mt-0.5";
+  const inputFieldErrorClass = "h-10 w-full rounded border border-bittersweetDark bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent animate-shake mt-0.5";
   const errorMessageClass = "text-bittersweetDark text-sm mt-1";
 
   return (
@@ -49,11 +49,13 @@ const SignupForm = () => {
             <div className="mt-4 flex flex-col gap-4 sm:flex-row">
               <div className="flex w-full flex-col">
                 {/* First Name Input */}
+                <label htmlFor="firstName">First name</label>
                 <input
                   {...register("firstName")}
                   className={errors.firstName ? inputFieldErrorClass : inputFieldClass}
                   type="text"
-                  placeholder="First name"
+                  id="firstName"
+
                 />
                 {errors.firstName && (
                   <p className={errorMessageClass}>
@@ -63,11 +65,12 @@ const SignupForm = () => {
               </div>
               <div className="flex w-full flex-col">
                 {/* Last Name Input */}
+                <label htmlFor="lastName">Last name</label>
                 <input
                   {...register("lastName")}
                   className={errors.lastName ? inputFieldErrorClass : inputFieldClass}
                   type="text"
-                  placeholder="Last name"
+                  id="lastName"
                 />
                 {errors.lastName && (
                   <p className={errorMessageClass}>
@@ -76,14 +79,16 @@ const SignupForm = () => {
                 )}
               </div>
             </div>
-            <div className="mt-4 flex flex-col gap-y-4">
+            <div className="mt-2 flex flex-col gap-y-2">
               <div>
                 {/* Email Input */}
+                <label htmlFor="email">Email</label>
                 <input
                   {...register("email")}
                   className={errors.email ? inputFieldErrorClass : inputFieldClass}
                   type="email"
-                  placeholder="Email"
+
+                  id="email"
                 />
                 {errors.email && (
                   <p className={`${errorMessageClass}`}>
@@ -93,11 +98,13 @@ const SignupForm = () => {
               </div>
               <div>
                 {/* Password Input */}
+                <label htmlFor="password">Password</label>
                 <input
                   {...register("password")}
                   type="password"
                   className={errors.password ? inputFieldErrorClass : inputFieldClass}
-                  placeholder="Password"
+    
+                  id="password"
                 />
                 {errors.password && (
                   <p className={errorMessageClass}>
@@ -107,19 +114,23 @@ const SignupForm = () => {
               </div>
             </div>
           </div>
-          <div className="mt-4 flex items-center gap-x-2">
+          <div className="mt-4 flex flex-col">
             {/* Terms and Conditions Checkbox */}
-            <input
-              {...register("termsAndConditions")}
-              className={`h-5 w-5 accent-accent rounded-md cursor-pointer ${errors.termsAndConditions ? "animate-shake" : ""}`}
-              type="checkbox"
-            />
-            <p className={ errors.termsAndConditions ? "animate-shake text-bittersweetDark" : "text-cadetGrayLight"}>
-              I agree to the{" "}
-              <span className="cursor-pointer text-accent">
-                Terms and Conditions
-              </span>
-            </p>
+            <label htmlFor="termsAndConditions">Terms and Conditions</label>
+            <div className="flex flex-row gap-x-2 mt-0.5 items-center">
+              <input
+                {...register("termsAndConditions")}
+                className={`h-5 w-5 accent-accent rounded-md cursor-pointer ${errors.termsAndConditions ? "animate-shake" : ""}`}
+                type="checkbox"
+                id="termsAndConditions"
+              />
+              <p className={ errors.termsAndConditions ? "animate-shake text-bittersweetDark" : "text-cadetGrayLight"}>
+                I agree to the{" "}
+                <span className="cursor-pointer text-accent">
+                  Terms and Conditions
+                </span>
+              </p>
+            </div>
           </div>
           <button
             className="mt-6 h-12 rounded-md from-accent to-accentDark px-4 py-2 font-medium text-white enabled:bg-gradient-to-tr disabled:cursor-not-allowed disabled:bg-cadetGray sm:mt-8"
