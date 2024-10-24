@@ -22,8 +22,8 @@ const LoginForm = () => {
     loginUser(data);
   };
 
-  const inputFieldClass = "h-10 w-full rounded border border-cadetGray bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent";
-  const inputFieldErrorClass = "h-10 w-full rounded border border-bittersweetDark bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent animate-shake";
+  const inputFieldClass = "h-10 w-full rounded border border-cadetGray bg-background pl-3 shadow focus:outline-none focus:ring-1 focus:ring-accent mt-0.5";
+  const inputFieldErrorClass = "h-10 w-full rounded border border-bittersweetDark bg-background pl-3 shadow focus:outline-none focus:ring-1 focus:ring-accent animate-shake mt-0.5";
   const errorMessageClass = "text-bittersweetDark text-sm mt-1";
 
 
@@ -47,18 +47,19 @@ const LoginForm = () => {
             <span className="cursor-pointer text-accent"><Link href={"/signup"}>Sign up</Link></span>
           </p>
           <div>
-            <div className="mt-4 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-4 flex flex-col sm:flex-row">
            
             
             </div>
-            <div className="flex flex-col gap-y-4">
+            <div className="flex flex-col gap-y-2">
               <div>
                 {/* Email Input */}
+                <label htmlFor="email">Email</label>
                 <input
                   {...register("email")}
                   className={errors.email ? inputFieldErrorClass : inputFieldClass}
                   type="email"
-                  placeholder="Email"
+                  id="email"
                 />
                 {errors.email && (
                   <p className={`${errorMessageClass}`}>
@@ -68,11 +69,13 @@ const LoginForm = () => {
               </div>
               <div>
                 {/* Password Input */}
+                <label htmlFor="password">Password</label>
                 <input
                   {...register("password")}
                   type="password"
+                  id="password"
                   className={errors.password ? inputFieldErrorClass : inputFieldClass}
-                  placeholder="Password"
+    
                 />
                 {errors.password && (
                   <p className={errorMessageClass}>
