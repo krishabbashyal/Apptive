@@ -15,7 +15,7 @@ function ApplicationForm() {
 
   return (
 
-  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36rem] bg-foreground">
+  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[38rem] bg-foreground">
     <form noValidate className="flex flex-col p-4 sm:p-6 md:p-8 lg:p-10">
       <h1 className="text-left text-2xl font-medium sm:text-3xl">
         Log a new application

@@ -1,11 +1,10 @@
 import React from 'react'
-import Navbar from '@/components/Navbar/Navbar'
+
 
 
 const LandingPage = () => {
   return (
     <div>
-      <Navbar />
       <div className='flex flex-col md:flex-row h-[calc(100vh-6rem)] w-full bg-foreground'>
         <div className='md:w-3/5'>
           <div className='mx-4 md:mx-32'>

@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "@/components/Sidebar/Sidebar";
-// import Navbar from "@/components/Navbar";
+
 
 const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -8,8 +8,6 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
       {/* Sidebar */}
       <Sidebar />
       <div className="flex w-full flex-col">
-        {/* Navbar */}
-        {/* <Navbar /> */}
         <div className="h-full w-full bg-background">
           {children}
         </div>
