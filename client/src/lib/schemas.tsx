@@ -28,6 +28,7 @@ export const applicationSchema = z.object({
   title: z.string().min(1, "Job title is required"),
   company: z.string().min(1, "Company name is required"),
   location: z.string().min(1, "Location is required"),
+  // Todo: Find a better solution for getting the salary field, right now it's a string or an empty string but it should be a number that is positive
   salary: z.string().optional().or(z.literal("")),
   status: z.string().min(2, ""),
   arrangement: z.string().min(1, "Select work arrangement"),
