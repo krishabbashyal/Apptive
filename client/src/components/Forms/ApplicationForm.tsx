@@ -159,7 +159,7 @@ function ApplicationForm() {
             <input
               {...register("notes")}
               className={
-                errors.company
+                errors.notes
                   ? inputFieldErrorClass + " h-28"
                   : inputFieldClass + " h-28"
               }
