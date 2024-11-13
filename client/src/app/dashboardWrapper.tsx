@@ -9,7 +9,7 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
         <Sidebar />
       </div>
       <div className="flex w-full">
-        <div className="h-full w-full bg-red-200 flex items-center justify-center">
+        <div className="h-full w-full bg-background">
           {children}
         </div>
       </div>

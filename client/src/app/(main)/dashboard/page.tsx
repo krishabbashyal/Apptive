@@ -4,7 +4,7 @@ import ApplicationForm from '@/components/Forms/ApplicationForm'
 
 const Dashboard = () => {
   return (
-    <div className='bg-blue-200'>
+    <div className='w-full h-full'>
       <ApplicationForm />
     </div>
   )
