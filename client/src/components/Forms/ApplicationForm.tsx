@@ -4,6 +4,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { applicationSchema, ApplicationSchemaType } from "@/lib/schemas";
+import { X } from "@phosphor-icons/react";
+import { createApplication } from "@/app/(main)/dashboard/actions";
 
 function ApplicationForm() {
   const {
@@ -15,7 +17,7 @@ function ApplicationForm() {
   });
 
   const onSubmit = async (data: ApplicationSchemaType) => {
-    console.log(data);
+    createApplication(data);
   };
 
   const inputFieldClass =
@@ -33,6 +35,7 @@ function ApplicationForm() {
 
   return (
     <div className="w-[38rem] bg-foreground">
+      <X className="absolute right-4 top-4 cursor-pointer" color="white" size={24} />
       <form
         onSubmit={handleSubmit(onSubmit)}
         noValidate
@@ -105,10 +108,10 @@ function ApplicationForm() {
               defaultValue={"applied"}
               id="applicationStatus"
             >
-              <option value="bookmarked">Bookmarked</option>
-              <option value="applied">Applied</option>
-              <option value="interviewing">Interviewing</option>
-              <option value="rejected">Rejected</option>
+              <option value="Bookmarked">Bookmarked</option>
+              <option value="Applied">Applied</option>
+              <option value="Interviewing">Interviewing</option>
+              <option value="Rejected">Rejected</option>
             </select>
           </div>
 
@@ -116,10 +119,10 @@ function ApplicationForm() {
             <label htmlFor="workArrangement">Work arrangement</label>
             <select {...register("arrangement")} className={inputFieldClass} id="workArrangement">
               <option value="" selected hidden disabled>Select</option>
-              <option value="onsite">Onsite</option>
-              <option value="hybrid">Hybrid</option>
-              <option value="remote">Remote</option>
-              <option value="unspecified">Unspecified </option>
+              <option value="Onsite">Onsite</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="Remote">Remote</option>
+              <option value="Unspecified">Unspecified </option>
             </select>
             {errors.arrangement && (
               <p className={errorMessageClass}>{errors.arrangement.message}</p>
@@ -156,12 +159,12 @@ function ApplicationForm() {
 
           <div className="col-span-2 flex flex-col">
             <label htmlFor="additionalNotes">Additional notes</label>
-            <input
+            <textarea
               {...register("notes")}
               className={
                 errors.notes
-                  ? inputFieldErrorClass + " h-28"
-                  : inputFieldClass + " h-28"
+                  ? inputFieldErrorClass + " h-24 pt-1"
+                  : inputFieldClass + " h-24 pt-1"
               }
               id="additionalNotes"
             />
