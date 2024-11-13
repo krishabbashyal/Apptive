@@ -35,12 +35,14 @@ function ApplicationForm() {
 
   return (
     <div className="w-[38rem] bg-foreground">
-      <X className="absolute right-4 top-4 cursor-pointer" color="white" size={24} />
       <form
         onSubmit={handleSubmit(onSubmit)}
         noValidate
-        className="flex flex-col p-4 sm:p-6 md:p-8 lg:p-10"
+        className="flex flex-col p-10"
       >
+      <div className="flex justify-end">
+        <X className="cursor-pointer" color="white" size={24} />
+      </div>
         <h1 className="text-left text-2xl font-medium sm:text-3xl">
           Log a new application
         </h1>
