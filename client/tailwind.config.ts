@@ -11,17 +11,9 @@ const config: Config = {
       colors: {
         background: "#141414",      
         foreground: "#0C0C0C",    
-        accent: "#BB86FC",
-        accentTransition: "#a56dfd",         
-        accentLight: "#D3B4FC",    
-        accentDark: "#7D3FFF", 
-        cadetGrayLight: "#6A6B6C",   
-        cadetGray: "#3A3B3C",      
-        cadetGrayDark: "#252627",   
-        graySeperator: "#2D2D2D", 
-        bittersweetLight: "#FF9D9D",
-        bittersweet: "#FF6D6D",    
-        bittersweetDark: "#E05555",
+        accent: "#BB86FC",     
+        spacer: "#2D2D2D", 
+        danger: "#E05555"
       },
       fontFamily: {
         sans: ['var(--font-geist-sans)'],

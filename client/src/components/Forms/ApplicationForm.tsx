@@ -21,9 +21,9 @@ function ApplicationForm() {
   };
 
   const inputFieldClass =
-    "h-10 w-full rounded border border-cadetGray bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent mt-0.5";
+    "h-10 w-full rounded border border-cadetGray bg-background pl-3 shadow placeholder:text-spacer focus:outline-none focus:ring-1 focus:ring-accent mt-0.5";
   const inputFieldErrorClass =
-    "h-10 w-full rounded border border-bittersweetDark bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent animate-shake";
+    "h-10 w-full rounded border border-bittersweetDark bg-background pl-3 shadow placeholder:text-spacer focus:outline-none focus:ring-1 focus:ring-accent animate-shake";
   const errorMessageClass = "text-bittersweetDark text-sm mt-1";
 
   const today = new Date();
@@ -170,7 +170,7 @@ function ApplicationForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="mt-6 h-12 rounded-md from-accent to-accentDark px-4 py-2 font-medium text-white enabled:bg-gradient-to-tr disabled:cursor-not-allowed disabled:bg-cadetGray sm:mt-8"
+            className="mt-6 h-12 rounded-md from-accent to-accent px-4 py-2 font-medium text-white enabled:bg-gradient-to-tr disabled:cursor-not-allowed disabled:bg-cadetGray sm:mt-8"
           >
             Create
           </button>

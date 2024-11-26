@@ -15,7 +15,7 @@ const LandingPage = () => {
             </div>
 
             <div>
-              <p className='text-xl md:text-3xl font-medium mt-4 md:mt-10 text-cadetGrayLight'>Elevate your job search with a tool that helps you stay organized and on top</p>
+              <p className='text-xl md:text-3xl font-medium mt-4 md:mt-10 text-spacer'>Elevate your job search with a tool that helps you stay organized and on top</p>
             </div>
             <div>
             <button className='text-xl bg-white text-black font-semibold px-6 py-2.5 rounded-lg mt-4 md:mt-10'>Get started</button>

@@ -23,8 +23,8 @@ const SignupForm = () => {
     signupUser(data);
   };
 
-  const inputFieldClass = "h-10 w-full rounded border border-cadetGray bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent mt-0.5";
-  const inputFieldErrorClass = "h-10 w-full rounded border border-bittersweetDark bg-background pl-3 shadow placeholder:text-cadetGrayLight focus:outline-none focus:ring-1 focus:ring-accent animate-shake mt-0.5";
+  const inputFieldClass = "h-10 w-full rounded border border-cadetGray bg-background pl-3 shadow placeholder:text-spacer focus:outline-none focus:ring-1 focus:ring-accent mt-0.5";
+  const inputFieldErrorClass = "h-10 w-full rounded border border-bittersweetDark bg-background pl-3 shadow placeholder:text-spacer focus:outline-none focus:ring-1 focus:ring-accent animate-shake mt-0.5";
   const errorMessageClass = "text-bittersweetDark text-sm mt-1";
 
   return (
@@ -124,7 +124,7 @@ const SignupForm = () => {
                 type="checkbox"
                 id="termsAndConditions"
               />
-              <p className={ errors.termsAndConditions ? "animate-shake text-bittersweetDark" : "text-cadetGrayLight"}>
+              <p className={ errors.termsAndConditions ? "animate-shake text-bittersweetDark" : "text-spacer"}>
                 I agree to the{" "}
                 <span className="cursor-pointer text-accent">
                   Terms and Conditions
@@ -133,7 +133,7 @@ const SignupForm = () => {
             </div>
           </div>
           <button
-            className="mt-6 h-12 rounded-md from-accent to-accentDark px-4 py-2 font-medium text-white enabled:bg-gradient-to-tr disabled:cursor-not-allowed disabled:bg-cadetGray sm:mt-8"
+            className="mt-6 h-12 rounded-md from-accent to-accent px-4 py-2 font-medium text-white enabled:bg-gradient-to-tr disabled:cursor-not-allowed disabled:bg-cadetGray sm:mt-8"
             disabled={isSubmitting}
           >
             Create account
