@@ -23,8 +23,8 @@ const LoginForm = () => {
   };
 
   const inputFieldClass = "h-10 w-full rounded border border-cadetGray bg-background pl-3 shadow focus:outline-none focus:ring-1 focus:ring-accent mt-0.5";
-  const inputFieldErrorClass = "h-10 w-full rounded border border-bittersweetDark bg-background pl-3 shadow focus:outline-none focus:ring-1 focus:ring-accent animate-shake mt-0.5";
-  const errorMessageClass = "text-bittersweetDark text-sm mt-1";
+  const inputFieldErrorClass = "h-10 w-full rounded border border-danger bg-background pl-3 shadow focus:outline-none focus:ring-1 focus:ring-accent animate-shake mt-0.5";
+  const errorMessageClass = "text-danger text-sm mt-1";
 
 
 

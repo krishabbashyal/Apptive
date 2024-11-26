@@ -24,8 +24,8 @@ const SignupForm = () => {
   };
 
   const inputFieldClass = "h-10 w-full rounded border border-cadetGray bg-background pl-3 shadow placeholder:text-spacer focus:outline-none focus:ring-1 focus:ring-accent mt-0.5";
-  const inputFieldErrorClass = "h-10 w-full rounded border border-bittersweetDark bg-background pl-3 shadow placeholder:text-spacer focus:outline-none focus:ring-1 focus:ring-accent animate-shake mt-0.5";
-  const errorMessageClass = "text-bittersweetDark text-sm mt-1";
+  const inputFieldErrorClass = "h-10 w-full rounded border border-danger bg-background pl-3 shadow placeholder:text-spacer focus:outline-none focus:ring-1 focus:ring-accent animate-shake mt-0.5";
+  const errorMessageClass = "text-danger text-sm mt-1";
 
   return (
     <div className="md:mx-4 flex w-full max-w-[60rem] flex-row justify-between  rounded-xl md:border border-graySeperator bg-foreground lg:rounded-r-xl">
@@ -124,7 +124,7 @@ const SignupForm = () => {
                 type="checkbox"
                 id="termsAndConditions"
               />
-              <p className={ errors.termsAndConditions ? "animate-shake text-bittersweetDark" : "text-spacer"}>
+              <p className={ errors.termsAndConditions ? "animate-shake text-danger" : "text-spacer"}>
                 I agree to the{" "}
                 <span className="cursor-pointer text-accent">
                   Terms and Conditions
