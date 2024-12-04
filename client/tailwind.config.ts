@@ -9,11 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#141414",      
-        foreground: "#0C0C0C",    
+        background: "#0C0C0C",    
+        foreground: "#141414",      
         accent: "#BB86FC",     
         spacer: "#2D2D2D", 
-        danger: "#E05555"
+        danger: "#E05555",
+        accentHighlight: "#1E1925",
       },
       fontFamily: {
         sans: ['var(--font-geist-sans)'],
