@@ -12,7 +12,7 @@ const config: Config = {
         background: "#0C0C0C",    
         foreground: "#141414",      
         accent: "#BB86FC",     
-        spacer: "#2D2D2D", 
+        spacer: "#3C3C3C", 
         danger: "#E05555",
         accentHighlight: "#1E1925",
       },
