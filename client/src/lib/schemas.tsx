@@ -27,7 +27,7 @@ export const applicationSchema = z.object({
   location: z.string().min(1, "Location is required"),
   // Todo: Find a better solution for getting the salary field, right now it's a string or an empty string but it should be a number that is positive
   salary: z.string().optional().or(z.literal("")),
-  status: z.string().min(2, ""),
+  status: z.string().min(1, "Select application status"),
   arrangement: z.string().min(1, "Select work arrangement"),
   date: z.string().date("Must be a valid date"),
   listingURL: z.string().url("Must be a valid URL").optional().or(z.literal("")),
