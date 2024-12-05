@@ -29,7 +29,16 @@ const CustomInput = ({
           type={type}
           id={id}
           placeholder=" "
-          className={error ? "h-10 w-full rounded border border-danger bg-background pl-3 shadow placeholder:text-spacer focus:outline-none focus:ring-1 focus:ring-accent animate-shake mt-4" : "h-10 w-full rounded border border-spacer bg-background pl-3 shadow placeholder:text-spacer focus:outline-none focus:ring-1 focus:ring-accent mt-4"}
+          className={`
+            h-10 w-full rounded border pl-3 bg-background shadow placeholder:text-spacer 
+            focus:outline-none focus:ring-1 focus:ring-accent 
+            mt-4 
+            ${error 
+              ? 'border-danger' 
+              : 'border-spacer'
+            } 
+            ${type === "number" ? "remove-arrow" : ""}
+          `}
         />
       </div>
       {error && <p className="mt-1 text-sm text-danger animate-shake">{error.message}</p>}
