@@ -29,8 +29,21 @@ export const applicationSchema = z.object({
   salary: z.string().optional().or(z.literal("")),
   status: z.string().min(1, "Select application status"),
   arrangement: z.string().min(1, "Select work arrangement"),
-  date: z.string().date("Must be a valid date"),
-  listingURL: z.string().url("Must be a valid URL").optional().or(z.literal("")),
+  date: z.string()
+  .refine((val) => {
+    const enteredDate = new Date(val);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); 
+    return enteredDate <= today;
+  }, {
+    message: "Please enter a valid non-future date",
+  }),
+
+  listingURL: z
+    .string()
+    .url("Must be a valid URL")
+    .optional()
+    .or(z.literal("")),
   notes: z.string().optional().or(z.literal("")),
 });
 
