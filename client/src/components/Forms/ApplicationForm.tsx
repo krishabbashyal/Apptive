@@ -26,6 +26,7 @@ function ApplicationForm() {
     createApplication(data);
   };
 
+  // TODO: Remove these classes once a custom input component is created for textarea
   const inputFieldClass =
     "h-10 w-full rounded border border-spacer bg-background pl-3 shadow placeholder:text-spacer focus:outline-none focus:ring-1 focus:ring-accent mt-0.5";
   const inputFieldErrorClass =
