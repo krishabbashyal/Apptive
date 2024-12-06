@@ -2,6 +2,7 @@ import React from 'react'
 
 import ApplicationForm from '@/components/Forms/ApplicationForm'
 import StatCard from '@/components/UserInterface/StatCard'
+import RecentActivity from '@/components/UserInterface/RecentActivity'
 
 const Dashboard = () => {
   return (
@@ -16,6 +17,11 @@ const Dashboard = () => {
             <StatCard stat='2' description='Offers received' />
             <StatCard stat='12' description='Response rate' />
         </div>
+
+        <div className='mt-8'>
+          <RecentActivity />
+        </div>
+
       </div>
     </div>
   )
