@@ -1,4 +1,6 @@
 import { FieldError, UseFormRegisterReturn } from "react-hook-form";
+import { useState } from "react";
+import { Eye, EyeSlash } from "@phosphor-icons/react";
 
 interface CustomInputProps {
   label: string;
@@ -6,7 +8,6 @@ interface CustomInputProps {
   type?: string;
   register: UseFormRegisterReturn;
   error?: FieldError;
-
 }
 
 const CustomInput = ({
@@ -15,33 +16,46 @@ const CustomInput = ({
   type,
   register,
   error,
-
 }: CustomInputProps) => {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
-    <div className="group relative w-full">
+    <div className="relative w-full">
       <div className="relative">
         <label
-          htmlFor={id} className={error ? "absolute text-danger animate-shake -top-2.5" : "absolute -top-2.5"}>
+          htmlFor={id}
+          className={
+            error
+              ? "absolute -top-2.5 animate-shake text-danger"
+              : "absolute -top-2.5"
+          }
+        >
           {label}
         </label>
         <input
           {...register}
-          type={type}
+          type={showPassword ? "text" : type}
           id={id}
           placeholder=" "
-          className={`
-            h-10 w-full rounded border pl-3 bg-background shadow placeholder:text-spacer 
-            focus:outline-none focus:ring-1 focus:ring-accent 
-            mt-4 
-            ${error 
-              ? 'border-danger' 
-              : 'border-spacer'
-            } 
-            ${type === "number" ? "remove-arrow" : ""}
-          `}
+          className={`mt-4 h-10 w-full rounded border bg-background pl-3 shadow placeholder:text-spacer focus:outline-none focus:ring-1 focus:ring-accent ${
+            error ? "border-danger" : "border-spacer"
+          } ${type === "number" ? "remove-arrow" : ""} `}
         />
+        {type === "password" && (
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-3 top-[1.55rem] text-spacer cursor-pointer z-10" // Ensures it appears above the Bitwarden button
+          >
+            {showPassword ? <EyeSlash size={22} /> : <Eye size={22} />}
+          </button>
+        )}
       </div>
-      {error && <p className="mt-1 text-sm text-danger animate-shake">{error.message}</p>}
+      {error && (
+        <p className="mt-1 animate-shake text-sm text-danger">
+          {error.message}
+        </p>
+      )}
     </div>
   );
 };
