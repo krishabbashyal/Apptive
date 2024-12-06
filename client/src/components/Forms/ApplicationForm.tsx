@@ -48,7 +48,7 @@ function ApplicationForm() {
             Log a new application
           </h1>
           <p className="mt-0.5">Enter details about your application</p>
-          <div className="mt-6 flex flex-col gap-4 gap-y-5 sm:grid sm:grid-cols-2">
+          <div className="mt-6 flex flex-col gap-4 gap-y-6 sm:grid sm:grid-cols-2">
             <CustomInput
               label="Job title"
               id="jobTitle"
@@ -121,7 +121,7 @@ function ApplicationForm() {
               />
             </div>
             <div className="col-span-2 flex flex-col">
-              <label className="-mt-2" htmlFor="additionalNotes">Additional notes</label>
+              <label className="-mt-2.5" htmlFor="additionalNotes">Additional notes</label>
               <textarea
                 {...register("notes")}
                 className={
