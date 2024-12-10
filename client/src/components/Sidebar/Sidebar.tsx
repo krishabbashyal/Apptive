@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import {
   Archive,
@@ -10,7 +9,6 @@ import {
   Briefcase,
   MapTrifold,
   SignOut,
-  List,
 } from "@phosphor-icons/react";
 import SidebarTab from "./SidebarTab";
 

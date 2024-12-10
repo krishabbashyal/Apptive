@@ -1,8 +1,8 @@
 import React from "react";
 
-type Props = {};
+interface ApplicationTableProps {}
 
-function ApplicationTable({}: Props) {
+function ApplicationTable({}: ApplicationTableProps) {
   return (
     <div className="overflow-x-auto rounded-lg">
       <table className="w-full border-collapse">
