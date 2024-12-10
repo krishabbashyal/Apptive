@@ -8,7 +8,7 @@ const Dashboard = () => {
   return (
     <div className="h-full w-full">
 
-        {/* <ApplicationForm /> */}
+        <ApplicationForm />
 
 
       <div className="mx-16">
