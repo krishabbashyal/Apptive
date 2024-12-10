@@ -5,7 +5,7 @@ import Sidebar from "@/components/Sidebar/Sidebar";
 const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex flex-row min-h-screen">
-      <div className="w-[17rem]">
+      <div>
         <Sidebar />
       </div>
       <div className="flex w-full">

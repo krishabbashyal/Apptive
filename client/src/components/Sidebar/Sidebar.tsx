@@ -16,7 +16,7 @@ import SidebarTab from "./SidebarTab";
 
 const Sidebar = () => {
   return (
-    <div className="flex h-full w-full flex-col bg-foreground">
+    <div className="flex h-full w-[15rem] flex-col bg-foreground">
       <div className="mt-2.5 flex h-16 items-center justify-center gap-x-2">
         <Image
           src="/images/logo.png"
