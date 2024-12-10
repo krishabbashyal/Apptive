@@ -10,7 +10,7 @@ type Action = {
 }
 
 const useShowApplicationModal = create<State & Action>((set) => ({
-  applicationModalShown: true,
+  applicationModalShown: false,
   openApplicationModal: () => set({ applicationModalShown: true }),
   closeApplicationModal: () => set({ applicationModalShown: false }),
 }))
