@@ -2,7 +2,7 @@
 
 import { signUpSchema, SignUpSchemaType } from "@/lib/schemas"
 
-export const signupUser = (data: SignUpSchemaType) => {
+export const signupUser = async (data: SignUpSchemaType) => {
   const validatedData = signUpSchema.safeParse(data)
   if (validatedData.success) {
     console.log("Valid data", data)
@@ -13,7 +13,7 @@ export const signupUser = (data: SignUpSchemaType) => {
 
 import { logInSchema, LogInSchemaType } from "@/lib/schemas"
 
-export const loginUser = (data: LogInSchemaType) => {
+export const loginUser = async (data: LogInSchemaType) => {
   const validatedData = logInSchema.safeParse(data)
   if (validatedData.success) {
     console.log("Valid data", data)

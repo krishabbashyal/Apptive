@@ -34,7 +34,7 @@ function ApplicationForm() {
   const errorMessageClass = "text-danger text-sm mt-1";
 
   return (
-    <div className="flex h-full w-full items-center justify-center bg-black bg-opacity-25">
+    <div className="absolute flex h-full w-[calc(100%-15rem)] items-center justify-center bg-black bg-opacity-85">
       <div className="w-[38rem] bg-foreground">
         <form
           onSubmit={handleSubmit(onSubmit)}
