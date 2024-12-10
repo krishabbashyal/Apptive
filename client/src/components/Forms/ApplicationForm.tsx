@@ -42,7 +42,7 @@ function ApplicationForm() {
         closeApplicationModal();
         reset();
       }}
-        className="absolute flex h-full w-[calc(100%-15rem)] items-center justify-center bg-black bg-opacity-85"
+        className="absolute z-10 flex h-full w-[calc(100%-15rem)] items-center justify-center bg-black bg-opacity-85"
       >
         <div
           onClick={(e) => e.stopPropagation()}
