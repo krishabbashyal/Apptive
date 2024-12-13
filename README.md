@@ -14,6 +14,7 @@ Built with **Next.js** and styled using **Tailwind CSS**, Apptive offers a range
 - Add new job applications with the following details:
   - **Job Title**
   - **Company Name**
+  - **Job Location**
   - **Application Date**
   - **Job Application Link**
   - **Application Status** (e.g., “Applied,” “Interviewing,” “Offer,” “Rejected”)
