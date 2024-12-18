@@ -25,7 +25,7 @@ export const applicationSchema = z.object({
   title: z.string().min(1, "Job title is required"),
   company: z.string().min(1, "Company name is required"),
   location: z.string().min(1, "Location is required"),
-  salary: z.number().optional().or(z.literal("")),
+  salary: z.number().optional().or(z.nan()),
   status: z.string().min(1, "Select application status"),
   arrangement: z.string().min(1, "Select work arrangement"),
   date: z.string()
