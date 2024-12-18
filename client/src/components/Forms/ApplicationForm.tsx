@@ -100,8 +100,9 @@ function ApplicationForm() {
               <CustomInput
                 label="Salary"
                 id="salary"
-                type="number"
-                register={register("salary")}
+                type="text"
+                numeric={true}
+                register={register("salary", { setValueAs: num => parseInt(num.replace(/,/g, '')) })}
                 error={errors.salary}
               />
               <CustomDropdown
