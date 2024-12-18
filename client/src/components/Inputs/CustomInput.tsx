@@ -1,5 +1,5 @@
 import { FieldError, UseFormRegisterReturn } from "react-hook-form";
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import { Eye, EyeSlash } from "@phosphor-icons/react";
 
 interface CustomInputProps {
@@ -7,17 +7,48 @@ interface CustomInputProps {
   id: string;
   type?: string;
   register: UseFormRegisterReturn;
+  numeric?: boolean;
   error?: FieldError;
 }
 
 const CustomInput = ({
   label,
   id,
-  type,
+  type = "text",
   register,
+  numeric = false,
   error,
 }: CustomInputProps) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [displayValue, setDisplayValue] = useState("");
+
+
+const formatNumber = (value: string) => {
+  const formattedValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return formattedValue;
+};
+
+
+const handleNumericChange = (e: ChangeEvent<HTMLInputElement>) => {
+  if (e.target.value.length <= 8) {
+    const inputValue = e.target.value;
+    
+
+    const numericInput = inputValue.replace(/[^0-9]/g, '').replace(/^0+/, '');
+    
+    setDisplayValue(formatNumber(numericInput));
+    
+    if (register.onChange) {
+      register.onChange({
+        ...e,
+        target: {
+          ...e.target,
+          value: numericInput // Send unformatted value to react hookform
+        }
+      });
+    }
+  }
+};
 
   return (
     <div className="relative w-full">
@@ -37,15 +68,17 @@ const CustomInput = ({
           type={showPassword ? "text" : type}
           id={id}
           placeholder=" "
+          value={numeric ? displayValue : undefined}
+          onChange={numeric ? handleNumericChange : register.onChange}
           className={`mt-4 h-10 w-full rounded border bg-background pl-3 shadow placeholder:text-spacer focus:outline-none focus:ring-1 focus:ring-accent ${
             error ? "border-danger" : "border-spacer"
-          } ${type === "number" ? "remove-arrow" : ""} `}
+          } ${type === "number" || numeric ? "remove-arrow" : ""} `}
         />
         {type === "password" && (
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-[1.55rem] text-spacer cursor-pointer z-10" // Ensures it appears above the Bitwarden button
+            className="absolute right-3 top-[1.55rem] text-spacer cursor-pointer z-10"
           >
             {showPassword ? <EyeSlash size={22} /> : <Eye size={22} />}
           </button>
