@@ -20,7 +20,7 @@ function ApplicationForm() {
     formState: { errors, isSubmitting },
   } = useForm<ApplicationSchemaType>({
     resolver: zodResolver(applicationSchema),
-  });
+  })
 
   const { applicationModalShown, closeApplicationModal } =
     useShowApplicationModal();
@@ -53,6 +53,7 @@ function ApplicationForm() {
             onSubmit={handleSubmit(onSubmit)}
             noValidate
             className="flex flex-col p-10"
+            autoComplete="off"
           >
             <div className="flex justify-end">
               <button
