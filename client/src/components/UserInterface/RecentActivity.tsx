@@ -19,7 +19,7 @@ const RecentActivity = ({}: RecentActivityProps) => {
           <h1 className='text-3xl'>Recent Activity</h1>
           <div className='flex flex-row gap-x-4'>
             <SearchBar />
-            <CustomButton onClick={openApplicationModal} label='Create' icon={Plus} />
+            <CustomButton onClick={openApplicationModal} label='Create' customClasses='bg-accent' icon={Plus} />
           </div>
         </div>
       <div className='mt-10'>
