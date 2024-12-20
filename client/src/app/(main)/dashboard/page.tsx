@@ -7,7 +7,7 @@ import RecentActivity from "@/components/UserInterface/RecentActivity";
 const Dashboard = () => {
   return (
     <div className="h-full w-full">
-        <ApplicationForm />
+      <ApplicationForm />
       <div className="mx-16">
         <div className="flex flex-row justify-between gap-x-8 pt-8">
           <StatCard stat="12" description="Applications sent" />
