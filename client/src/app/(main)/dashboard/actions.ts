@@ -17,7 +17,7 @@ import { prisma } from "@/lib/prisma"
 
 export const searchLocations = async (query: string) => {  
   if (!query || query.length < 2) return []
-  const results = await prisma.location.findMany({
+  const results = await prisma.Location.findMany({
     take: 10,
     where: {
       city: {
