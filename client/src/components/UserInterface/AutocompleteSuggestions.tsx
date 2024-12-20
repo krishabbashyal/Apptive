@@ -13,7 +13,7 @@ const AutocompleteSuggestions = ({ results, onSelect, visible }: AutocompleteSug
 
   return (
     <div className="absolute z-30 w-full mt-1 rounded border border-spacer bg-background">
-      <div className="max-h-64 overflow-y-auto">
+      <div className="max-h-64 overflow-y-auto slim-scroll">
         {results.map((location) => (
           <div
             key={location.id}
