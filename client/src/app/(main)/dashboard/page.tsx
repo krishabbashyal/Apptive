@@ -3,12 +3,17 @@ import React from "react";
 import ApplicationForm from "@/components/Forms/ApplicationForm";
 import StatCard from "@/components/UserInterface/StatCard";
 import RecentActivity from "@/components/UserInterface/RecentActivity";
+import AutocompleteSuggestions from "@/components/UserInterface/AutocompleteSuggestions";
 
 const Dashboard = () => {
   return (
     <div className="h-full w-full">
 
         <ApplicationForm />
+
+
+          <AutocompleteSuggestions />
+
 
 
       <div className="mx-16">

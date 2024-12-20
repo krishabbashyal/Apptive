@@ -9,61 +9,61 @@ generator client {
 }
 
 datasource db {
-  provider    = "postgresql"
-  url         = env("DATABASE_URL")
-  directUrl   = env("DIRECT_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
-  id                 String             @id @default(cuid())
-  email              String             @unique
-  firstName          String
-  lastName           String
-  passwordHash       String?
-  profileImageUrl    String?
-  createdAt          DateTime           @default(now())
-  googleId           String?
-  githubId           String?
-  role               String             @default("user")
-  applicationBoards  ApplicationBoard[]
+  id                String             @id @default(cuid())
+  email             String             @unique
+  firstName         String
+  lastName          String
+  passwordHash      String?
+  profileImageUrl   String?
+  createdAt         DateTime           @default(now())
+  googleId          String?
+  githubId          String?
+  role              String             @default("user")
+  applicationBoards ApplicationBoard[]
 }
 
 model Application {
-  id                 String             @id @default(cuid())
-  applicationDate    DateTime           @default(now())
+  id                 String            @id @default(cuid())
+  applicationDate    DateTime          @default(now())
   title              String
   company            String
-  location           Location           @relation(fields: [locationId], references: [id])
+  location           Location          @relation(fields: [locationId], references: [id])
   locationId         String
   salary             Int?
-  status             String 
-  workStyle          String? 
-  isArchived         Boolean            @default(false)
+  status             String
+  workStyle          String?
+  isArchived         Boolean           @default(false)
   applicationMethod  String?
   referral           String?
   notes              String?
   resumeUrl          String?
   applicationUrl     String?
-  applicationBoard   ApplicationBoard?  @relation(fields: [applicationBoardId], references: [id])
+  applicationBoard   ApplicationBoard? @relation(fields: [applicationBoardId], references: [id])
   applicationBoardId String?
 }
 
 model ApplicationBoard {
-  id             String        @id @default(cuid())
-  title          String
-  user           User          @relation(fields: [userId], references: [id])
-  userId         String
-  applications   Application[]
+  id           String        @id @default(cuid())
+  title        String
+  user         User          @relation(fields: [userId], references: [id])
+  userId       String
+  applications Application[]
 }
 
 model Location {
-  id             String        @id @default(cuid())
-  stateCode      String
-  stateName      String
-  city           String
-  county         String
-  latitude       Float
-  longitude      Float
-  queryCount     Int           @default(0) // consider adding an index for performance if querying by this field is frequent.
-  applications   Application[]
+  id           String        @id @default(cuid())
+  stateCode    String
+  stateName    String
+  city         String
+  county       String
+  latitude     Float
+  longitude    Float
+  queryCount   Int           @default(0) // consider adding an index for performance if querying by this field is frequent.
+  applications Application[]
 }

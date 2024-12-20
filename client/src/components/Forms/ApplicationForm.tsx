@@ -10,16 +10,18 @@ import CustomInput from "../Inputs/CustomInput";
 import CustomDropdown from "../Inputs/CustomDropdown";
 import CustomDateInput from "../Inputs/CustomDateInput";
 import useShowApplicationModal from "@/lib/store/modalStore";
+import LocationInput from "../Inputs/LocationInput";
 
 function ApplicationForm() {
   const {
     register,
     handleSubmit,
+    setValue,
     reset,
     formState: { errors, isSubmitting },
   } = useForm<ApplicationSchemaType>({
     resolver: zodResolver(applicationSchema),
-  });
+  })
 
   const { applicationModalShown, closeApplicationModal } =
     useShowApplicationModal();
@@ -38,10 +40,10 @@ function ApplicationForm() {
   return (
     applicationModalShown && (
       <div
-      onClick={() => {
-        closeApplicationModal();
-        reset();
-      }}
+        onClick={() => {
+          closeApplicationModal();
+          reset();
+        }}
         className="absolute z-10 flex h-full w-[calc(100%-15rem)] items-center justify-center bg-black bg-opacity-85"
       >
         <div
@@ -52,6 +54,7 @@ function ApplicationForm() {
             onSubmit={handleSubmit(onSubmit)}
             noValidate
             className="flex flex-col p-10"
+            autoComplete="off"
           >
             <div className="flex justify-end">
               <button
@@ -59,7 +62,7 @@ function ApplicationForm() {
                 onClick={() => {
                   closeApplicationModal();
                   setIsHovered(false);
-                  reset()
+                  reset();
                 }}
               >
                 <X
@@ -90,11 +93,11 @@ function ApplicationForm() {
                 register={register("company")}
                 error={errors.company}
               />
-              <CustomInput
+              <LocationInput
                 label="Location"
                 id="location"
-                type="text"
                 register={register("location")}
+                setValue={setValue}
                 error={errors.location}
               />
               <CustomInput
@@ -102,7 +105,9 @@ function ApplicationForm() {
                 id="salary"
                 type="text"
                 numeric={true}
-                register={register("salary", { setValueAs: num => parseInt(num.replace(/,/g, '')) })}
+                register={register("salary", {
+                  setValueAs: (num) => parseInt(num.replace(/,/g, "")),
+                })}
                 error={errors.salary}
               />
               <CustomDropdown
