@@ -24,7 +24,7 @@ export type LogInSchemaType = z.infer<typeof logInSchema>;
 export const applicationSchema = z.object({
   title: z.string().min(1, "Job title is required"),
   company: z.string().min(1, "Company name is required"),
-  location: z.string().min(1, "Location is required"),
+  location: z.string().min(1, "Location is required").regex(/^[A-Za-z\s]+, [A-Z]{2}$/, 'Please select a valid location'),
   salary: z.number().optional().or(z.nan()),
   status: z.string().min(1, "Select application status"),
   arrangement: z.string().min(1, "Select work arrangement"),
