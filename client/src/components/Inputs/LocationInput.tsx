@@ -28,7 +28,7 @@ const LocationInput = ({ register, setValue, error, label, id }: LocationInputPr
         setResults([])
         setShowSuggestions(false)
       }
-    }, 200)
+    }, 0)
 
     return () => clearTimeout(timer)
   }, [query])
