@@ -16,6 +16,7 @@ function ApplicationForm() {
   const {
     register,
     handleSubmit,
+    setValue,
     reset,
     formState: { errors, isSubmitting },
   } = useForm<ApplicationSchemaType>({
@@ -96,6 +97,7 @@ function ApplicationForm() {
                 label="Location"
                 id="location"
                 register={register("location")}
+                setValue={setValue}
                 error={errors.location}
               />
               <CustomInput
