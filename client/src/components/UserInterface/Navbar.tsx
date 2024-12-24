@@ -5,7 +5,7 @@ import CustomButton from "./CustomButton";
 const Navbar = () => {
   return (
     <div>
-      <nav className="flex items-center justify-between bg-foreground px-16 py-5">
+      <nav className="flex items-center justify-between bg-none px-16 py-5">
         <div className="flex items-center gap-x-2">
           <Image
             src="/images/logo.png"

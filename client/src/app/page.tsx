@@ -7,27 +7,24 @@ import CustomButton from "@/components/UserInterface/CustomButton";
 
 const LandingPage = () => {
   return (
-    <div className="min-h-screen text-white relative overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden text-white">
       {/* Abstract Background Elements */}
       <div className="absolute inset-0 z-0">
-        {/* Gradient Circle */}
-        <div className="absolute top-1/6 -right-48 w-[600px] h-[600px] bg-accent opacity-5 rounded-full blur-3xl" />
-        <div className="absolute top-3/4 -left-48 w-[400px] h-[400px] bg-accent opacity-10 rounded-full blur-3xl" />
+
+   
 
 
-        
-        {/* Animated Dots Grid */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="relative w-full h-full">
+        <div className="absolute inset-0 opacity-50">
+          <div className="relative h-full w-full">
             {Array.from({ length: 200 }).map((_, i) => (
               <div
                 key={i}
-                className="absolute w-1 h-1 bg-accent rounded-full"
+                className="absolute h-1 w-1 rounded-full bg-accent"
                 style={{
                   top: `${Math.random() * 100}%`,
                   left: `${Math.random() * 100}%`,
                   animationDelay: `${Math.random() * 2}s`,
-                  animation: `pulse ${Math.random() + 0.5}s  infinite, float ${3 + Math.random() * 15}s infinite`
+                  animation: `pulse ${Math.random() + 0.5}s  infinite, float ${3 + Math.random() * 15}s infinite`,
                 }}
               />
             ))}
@@ -40,13 +37,13 @@ const LandingPage = () => {
         <Navbar />
         <div className="px-16">
           <div className="mt-10 md:mt-16">
-            <h1 className="text-5xl font-semibold md:text-6xl lg:text-8xl relative">
+            <h1 className="relative text-5xl font-semibold md:text-6xl lg:text-8xl">
               Applications
             </h1>
-            <h1 className="text-5xl font-semibold md:text-6xl lg:text-8xl relative">
+            <h1 className="relative text-5xl font-semibold md:text-6xl lg:text-8xl">
               Managed
             </h1>
-            <h1 className="text-5xl font-semibold md:text-6xl lg:text-8xl relative">
+            <h1 className="relative text-5xl font-semibold md:text-6xl lg:text-8xl">
               Easily
             </h1>
           </div>
