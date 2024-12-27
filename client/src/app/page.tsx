@@ -4,54 +4,33 @@ import React from "react";
 import Navbar from "@/components/UserInterface/Navbar";
 import { ArrowRight, GithubLogo } from "@phosphor-icons/react";
 import CustomButton from "@/components/UserInterface/CustomButton";
+import BackgroundDots from "@/components/UserInterface/BackgroundDots";
 
 const LandingPage = () => {
   return (
     <div className="relative min-h-screen overflow-hidden text-white">
-      {/* Abstract Background Elements */}
-      <div className="absolute inset-0 z-0">
-
-   
-
-
-        <div className="absolute inset-0 opacity-50">
-          <div className="relative h-full w-full">
-            {Array.from({ length: 200 }).map((_, i) => (
-              <div
-                key={i}
-                className="absolute h-1 w-1 rounded-full bg-accent"
-                style={{
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 2}s`,
-                  animation: `pulse ${Math.random() + 0.5}s  infinite, float ${3 + Math.random() * 15}s infinite`,
-                }}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
+      <BackgroundDots />
 
       {/* Main Content */}
       <div className="relative z-10">
         <Navbar />
-        <div className="px-16">
+        <div className="px-6 lg:px-16">
           <div className="mt-10 md:mt-16">
-            <h1 className="relative text-5xl font-semibold md:text-6xl lg:text-8xl">
+            <h1 className="relative text-5xl font-semibold md:text-6xl lg:text-9xl">
               Applications
             </h1>
-            <h1 className="relative text-5xl font-semibold md:text-6xl lg:text-8xl">
+            <h1 className="relative text-5xl font-semibold md:text-6xl lg:text-9xl">
               Managed
             </h1>
-            <h1 className="relative text-5xl font-semibold md:text-6xl lg:text-8xl">
+            <h1 className="relative text-5xl font-semibold md:text-6xl lg:text-9xl">
               Easily
             </h1>
           </div>
           <div>
-            <p className="mt-4 text-sm font-medium text-gray-300 md:mt-10 md:text-4xl">
+            <p className="mt-4 text-xl font-medium text-gray-300 md:mt-10 md:text-4xl">
               Stay organized, efficient, and focused on your job search.
             </p>
-            <div className="mt-12 flex flex-col gap-6 sm:flex-row">
+            <div className="mt-8 lg:mt-12 flex flex-col md:flex-row gap-6">
               <CustomButton
                 label="Get Started"
                 customClasses="bg-accent w-48 h-14 relative overflow-hidden group"
@@ -71,36 +50,6 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-      <style jsx global>{`
-        @keyframes float {
-          0% {
-            transform: translate(0, 0);
-          }
-          25% {
-            transform: translate(10px, 10px);
-          }
-          50% {
-            transform: translate(-5px, 5px);
-          }
-          75% {
-            transform: translate(-10px, -10px);
-          }
-          100% {
-            transform: translate(0, 0);
-          }
-        }
-        @keyframes pulse {
-          0% {
-            opacity: 0.2;
-          }
-          50% {
-            opacity: 0.7;
-          }
-          100% {
-            opacity: 0.2;
-          }
-        }
-      `}</style>
     </div>
   );
 };
