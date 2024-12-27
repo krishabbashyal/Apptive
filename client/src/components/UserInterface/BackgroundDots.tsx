@@ -4,7 +4,7 @@ import React, { useMemo } from 'react';
 
 const BackgroundDots = () => {
   const dots = useMemo(() => {
-    return Array.from({ length: 200 }).map(() => ({
+    return Array.from({ length: 500 }).map(() => ({
       top: Math.random() * 100,
       left: Math.random() * 100,
       animDelay: Math.random() * 2,
@@ -19,7 +19,7 @@ const BackgroundDots = () => {
           {dots.map((dot, i) => (
             <div
               key={i}
-              className="absolute h-1.5 w-1.5 rounded-full bg-accent animate-[pulse_3s_ease-in-out_infinite,float_5s_ease-in-out_infinite]"
+              className="absolute h-1 w-1 rounded-full bg-accent animate-[pulse_3s_ease-in-out_infinite,float_5s_ease-in-out_infinite]"
               style={{
                 top: `${dot.top}%`,
                 left: `${dot.left}%`,
@@ -40,8 +40,8 @@ const BackgroundDots = () => {
             75% { transform: translate(-10px, -10px); }
           }
           @keyframes pulse {
-            0%, 100% { opacity: 0.1; }
-            50% { opacity: 1; }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
           }
         `}
       </style>
