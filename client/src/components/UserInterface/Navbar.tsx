@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import CustomButton from "./CustomButton";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -17,8 +18,12 @@ const Navbar = () => {
           <p className="text-2xl font-extrabold">Apptive</p>
         </div>
         <div className="items-center hidden lg:flex gap-6">
-          <CustomButton label="Log In" textClasses="hover:text-accent" customClasses="bg-foreground"/>
-          <CustomButton label="Sign up" customClasses="bg-accent"/>
+          <Link href="/login">
+            <CustomButton label="Log In" textClasses="hover:text-accent" customClasses="bg-foreground"/>
+          </Link>
+          <Link href="/signup">
+            <CustomButton label="Sign up" customClasses="bg-accent"/>
+          </Link>
         </div>
       </nav>
     </div>

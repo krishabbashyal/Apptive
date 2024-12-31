@@ -5,6 +5,7 @@ import Navbar from "@/components/UserInterface/Navbar";
 import { ArrowRight, GithubLogo } from "@phosphor-icons/react";
 import CustomButton from "@/components/UserInterface/CustomButton";
 import BackgroundDots from "@/components/UserInterface/BackgroundDots";
+import Link from "next/link";
 
 const LandingPage = () => {
   return (
@@ -31,21 +32,24 @@ const LandingPage = () => {
               Stay organized, efficient, and focused on your job search.
             </p>
             <div className="mt-8 lg:mt-12 flex flex-col md:flex-row gap-6">
-              <CustomButton
-                label="Get Started"
-                customClasses="bg-accent w-48 h-14 relative overflow-hidden group"
-                icon={ArrowRight}
-                iconSide="right"
-                textClasses="text-lg relative z-10"
-                onClick={() => {}}
-              />
-              <CustomButton
-                label="Star on Github"
-                customClasses="bg-foreground w-56 hover:bg-opacity-100 hover:bg-accentHighlight border border-spacer h-14 relative overflow-hidden group"
-                icon={GithubLogo}
-                textClasses="text-lg relative z-10"
-                onClick={() => {}}
-              />
+              <Link href="/dashboard">
+                <CustomButton
+                  label="Get Started"
+                  customClasses="bg-accent w-48 h-14 relative overflow-hidden group"
+                  icon={ArrowRight}
+                  iconSide="right"
+                  textClasses="text-lg relative z-10"
+   
+                />
+              </Link>
+              <Link href="https://github.com/krishabbashyal/Apptive">
+                <CustomButton
+                  label="Star on Github"
+                  customClasses="bg-foreground w-56 hover:bg-opacity-100 hover:bg-accentHighlight border border-spacer h-14 relative overflow-hidden group"
+                  icon={GithubLogo}
+                  textClasses="text-lg relative z-10"
+                />
+              </Link>
             </div>
           </div>
         </div>
