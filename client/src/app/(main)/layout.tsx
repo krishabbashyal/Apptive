@@ -1,13 +1,7 @@
 import DashboardWrapper from "../dashboardWrapper";
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <html lang="en">
-      <body>
-        <DashboardWrapper>{children}</DashboardWrapper>
-      </body>
-    </html>
-  );
+const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+  return <DashboardWrapper>{children}</DashboardWrapper>;
 };
 
-export default RootLayout;
+export default DashboardLayout;
