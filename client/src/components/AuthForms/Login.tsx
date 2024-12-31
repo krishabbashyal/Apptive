@@ -25,6 +25,7 @@ const LoginForm = () => {
 
   return (
     <div className="flex w-full max-w-[60rem] flex-row justify-between rounded-xl border-spacer bg-foreground md:mx-4 md:border lg:rounded-r-xl">
+
       <div className="hidden p-2 md:block lg:w-7/12">
         <AuthCard />
       </div>
