@@ -39,7 +39,7 @@ const LandingPage = () => {
                   icon={ArrowRight}
                   iconSide="right"
                   textClasses="text-lg relative z-10"
-   
+  
                 />
               </Link>
               <Link href="https://github.com/krishabbashyal/Apptive">
