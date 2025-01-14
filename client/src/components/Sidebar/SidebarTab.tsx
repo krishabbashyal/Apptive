@@ -50,7 +50,7 @@ const SidebarTab = ({
           <Icon
             color={
               isComingSoon
-                ? "#737373" // muted white color
+                ? "#737373"
                 : isHovered && isDanger
                 ? "#f25757"
                 : isHovered || isActiveTab
