@@ -38,9 +38,10 @@ const Sidebar = () => {
               <SidebarTab
                 route="/timeline"
                 icon={CalendarDots}
-                label="Timeline"
+                label="Activity"
+                isComingSoon={true}
               />
-              <SidebarTab route="/map" icon={MapTrifold} label="Map" />
+              <SidebarTab route="/map" icon={MapTrifold} label="Map" isComingSoon={true} />
               <SidebarTab route="/archive" icon={Archive} label="Archive" />
               <SidebarTab route="/settings" icon={GearSix} label="Settings" />
             </div>
