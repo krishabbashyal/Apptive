@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpSchema, SignUpSchemaType } from "@/lib/schemas";
 import { signupUser } from "@/app/(auth)/actions";
 import CustomInput from "../Inputs/CustomInput";
+import BackButton from "../UserInterface/BackButton";
 
 const SignupForm = () => {
   const {
@@ -25,6 +26,9 @@ const SignupForm = () => {
 
   return (
     <div className="flex w-full max-w-[60rem] flex-row justify-between rounded-xl border-spacer bg-foreground md:mx-4 md:border lg:rounded-r-xl">
+      <div className="absolute ml-4 mt-4">
+        <BackButton />
+      </div>
       <div className="hidden p-2 md:block lg:w-7/12">
         <AuthCard />
       </div>
