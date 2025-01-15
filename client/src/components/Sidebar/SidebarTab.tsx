@@ -70,7 +70,7 @@ const SidebarTab = ({
         {isComingSoon && (
           <div className="absolute left-[160px] flex items-center justify-center gap-x-1 rounded-full bg-opacity-10 bg-gradient-to-br from-accent to-[#864cd1] px-2 py-1 text-xs">
             <Fire size={18} color="#FFFFFF" />
-            <p className="text-sm text-white">Pro</p>
+            <p className="text-xs text-white">Pro</p>
           </div>
         )}
       </button>
