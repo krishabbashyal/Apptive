@@ -20,8 +20,7 @@ export const signupUser = async (formData: SignUpSchemaType) => {
     if (error) {
       console.error(error);
     }
-
-    revalidatePath("/");
+    revalidatePath("/", 'layout');
     redirect("/dashboard");
   }
 };
@@ -41,7 +40,7 @@ export const loginUser = async (formData: LogInSchemaType) => {
       console.error(error);
     }
 
-    revalidatePath("/");
+    revalidatePath("/", 'layout');
     redirect("/dashboard");
   }
 };
@@ -49,7 +48,7 @@ export const loginUser = async (formData: LogInSchemaType) => {
 export const logoutUser = async () => {
   const supabase = await createClient();
   await supabase.auth.signOut();
-  revalidatePath("/");
+  revalidatePath("/", 'layout');
   redirect("/");
 };
 
@@ -58,7 +57,7 @@ export const getUser = async () => {
   const { data, error } = await supabase.auth.getUser();
 
   if (error || !data?.user) {
-    redirect("/login");
+    return null;
   }
 
   return data.user;
