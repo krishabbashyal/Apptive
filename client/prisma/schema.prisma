@@ -14,46 +14,21 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model User {
-  id                String             @id @default(cuid())
-  email             String             @unique
-  firstName         String
-  lastName          String
-  passwordHash      String?
-  profileImageUrl   String?
-  createdAt         DateTime           @default(now())
-  googleId          String?
-  githubId          String?
-  role              String             @default("user")
-  applicationBoards ApplicationBoard[]
-}
 
 model Application {
-  id                 String            @id @default(cuid())
-  applicationDate    DateTime          @default(now())
-  title              String
-  company            String
-  location           Location          @relation(fields: [locationId], references: [id])
-  locationId         String
-  salary             Int?
-  status             String
-  workStyle          String?
-  isArchived         Boolean           @default(false)
-  applicationMethod  String?
-  referral           String?
-  notes              String?
-  resumeUrl          String?
-  applicationUrl     String?
-  applicationBoard   ApplicationBoard? @relation(fields: [applicationBoardId], references: [id])
-  applicationBoardId String?
-}
-
-model ApplicationBoard {
-  id           String        @id @default(cuid())
-  title        String
-  user         User          @relation(fields: [userId], references: [id])
-  userId       String
-  applications Application[]
+  id              String    @id @default(cuid())
+  applicationDate DateTime
+  title           String
+  company         String
+  location        Location  @relation(fields: [locationId], references: [id])
+  locationId      String
+  salary          Int?
+  status          String
+  workStyle       String?
+  isArchived      Boolean   @default(false)
+  notes           String?
+  applicationUrl  String?
+  userID          String    // Supabase user ID 
 }
 
 model Location {
