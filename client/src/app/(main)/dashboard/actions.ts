@@ -1,6 +1,7 @@
 'use server'
 
 import { applicationSchema, ApplicationSchemaType } from "@/lib/schemas"
+import { prisma } from "@/lib/prisma"
 
 export const createApplication = async (data: ApplicationSchemaType) => {
   const validatedData = applicationSchema.safeParse(data)
@@ -10,10 +11,6 @@ export const createApplication = async (data: ApplicationSchemaType) => {
     console.log("Invalid data", data)
   }
 }
-
-
-
-import { prisma } from "@/lib/prisma"
 
 export const searchLocations = async (query: string) => {  
   if (!query || query.length < 2) return []
