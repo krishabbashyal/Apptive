@@ -5,6 +5,7 @@ import { Fire } from "@phosphor-icons/react";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { logoutUser } from "@/app/(auth)/actions";
 
 interface SidebarTabProps {
   label: string;
@@ -38,13 +39,14 @@ const SidebarTab = ({
         isActiveTab
           ? "bg-accent bg-opacity-10 text-accent"
           : isDanger
-          ? "hover:text-danger"
-          : "hover:text-accent"
+            ? "hover:text-danger"
+            : "hover:text-accent"
       }`}
     >
       <button
         disabled={isComingSoon}
-        className={`flex items-center w-full justify-between ${isComingSoon ? 'bg-muted-white text-muted-white cursor-not-allowed' : ''}`}
+        onClick={isDanger ? () => {logoutUser()} : undefined}
+        className={`flex w-full items-center justify-between ${isComingSoon ? "bg-muted-white text-muted-white cursor-not-allowed" : ""}`}
       >
         <div className="mx-4 flex items-center">
           <Icon
@@ -52,19 +54,23 @@ const SidebarTab = ({
               isComingSoon
                 ? "#737373"
                 : isHovered && isDanger
-                ? "#f25757"
-                : isHovered || isActiveTab
-                ? "#bb86fc"
-                : "#FFFFFF"
+                  ? "#f25757"
+                  : isHovered || isActiveTab
+                    ? "#bb86fc"
+                    : "#FFFFFF"
             }
             size={28}
           />
-          <p className={`ml-4 font-medium ${isComingSoon ? 'text-neutral-500' : ''}`}>{label}</p>
+          <p
+            className={`ml-4 font-medium ${isComingSoon ? "text-neutral-500" : ""}`}
+          >
+            {label}
+          </p>
         </div>
         {isComingSoon && (
-          <div className="absolute left-[160px] bg-opacity-10 rounded-full bg-gradient-to-br from-accent to-[#7539c4] px-2 py-1 text-xs flex items-center justify-center gap-x-1">
+          <div className="absolute left-[160px] flex items-center justify-center gap-x-1 rounded-full bg-opacity-10 bg-gradient-to-br from-accent to-[#864cd1] px-2 py-1 text-xs">
             <Fire size={18} color="#FFFFFF" />
-            <p className="text-white text-xs">Pro</p>
+            <p className="text-sm text-white">Pro</p>
           </div>
         )}
       </button>
