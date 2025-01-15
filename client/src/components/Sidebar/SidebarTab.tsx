@@ -5,6 +5,7 @@ import { Fire } from "@phosphor-icons/react";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { logoutUser } from "@/app/(auth)/actions";
 
 interface SidebarTabProps {
   label: string;
@@ -44,6 +45,7 @@ const SidebarTab = ({
     >
       <button
         disabled={isComingSoon}
+        onClick={isDanger ? () => {logoutUser()} : undefined}
         className={`flex w-full items-center justify-between ${isComingSoon ? "bg-muted-white text-muted-white cursor-not-allowed" : ""}`}
       >
         <div className="mx-4 flex items-center">
