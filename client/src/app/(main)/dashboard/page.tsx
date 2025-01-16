@@ -2,7 +2,7 @@ import React from "react";
 
 import ApplicationForm from "@/components/Forms/ApplicationForm";
 import StatCard from "@/components/UserInterface/StatCard";
-import RecentActivity from "@/components/UserInterface/RecentActivity";
+import RecentActivityContainer from "@/components/UserInterface/RecentActivityContainer";
 
 const Dashboard = () => {
   return (
@@ -19,7 +19,7 @@ const Dashboard = () => {
         </div>
 
         <div className="mt-8">
-          <RecentActivity />
+          <RecentActivityContainer />
         </div>
       </div>
     </div>
