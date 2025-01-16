@@ -57,7 +57,6 @@ export const fetchApplications = async () => {
       userId: userId,
     },
   });
-  console.log("Applications", applications);
   return applications;
 };
 
