@@ -21,7 +21,7 @@ const AutocompleteSuggestions = ({ results, onSelect, visible }: AutocompleteSug
             onClick={() => onSelect(location)}
           >
             <div className="font-medium text-accent">
-              {location.city}, {location.stateCode}
+              {location.city}, {location.state_code}
             </div>
           </div>
         ))}

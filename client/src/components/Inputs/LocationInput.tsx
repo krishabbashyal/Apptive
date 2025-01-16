@@ -34,7 +34,7 @@ const LocationInput = ({ register, setValue, error, label, id }: LocationInputPr
   }, [query])
 
   const handleSelect = (location: Location) => {
-    const locationString = `${location.city}, ${location.stateCode}`
+    const locationString = `${location.city}, ${location.state_code}`
     setQuery(locationString)
     setValue('location', locationString)
     setShowSuggestions(false)
