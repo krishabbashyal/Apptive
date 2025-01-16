@@ -22,13 +22,19 @@ export type LogInSchemaType = z.infer<typeof logInSchema>;
 
 // Schema for creating a new application
 export const applicationSchema = z.object({
-  title: z.string().min(1, "Job title is required"),
-  company: z.string().min(1, "Company name is required"),
-  location: z.string().min(1, "Location is required").regex(/^[A-Za-z\s]+, [A-Z]{2}$/, 'Please select a valid location'),
+  jobTitle: z.string().min(1, "Job title is required"),
+  companyName: z.string().min(1, "Company name is required"),
+  location: z.object({
+    id: z.string(),
+    city: z.string(),
+    state_code: z.string(),
+  }, {
+    invalid_type_error: "Select a location from dropdown",
+  }),
   salary: z.number().optional().or(z.nan()),
-  status: z.string().min(1, "Select application status"),
-  arrangement: z.string().min(1, "Select work arrangement"),
-  date: z.string()
+  applicationStatus: z.string().min(1, "Select application status"),
+  workArrangement: z.string().min(1, "Select work arrangement"),
+  applictionDate: z.string()
   .refine((val) => {
     const enteredDate = new Date(val);
     const today = new Date();

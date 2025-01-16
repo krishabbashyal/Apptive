@@ -83,15 +83,15 @@ function ApplicationForm() {
                 label="Job title"
                 id="jobTitle"
                 type="text"
-                register={register("title")}
-                error={errors.title}
+                register={register("jobTitle")}
+                error={errors.jobTitle}
               />
               <CustomInput
                 label="Company name"
                 id="companyName"
                 type="text"
-                register={register("company")}
-                error={errors.company}
+                register={register("companyName")}
+                error={errors.companyName}
               />
               <LocationInput
                 label="Location"
@@ -113,8 +113,8 @@ function ApplicationForm() {
               <CustomDropdown
                 label="Application status"
                 id="applicationStatus"
-                register={register("status")}
-                error={errors.status}
+                register={register("applicationStatus")}
+                error={errors.applicationStatus}
                 options={[
                   { value: "Applied", default: true },
                   { value: "Bookmarked" },
@@ -125,8 +125,8 @@ function ApplicationForm() {
               <CustomDropdown
                 label="Work arrangement"
                 id="workArrangement"
-                register={register("arrangement")}
-                error={errors.arrangement}
+                register={register("workArrangement")}
+                error={errors.workArrangement}
                 options={[
                   { value: "Onsite" },
                   { value: "Hybrid" },
@@ -137,8 +137,8 @@ function ApplicationForm() {
               <CustomDateInput
                 label="Application date"
                 id="applicationDate"
-                register={register("date")}
-                error={errors.date}
+                register={register("applictionDate")}
+                error={errors.applictionDate}
               />
               <div className="col-span-2 flex flex-col">
                 <CustomInput
