@@ -14,31 +14,32 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-
 model Application {
-  id              String    @id @default(cuid())
-  applicationDate DateTime
-  title           String
-  company         String
-  location        Location  @relation(fields: [locationId], references: [id])
-  locationId      String
-  salary          Int?
-  status          String
-  workStyle       String?
-  isArchived      Boolean   @default(false)
-  notes           String?
-  applicationUrl  String?
-  userID          String    // Supabase user ID 
+  id                 String   @id @default(cuid())
+  job_title          String
+  company_name       String
+  location           Location @relation(fields: [locationId], references: [id])
+  locationId         String
+  location_city      String
+  location_state     String
+  application_date   DateTime
+  salary             Int?
+  application_status String
+  work_arrangement   String?
+  is_archived        Boolean  @default(false)
+  notes              String?
+  listing_url        String?
+  userID             String // Supabase user ID 
 }
 
 model Location {
   id           String        @id @default(cuid())
-  stateCode    String
-  stateName    String
+  state_code    String
+  state_name    String
   city         String
   county       String
   latitude     Float
   longitude    Float
-  queryCount   Int           @default(0) // consider adding an index for performance if querying by this field is frequent.
+  query_count   Int           @default(0) // consider adding an index for performance if querying by this field is frequent.
   applications Application[]
 }
