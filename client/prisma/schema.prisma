@@ -29,7 +29,7 @@ model Application {
   is_archived        Boolean  @default(false)
   notes              String?
   listing_url        String?
-  userID             String // Supabase user ID 
+  userId             String // Supabase user ID 
 }
 
 model Location {
