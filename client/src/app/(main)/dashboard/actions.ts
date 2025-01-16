@@ -32,7 +32,7 @@ export const createApplication = async (data: ApplicationSchemaType) => {
         salary: data.salary,
         application_status: data.applicationStatus,
         work_arrangement: data.workArrangement,
-        application_date: toLocalISODateTime(data.applictionDate),
+        application_date: toLocalISODateTime(data.applicationDate),
         listing_url: data.listingURL,
         notes: data.notes,
         userId: userId,

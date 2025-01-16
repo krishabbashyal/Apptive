@@ -34,7 +34,7 @@ export const applicationSchema = z.object({
   salary: z.number().optional().or(z.nan()),
   applicationStatus: z.string().min(1, "Select application status"),
   workArrangement: z.string().min(1, "Select work arrangement"),
-  applictionDate: z.string()
+  applicationDate: z.string()
   .refine((val) => {
     const enteredDate = new Date(val);
     const today = new Date();

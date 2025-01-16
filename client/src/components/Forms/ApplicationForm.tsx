@@ -137,8 +137,8 @@ function ApplicationForm() {
               <CustomDateInput
                 label="Application date"
                 id="applicationDate"
-                register={register("applictionDate")}
-                error={errors.applictionDate}
+                register={register("applicationDate")}
+                error={errors.applicationDate}
               />
               <div className="col-span-2 flex flex-col">
                 <CustomInput
