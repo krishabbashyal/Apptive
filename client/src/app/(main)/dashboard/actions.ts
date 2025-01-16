@@ -18,6 +18,10 @@ export const createApplication = async (data: ApplicationSchemaType) => {
     const res = await getUser()
     const userId = res?.id
 
+    if (!userId) {
+      throw new Error("User ID is undefined. Cannot create application.");
+    }
+
     await prisma.application.create({ 
       data: {
         job_title: data.jobTitle,
