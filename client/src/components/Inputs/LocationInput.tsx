@@ -1,14 +1,14 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import { Location } from '@prisma/client'
-import { FieldError, UseFormRegisterReturn, UseFormSetValue } from 'react-hook-form'
+import { FieldError, UseFormRegisterReturn, UseFormSetValue, Merge, FieldErrorsImpl } from 'react-hook-form'
 import { searchLocations } from '../../app/(main)/dashboard/actions'
 import AutocompleteSuggestions from '../UserInterface/AutocompleteSuggestions'
 
 interface LocationInputProps {
   register: UseFormRegisterReturn
   setValue: UseFormSetValue<any>  // eslint-disable-line
-  error?: FieldError
+  error?: Merge<FieldError, FieldErrorsImpl<{ id: string; city: string; state_code: string }>>;
   label: string
   id: string
 }
