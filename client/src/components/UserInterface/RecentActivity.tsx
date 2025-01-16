@@ -6,10 +6,31 @@ import { Plus } from '@phosphor-icons/react'
 import ApplicationTable from './ApplicationTable'
 import CustomButton from './CustomButton'
 import useShowApplicationModal from '@/lib/store/modalStore'
+import { useState, useEffect } from 'react'
+import { Application } from '@prisma/client'
+import { fetchApplications } from '@/app/(main)/dashboard/actions'
 
 interface RecentActivityProps { }
 
+
+
 const RecentActivity = ({}: RecentActivityProps) => {
+  const [data, setData] = useState<Application[]>([])
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const applications = await fetchApplications(); // Assuming this function fetches your data
+        console.log('Fetched applications:', applications);
+        setData(applications);
+      } catch (error) {
+        console.error('Error fetching applications:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const { openApplicationModal } = useShowApplicationModal()
   
   return (
@@ -23,7 +44,8 @@ const RecentActivity = ({}: RecentActivityProps) => {
           </div>
         </div>
       <div className='mt-10'>
-        <ApplicationTable />
+        {/* This likley needs to be a data fetching component */}
+        <ApplicationTable applicationData={data} />
       </div>
       </div>
     </div>
