@@ -1,18 +1,16 @@
 'use server'
 
-import { applicationSchema } from "@/lib/schemas"
+import { applicationSchema, ApplicationSchemaType } from "@/lib/schemas"
 import { prisma } from "@/lib/prisma"
 import { getUser } from "@/app/(auth)/actions"
 
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 const toLocalISODateTime = (dateStr: string): Date => {
   // This preserves local timezone
   return new Date(`${dateStr}T00:00:00`);
 }
 
-export const createApplication = async (data: any) => {
+export const createApplication = async (data: ApplicationSchemaType) => {
   const validatedData = applicationSchema.safeParse(data)
   if (validatedData.success) {
     console.log("Valid data", data)
@@ -22,16 +20,18 @@ export const createApplication = async (data: any) => {
 
     await prisma.application.create({ 
       data: {
-        title: data.title,
-        company: data.company,
-        locationId: data.location,
+        job_title: data.jobTitle,
+        company_name: data.companyName,
+        locationId: data.location.id,
+        location_city: data.location.city,
+        location_state: data.location.state_code,
         salary: data.salary,
-        status: data.status,
-        workStyle: data.arrangement,
-        applicationDate: toLocalISODateTime(data.date),
-        applicationUrl: data.listingURL,
+        application_status: data.applicationStatus,
+        work_arrangement: data.workArrangement,
+        application_date: toLocalISODateTime(data.applictionDate),
+        listing_url: data.listingURL,
         notes: data.notes,
-        userID: userId
+        userId: userId
       }
      })
   } else {
