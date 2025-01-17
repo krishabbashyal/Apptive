@@ -30,7 +30,7 @@ const RecentActivity = ({ applicationData }: RecentActivityProps) => {
             />
           </div>
         </div>
-        <div className="mt-10">
+        <div className="mt-8">
           <ApplicationTable applicationData={applicationData} />
         </div>
       </div>
