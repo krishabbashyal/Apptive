@@ -1,33 +1,41 @@
-"use client"
+"use client";
 
-import React from 'react'
-import SearchBar from './SearchBar'
-import { Plus } from '@phosphor-icons/react'
-import ApplicationTable from './ApplicationTable'
-import CustomButton from './CustomButton'
-import useShowApplicationModal from '@/lib/store/modalStore'
+import React from "react";
+import SearchBar from "./SearchBar";
+import { Plus } from "@phosphor-icons/react";
+import ApplicationTable from "./ApplicationTable";
+import CustomButton from "./CustomButton";
+import useShowApplicationModal from "@/lib/store/modalStore";
+import { Application } from "@prisma/client";
 
-interface RecentActivityProps { }
-
-const RecentActivity = ({}: RecentActivityProps) => {
-  const { openApplicationModal } = useShowApplicationModal()
-  
-  return (
-    <div className='bg-foreground rounded-xl border  border-spacer h-96'>
-      <div className='py-6 mx-10'>
-        <div className='flex flex-row justify-between'>
-          <h1 className='text-3xl'>Recent Activity</h1>
-          <div className='flex flex-row gap-x-4'>
-            <SearchBar />
-            <CustomButton onClick={openApplicationModal} label='Create' customClasses='bg-accent' icon={Plus} />
-          </div>
-        </div>
-      <div className='mt-10'>
-        <ApplicationTable />
-      </div>
-      </div>
-    </div>
-  )
+interface RecentActivityProps {
+  applicationData: Application[];
 }
 
-export default RecentActivity
+const RecentActivity = ({ applicationData }: RecentActivityProps) => {
+  const { openApplicationModal } = useShowApplicationModal();
+
+  return (
+    <div className="h-full rounded-tr-xl rounded-tl-xl border border-b-0 border-spacer bg-foreground">
+      <div className="mx-10 py-6">
+        <div className="flex flex-row justify-between">
+          <h1 className="text-3xl">Recent Activity</h1>
+          <div className="flex flex-row gap-x-4">
+            <SearchBar />
+            <CustomButton
+              onClick={openApplicationModal}
+              label="Create"
+              customClasses="bg-accent"
+              icon={Plus}
+            />
+          </div>
+        </div>
+        <div className="mt-10">
+          <ApplicationTable applicationData={applicationData} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RecentActivity;
