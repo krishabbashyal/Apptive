@@ -40,7 +40,7 @@ const ApplicationTableRow = ({ application }: ApplicationTableRowProps) => {
 
   return (
     <>
-      <tr className="border-b border-spacer hover:bg-accentHighlight">
+      <tr className=" even:bg-background odd:bg-[#101010] hover:bg-accentHighlight hover:bg-opacity-50">
         <td className="px-6 py-4">
           <div className="flex flex-row items-center">
             <Buildings
@@ -48,7 +48,7 @@ const ApplicationTableRow = ({ application }: ApplicationTableRowProps) => {
               className="rounded-lg bg-accentHighlight p-2 text-accent"
             />
             <div className="ml-4 flex flex-col">
-              <p className="text-lg font-semibold text-gray-200">
+              <p className="font-semibold text-gray-200">
                 {application.company_name}
               </p>
               <p className="text-gray-400">{application.job_title}</p>
@@ -87,25 +87,25 @@ const ApplicationTableRow = ({ application }: ApplicationTableRowProps) => {
         </td>
         <td className="px-6 gap-x-3 justify-center flex mt-7 items-center">
         <button>
-            <NotePencil  size={24} className="text-gray-400 hover:text-gray-300"  />
+            <NotePencil  size={24} className="text-amber-300 hover:text-amber-600"  />
           </button>
           <button disabled={application.listing_url === null}>
-            <LinkIcon size={24} className="text-gray-400 hover:text-gray-300" />
+            <LinkIcon size={24} className="text-blue-400 hover:text-blue-600" />
           </button>
           <button>
-            <Archive  size={24} className="text-gray-400 hover:text-gray-300"  />
+            <Archive  size={24} className="text-rose-400 hover:text-rose-500"  />
           </button>
           
           <button
             onClick={() => setIsNotesOpen(!isNotesOpen)}
-            className="absolute right-[125px] text-gray-400 hover:text-gray-300"
+            className="absolute right-[125px] text-gray-400 hover:text-gray-200"
           >
             {isNotesOpen ? <CaretUp size={24} /> : <CaretDown size={24} />}
           </button>
         </td>
       </tr>
       {isNotesOpen && (
-        <tr className="bg-accentHighlight">
+        <tr className="even:bg-background odd:bg-[#101010]">
           <td colSpan={7} className="px-6 py-4">
             <div className="ml-14">
               <p className="mb-2 font-semibold text-gray-300">Notes:</p>
