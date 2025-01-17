@@ -8,19 +8,31 @@ interface ApplicationTableProps {
 
 function ApplicationTable({ applicationData }: ApplicationTableProps) {
   return (
-    <div className="overflow-x-auto rounded-lg">
+    <div className="overflow-x-auto rounded-lg border border-spacer bg-background">
       <table className="w-full">
-      <thead>
-  <tr className="bg-background text-white text-sm">
-    <th className="pl-6 py-2 text-left font-semibold tracking-wide">Company & Role</th>
-    <th className="px-5 py-2 text-left font-semibold tracking-wide">Location</th>
-    <th className="px-5 py-2 text-left font-semibold tracking-wide">Application Date</th>
-    <th className="px-5 py-2 text-left font-semibold tracking-wide">Salary</th>
-    <th className="px-5 py-2 text-left font-semibold tracking-wide">Status</th>
-    <th className="px-5 py-2 text-center font-semibold tracking-wide">Actions</th>
-  </tr>
-</thead>
-        <tbody className="">
+        <thead>
+          <tr className="border-b border-spacer text-sm">
+            <th className="whitespace-nowrap px-6 py-4 text-left font-medium text-gray-400">
+              Company & Role
+            </th>
+            <th className="whitespace-nowrap px-6 py-4 text-left font-medium text-gray-400">
+              Location
+            </th>
+            <th className="whitespace-nowrap px-6 py-4 text-left font-medium text-gray-400">
+              Application Date
+            </th>
+            <th className="whitespace-nowrap px-6 py-4 text-left font-medium text-gray-400">
+              Salary
+            </th>
+            <th className="whitespace-nowrap px-6 py-4 text-left font-medium text-gray-400">
+              Status
+            </th>
+            <th className="whitespace-nowrap px-6 py-4 text-center font-medium text-gray-400">
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
           {applicationData.length > 0 ? (
             applicationData.map((application: Application) => (
               <ApplicationTableRow
@@ -30,7 +42,15 @@ function ApplicationTable({ applicationData }: ApplicationTableProps) {
             ))
           ) : (
             <tr>
-              <td colSpan={9}>No applications found.</td>
+              <td 
+                colSpan={6} 
+                className="px-6 py-8 text-center text-gray-400"
+              >
+                <div className="flex flex-col items-center justify-center space-y-2">
+                  <p className="text-lg">No applications found</p>
+                  <p className="text-sm">Add your first job application to get started</p>
+                </div>
+              </td>
             </tr>
           )}
         </tbody>
