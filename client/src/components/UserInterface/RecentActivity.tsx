@@ -16,7 +16,7 @@ const RecentActivity = ({ applicationData }: RecentActivityProps) => {
   const { openApplicationModal } = useShowApplicationModal();
 
   return (
-    <div className="h-96 rounded-xl border border-spacer bg-foreground">
+    <div className="h-full rounded-tr-xl rounded-tl-xl border border-b-0 border-spacer bg-foreground">
       <div className="mx-10 py-6">
         <div className="flex flex-row justify-between">
           <h1 className="text-3xl">Recent Activity</h1>

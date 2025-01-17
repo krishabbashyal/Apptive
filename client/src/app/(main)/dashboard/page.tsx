@@ -8,7 +8,7 @@ const Dashboard = () => {
   return (
     <div className="h-full w-full">
       <ApplicationForm />
-      <div className="mx-16">
+      <div className="mx-16 flex flex-col h-full">
         <div className="flex flex-row justify-between gap-x-8 pt-8">
           <StatCard stat="12" description="Applications sent" />
           <StatCard stat="5" description="Awaiting response" />
@@ -18,7 +18,7 @@ const Dashboard = () => {
           <StatCard stat="12" description="Response rate" />
         </div>
 
-        <div className="mt-8">
+        <div className="mt-8 h-full">
           <RecentActivityContainer />
         </div>
       </div>
