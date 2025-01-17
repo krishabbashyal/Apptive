@@ -1,0 +1,123 @@
+import React, { useState } from "react";
+import { Application } from "@prisma/client";
+import { Buildings, CaretDown, CaretUp } from "@phosphor-icons/react";
+import { Link as LinkIcon } from "@phosphor-icons/react";
+import { Archive } from "@phosphor-icons/react";
+import { NotePencil } from "@phosphor-icons/react";
+
+interface ApplicationTableRowProps {
+  application: Application;
+}
+
+const ApplicationTableRow = ({ application }: ApplicationTableRowProps) => {
+  const [isNotesOpen, setIsNotesOpen] = useState(false);
+
+  const getStatusColor = (status: string) => {
+    const colors = {
+      Applied: "bg-accentHighlight text-accent",
+      Interview: "bg-purple-900 text-purple-200",
+      Offer: "bg-green-900 text-green-200",
+      Rejected: "bg-red-900 text-red-200",
+      Pending: "bg-yellow-900 text-yellow-200",
+    };
+    return colors[status as keyof typeof colors] || "bg-gray-800 text-gray-200";
+  };
+
+  const formatSalary = (salary: number | null) => {
+    if (!salary) return "N/A";
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0,
+    }).format(salary);
+  };
+
+  const getTimeAgo = (date: Date) => {
+    const diff = new Date().getTime() - new Date(date).getTime();
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    return `${days} days ago`;
+  };
+
+  return (
+    <>
+      <tr className="border-b border-spacer hover:bg-accentHighlight">
+        <td className="px-6 py-4">
+          <div className="flex flex-row items-center">
+            <Buildings
+              size={42}
+              className="rounded-lg bg-accentHighlight p-2 text-accent"
+            />
+            <div className="ml-4 flex flex-col">
+              <p className="text-lg font-semibold text-gray-200">
+                {application.company_name}
+              </p>
+              <p className="text-gray-400">{application.job_title}</p>
+            </div>
+          </div>
+        </td>
+        <td className="px-6 py-4">
+          <div className="flex flex-col">
+            <span className="text-gray-200">
+              {application.location_city}, {application.location_state}
+            </span>
+            <span className="text-sm text-gray-400">
+              {application.work_arrangement || "N/A"}
+            </span>
+          </div>
+        </td>
+        <td className="px-6 py-4">
+          <div className="flex flex-col">
+            <span className="text-gray-200">
+              {new Date(application.application_date).toLocaleDateString()}
+            </span>
+            <span className="text-sm text-gray-400">
+              {getTimeAgo(application.application_date)}
+            </span>
+          </div>
+        </td>
+        <td className="px-6 py-4 text-gray-200">
+          {formatSalary(application.salary)}
+        </td>
+        <td className="px-6 py-4">
+          <span
+            className={`rounded-full px-2 py-1 text-sm ${getStatusColor(application.application_status)}`}
+          >
+            {application.application_status}
+          </span>
+        </td>
+        <td className="px-6 gap-x-3 justify-center flex mt-7 items-center">
+        <button>
+            <NotePencil  size={24} className="text-gray-400 hover:text-gray-300"  />
+          </button>
+          <button disabled={application.listing_url === null}>
+            <LinkIcon size={24} className="text-gray-400 hover:text-gray-300" />
+          </button>
+          <button>
+            <Archive  size={24} className="text-gray-400 hover:text-gray-300"  />
+          </button>
+          
+          <button
+            onClick={() => setIsNotesOpen(!isNotesOpen)}
+            className="absolute right-[125px] text-gray-400 hover:text-gray-300"
+          >
+            {isNotesOpen ? <CaretUp size={24} /> : <CaretDown size={24} />}
+          </button>
+        </td>
+      </tr>
+      {isNotesOpen && (
+        <tr className="bg-accentHighlight">
+          <td colSpan={7} className="px-6 py-4">
+            <div className="ml-14">
+              <p className="mb-2 font-semibold text-gray-300">Notes:</p>
+              <p className="whitespace-pre-wrap text-gray-400">
+                {application.notes || "No notes available"}
+              </p>
+            </div>
+          </td>
+        </tr>
+      )}
+    </>
+  );
+};
+
+export default ApplicationTableRow;
