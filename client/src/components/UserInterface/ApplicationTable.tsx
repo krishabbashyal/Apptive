@@ -1,5 +1,7 @@
 import React from "react";
 import { Application } from "@prisma/client";
+import ApplicationTableRow from "./ApplicationTableRow";
+import { FolderOpen } from "@phosphor-icons/react";
 
 interface ApplicationTableProps {
   applicationData: Application[];
@@ -7,64 +9,64 @@ interface ApplicationTableProps {
 
 function ApplicationTable({ applicationData }: ApplicationTableProps) {
   return (
-    <div className="overflow-x-auto rounded-lg">
-      <table className="w-full border-collapse">
+    <div className="overflow-hidden rounded-xl bg-background">
+      <table className="w-full">
         <thead>
-          <tr className="bg-gray-800 text-white">
-            <th className="px-6 py-3 text-left font-semibold">Company</th>
-            <th className="px-6 py-3 text-left font-semibold">Role</th>
-            <th className="px-6 py-3 text-left font-semibold">Location</th>
-            <th className="px-6 py-3 text-left font-semibold">Date</th>
-            <th className="px-6 py-3 text-left font-semibold">Salary</th>
-            <th className="px-6 py-3 text-left font-semibold">Arrangement</th>
-            <th className="px-6 py-3 text-left font-semibold">Status</th>
-            <th className="px-6 py-3 text-left font-semibold">Listing URL</th>
-            <th className="px-6 py-3 text-left font-semibold">Notes</th>
+          <tr className="border-b border-[#242424]">
+            <th className="px-6 py-4 text-left">
+              <span className="text-sm font-medium uppercase tracking-wider text-gray-300">
+                Company & Role
+              </span>
+            </th>
+            <th className="px-6 py-4 text-left">
+              <span className="text-sm font-medium uppercase tracking-wider text-gray-300">
+                Location
+              </span>
+            </th>
+            <th className="px-6 py-4 text-left">
+              <span className="text-sm font-medium uppercase tracking-wider text-gray-300">
+                Application Date
+              </span>
+            </th>
+            <th className="px-6 py-4 text-left">
+              <span className="text-sm font-medium uppercase tracking-wider text-gray-300">
+                Salary
+              </span>
+            </th>
+            <th className="px-6 py-4 text-left">
+              <span className="text-sm font-medium uppercase tracking-wider text-gray-300">
+                Status
+              </span>
+            </th>
+            <th className="px-6 py-4 text-center">
+              <span className="text-sm font-medium uppercase tracking-wider text-gray-300">
+                Actions
+              </span>
+            </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="divide-y divide-[#242424]">
           {applicationData.length > 0 ? (
-            applicationData.map((application) => (
-              <tr key={application.id} className="even:accent-black odd:accent-accent">
-                <td className="px-6 py-3">{application.company_name}</td>
-                <td className="px-6 py-3">{application.job_title}</td>
-                <td className="px-6 py-3">
-                  {application.location_city}, {application.location_state}
-                </td>
-                <td className="px-6 py-3">
-                  {new Date(application.application_date).toLocaleDateString()}
-                </td>
-                <td className="px-6 py-3">
-                  {application.salary
-                    ? `$${application.salary.toLocaleString()}`
-                    : "N/A"}
-                </td>
-                <td className="px-6 py-3">{application.work_arrangement || "N/A"}</td>
-                <td className="px-6 py-3">{application.application_status}</td>
-                <td className="px-6 py-3">
-                  {application.listing_url ? (
-                    <a
-                      href={application.listing_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-accent underline"
-                    >
-                      View Listing
-                    </a>
-                  ) : (
-                    "N/A"
-                  )}
-                </td>
-                <td className="px-6 py-3">{application.notes || "N/A"}</td>
-              </tr>
+            applicationData.map((application: Application) => (
+              <ApplicationTableRow
+                key={application.id}
+                application={application}
+              />
             ))
           ) : (
             <tr>
-              <td
-                colSpan={9}
-                className="px-6 py-3 text-center text-gray-500 italic"
-              >
-                No applications found.
+              <td colSpan={6} className="px-6 py-12">
+                <div className="flex flex-col items-center justify-center text-center">
+                  <div className="rounded-full bg-accentHighlight/60 p-3 mb-4">
+                    <FolderOpen size={24} className="text-accent" />
+                  </div>
+                  <p className="text-base font-medium text-gray-300">
+                    No applications yet
+                  </p>
+                  <p className="mt-1 text-sm text-gray-300">
+                    Start tracking your job search by adding your first application
+                  </p>
+                </div>
               </td>
             </tr>
           )}
