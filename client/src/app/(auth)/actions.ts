@@ -5,6 +5,7 @@ import { createClient } from "@/utils/supabase/server";
 import { logInSchema, LogInSchemaType } from "@/lib/schemas";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { RedirectType } from "next/navigation";
 
 export const signupUser = async (formData: SignUpSchemaType) => {
   const validatedData = signUpSchema.safeParse(formData);
@@ -21,7 +22,7 @@ export const signupUser = async (formData: SignUpSchemaType) => {
       console.error(error);
     }
     revalidatePath("/", 'layout');
-    redirect("/dashboard");
+    redirect("/dashboard", RedirectType.replace);
   }
 };
 
@@ -41,7 +42,7 @@ export const loginUser = async (formData: LogInSchemaType) => {
     }
 
     revalidatePath("/", 'layout');
-    redirect("/dashboard");
+    redirect("/dashboard", RedirectType.replace);
   }
 };
 
