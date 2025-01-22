@@ -4,7 +4,7 @@ import Image from "next/image";
 import {
   Archive,
   Bug,
-  CalendarDots,
+  // CalendarDots,
   GearSix,
   Briefcase,
   MapTrifold,
@@ -35,13 +35,13 @@ const Sidebar = () => {
                 icon={Briefcase}
                 label="Dashboard"
               />
-              <SidebarTab
+              {/* <SidebarTab
                 route="/timeline"
                 icon={CalendarDots}
                 label="Activity"
                 isComingSoon={true}
-              />
-              <SidebarTab route="/map" icon={MapTrifold} label="Map" isComingSoon={true} />
+              /> */}
+              <SidebarTab route="/map" icon={MapTrifold} label="Map" />
               <SidebarTab route="/archive" icon={Archive} label="Archive" />
             </div>
           </div>
