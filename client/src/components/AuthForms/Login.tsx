@@ -16,12 +16,20 @@ const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
+    // setError
   } = useForm<LogInSchemaType>({
     resolver: zodResolver(logInSchema),
   });
 
   const onSubmit = async (data: LogInSchemaType) => {
-    loginUser(data);
+    try {
+      await loginUser(data);
+    } catch (error) {
+      // Handle specific error cases
+      // setError("root", {
+      //   message: "Failed to login. Please try again."
+      // });
+    }
   };
 
   return (
@@ -48,7 +56,7 @@ const LoginForm = () => {
             </span>
           </p>
           <div>
-            <div className="flex flex-col mt-6 gap-y-5">
+            <div className="mt-6 flex flex-col gap-y-5">
               <CustomInput
                 label="Email"
                 id="email"
@@ -67,12 +75,24 @@ const LoginForm = () => {
           </div>
 
           <button
-            className="disabled:bg-spacer mt-4 h-12 rounded-md from-accent to-accent px-4 py-2 font-medium text-white enabled:bg-gradient-to-tr disabled:cursor-not-allowed sm:mt-8"
+            className="mt-4 h-12 rounded-md from-accent to-accent px-4 py-2 font-medium text-white transition-all duration-200 enabled:bg-gradient-to-tr hover:enabled:opacity-90 disabled:cursor-not-allowed disabled:bg-spacer"
             disabled={isSubmitting}
           >
-            Log in
+            {isSubmitting ? (
+              <span className="flex items-center justify-center gap-2">
+                <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
+                Logging in...
+              </span>
+            ) : (
+              "Log in"
+            )}
           </button>
-          <div className="border-spacer relative mt-5 border-b text-center text-sm">
+
+          {errors.root && (
+            <p className="mt-2 text-sm text-red-500">{errors.root.message}</p>
+          )}
+
+          <div className="relative mt-5 border-b border-spacer text-center text-sm">
             <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform bg-foreground px-3 text-white">
               Or log in with
             </span>

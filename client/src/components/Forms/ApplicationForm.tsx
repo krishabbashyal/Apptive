@@ -28,7 +28,15 @@ function ApplicationForm() {
   const [isHovered, setIsHovered] = useState(false);
 
   const onSubmit = async (data: ApplicationSchemaType) => {
-    await createApplication(data);
+    try {
+      await createApplication(data);
+      closeApplicationModal();
+    } catch (error) {
+      // Handle specific error cases
+      // setError("root", {
+      //   message: "Failed to create application. Please try again.",
+      // });
+    }
   };
 
   const inputFieldClass =
@@ -43,6 +51,7 @@ function ApplicationForm() {
         onClick={() => {
           closeApplicationModal();
           reset();
+
         }}
         className="absolute z-10 flex h-full w-[calc(100%-15rem)] items-center justify-center bg-black bg-opacity-85"
       >
@@ -168,12 +177,18 @@ function ApplicationForm() {
               </div>
             </div>
             <button
-              type="submit"
-              disabled={isSubmitting}
-              className="mt-6 h-12 rounded-md from-accent to-accent px-4 py-2 font-medium text-white enabled:bg-gradient-to-tr disabled:cursor-not-allowed disabled:bg-spacer sm:mt-8"
-            >
-              Create
-            </button>
+            className="mt-4 h-12 rounded-md from-accent to-accent px-4 py-2 font-medium text-white transition-all duration-200 enabled:bg-gradient-to-tr hover:enabled:opacity-90 disabled:cursor-not-allowed disabled:bg-spacer"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? (
+              <span className="flex items-center justify-center gap-2">
+                <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
+                Creating Application...
+              </span>
+            ) : (
+              "Create"
+            )}
+          </button>
           </form>
         </div>
       </div>
