@@ -43,7 +43,6 @@ const Sidebar = () => {
               />
               <SidebarTab route="/map" icon={MapTrifold} label="Map" isComingSoon={true} />
               <SidebarTab route="/archive" icon={Archive} label="Archive" />
-              <SidebarTab route="/settings" icon={GearSix} label="Settings" />
             </div>
           </div>
           <div className="mb-16 md:mb-0">
@@ -51,6 +50,7 @@ const Sidebar = () => {
               ADDITIONAL
             </p>
             <div className="mb-8 flex flex-col gap-y-1">
+              <SidebarTab route="/settings" icon={GearSix} label="Settings" />
               <SidebarTab route="/feedback" icon={Bug} label="Feedback" />
               <SidebarTab
                 isDanger={true}
