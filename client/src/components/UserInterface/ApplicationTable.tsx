@@ -10,7 +10,7 @@ interface ApplicationTableProps {
 function ApplicationTable({ applicationData }: ApplicationTableProps) {
   return (
     <div className="overflow-hidden rounded-xl bg-background">
-      <table className="w-full">
+      <table className="w-full h-full">
         <thead>
           <tr className="border-b border-[#242424]">
             <th className="px-6 py-4 text-left">
@@ -55,7 +55,7 @@ function ApplicationTable({ applicationData }: ApplicationTableProps) {
             ))
           ) : (
             <tr>
-              <td colSpan={6} className="px-6 py-12">
+              <td colSpan={6} className="px-6 py-12 h-96">
                 <div className="flex flex-col items-center justify-center text-center">
                   <div className="rounded-full bg-accentHighlight/60 p-3 mb-4">
                     <FolderOpen size={24} className="text-accent" />
