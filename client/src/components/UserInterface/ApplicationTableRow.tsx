@@ -12,6 +12,21 @@ interface ApplicationTableRowProps {
 const ApplicationTableRow = ({ application }: ApplicationTableRowProps) => {
   const [isNotesOpen, setIsNotesOpen] = useState(false);
 
+const handleApplicationEdit = () => {
+  // Handle application edit logic here
+  console.log("Edit application:", application);
+};
+
+const handleApplicationArchive = () => {
+  // Handle application archive logic here
+  console.log("Archive application:", application);
+};
+
+const handleApplicationLink = () => {
+  // Handle application archive logic here
+  console.log("Application link:", application);
+};
+
   const getStatusColor = (status: string) => {
     const colors = {
       Applied: "bg-accentHighlight text-accent",
@@ -86,13 +101,13 @@ const ApplicationTableRow = ({ application }: ApplicationTableRowProps) => {
           </span>
         </td>
         <td className="px-6 gap-x-3 justify-center flex mt-7 items-center">
-        <button>
+        <button onClick={handleApplicationEdit}>
             <NotePencil  size={24} className="text-amber-300 hover:text-amber-600"  />
           </button>
-          <button disabled={application.listing_url === null}>
+          <button onClick={handleApplicationLink} disabled={application.listing_url === null}>
             <LinkIcon size={24} className="text-blue-400 hover:text-blue-600" />
           </button>
-          <button>
+          <button onClick={handleApplicationArchive}>
             <Archive  size={24} className="text-rose-400 hover:text-rose-500"  />
           </button>
           
