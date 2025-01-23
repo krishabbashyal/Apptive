@@ -10,6 +10,7 @@ import { logInSchema, LogInSchemaType } from "@/lib/schemas";
 import { loginUser } from "@/app/(auth)/actions";
 import CustomInput from "../Inputs/CustomInput";
 import BackButton from "../UserInterface/BackButton";
+import CustomButton from "../UserInterface/CustomButton";
 
 const LoginForm = () => {
   const {
@@ -73,20 +74,12 @@ const LoginForm = () => {
               />
             </div>
           </div>
-
-          <button
-            className="mt-4 h-12 rounded-md from-accent to-accent px-4 py-2 font-medium text-white transition-all duration-200 enabled:bg-gradient-to-tr hover:enabled:opacity-90 disabled:cursor-not-allowed disabled:bg-spacer"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? (
-              <span className="flex items-center justify-center gap-2">
-                <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
-                Logging in...
-              </span>
-            ) : (
-              "Log in"
-            )}
-          </button>
+          <CustomButton
+            label="Log in"
+            isSubmitting={isSubmitting}
+            submittingText="Logging in..."
+            customClasses="mt-4 h-12 rounded-md from-accent to-accent px-4 py-2 font-medium text-white transition-all duration-200 enabled:bg-gradient-to-tr hover:enabled:opacity-90 disabled:cursor-not-allowed disabled:bg-spacer"
+          />
 
           {errors.root && (
             <p className="mt-2 text-sm text-red-500">{errors.root.message}</p>
