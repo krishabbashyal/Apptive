@@ -8,6 +8,8 @@ interface CustomButtonProps {
   icon?: React.ComponentType<IconProps> 
   iconSide?: 'left' | 'right'
   textClasses?: string
+  isSubmitting?: boolean
+  submittingText?: string
 }  
 
 const CustomButton = ({ 
@@ -16,17 +18,29 @@ const CustomButton = ({
   textClasses,
   icon: Icon, 
   iconSide = 'left',
-  onClick 
+  onClick, 
+  isSubmitting = false,
+  submittingText 
 }: CustomButtonProps) => {   
   return (     
     <button 
       className={`h-10 px-4 rounded-lg hover:bg-opacity-80 text-white ${customClasses}`}
       onClick={onClick}
+      disabled={isSubmitting}
     >     
-      <div className={`flex flex-row items-center justify-center gap-x-2 ${iconSide === 'right' && 'flex-row-reverse'}`}>       
-        {Icon && <Icon size={24} />}       
-        <p className={`font-medium ${textClasses}`}>{label}</p>     
-      </div>   
+      {isSubmitting ? (
+        <span className="flex items-center justify-center gap-2">
+          <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
+          {submittingText}
+        </span>
+      ) : (
+        <div
+          className={`flex flex-row items-center justify-center gap-x-2 ${iconSide === "right" && "flex-row-reverse"}`}
+        >
+          {Icon && <Icon size={24} />}
+          <p className={`font-medium ${textClasses}`}>{label}</p>
+        </div>
+      )}
     </button>   
   ) 
 }  
