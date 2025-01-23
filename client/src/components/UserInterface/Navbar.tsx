@@ -21,9 +21,6 @@ const Navbar = () => {
           <Link href="/login">
             <CustomButton label="Log In" textClasses="hover:text-accent" customClasses="bg-foreground"/>
           </Link>
-          <Link href="/signup">
-            <CustomButton label="Sign up" customClasses="bg-accent"/>
-          </Link>
         </div>
       </nav>
     </div>
