@@ -4,6 +4,7 @@ import { Buildings, CaretDown, CaretUp } from "@phosphor-icons/react";
 import { Link as LinkIcon } from "@phosphor-icons/react";
 import { Archive } from "@phosphor-icons/react";
 import { NotePencil } from "@phosphor-icons/react";
+import useShowArchiveModal from "@/lib/store/useShowArchiveModal";
 
 interface ApplicationTableRowProps {
   application: Application;
@@ -12,19 +13,19 @@ interface ApplicationTableRowProps {
 const ApplicationTableRow = ({ application }: ApplicationTableRowProps) => {
   const [isNotesOpen, setIsNotesOpen] = useState(false);
 
+  const { openArchiveModal } = useShowArchiveModal();
+
 const handleApplicationEdit = () => {
   // Handle application edit logic here
   console.log("Edit application:", application);
 };
-
-const handleApplicationArchive = () => {
-  // Handle application archive logic here
-  console.log("Archive application:", application);
-};
-
 const handleApplicationLink = () => {
   // Handle application archive logic here
   console.log("Application link:", application);
+};
+
+const handleArchiveApplication = (id: string) => {
+  openArchiveModal(id);
 };
 
   const getStatusColor = (status: string) => {
@@ -109,7 +110,7 @@ const handleApplicationLink = () => {
           <button onClick={handleApplicationLink} disabled={application.listing_url === null}>
             <LinkIcon size={24} className="text-blue-400 hover:text-blue-600" />
           </button>
-          <button onClick={handleApplicationArchive}>
+          <button onClick={() => handleArchiveApplication(application.id)}>
             <Archive  size={24} className="text-rose-400 hover:text-rose-500"  />
           </button>
           
