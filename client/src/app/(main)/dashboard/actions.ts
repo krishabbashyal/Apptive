@@ -44,7 +44,7 @@ export const createApplication = async (data: ApplicationSchemaType) => {
   }
 };
 
-export const fetchApplications = async () => {
+export const fetchAllActiveApplications = async () => {
   const res = await getUser();
   const userId = res?.id;
 

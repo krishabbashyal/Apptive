@@ -2,10 +2,10 @@
 
 import React from "react";
 import RecentActivity from "./RecentActivity";
-import { fetchApplications } from "@/app/(main)/dashboard/actions";
+import { fetchAllActiveApplications } from "@/app/(main)/dashboard/actions";
 
 const RecentActivityContainer = async () => {
-  const data = await fetchApplications();
+  const data = await fetchAllActiveApplications();
 
   return <RecentActivity applicationData={data} />;
 };
