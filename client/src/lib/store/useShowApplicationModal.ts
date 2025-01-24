@@ -1,18 +1,18 @@
 import { create } from "zustand";
 
-type State = {
+type ApplicationModalState = {
   applicationModalShown: boolean;
-}
+};
 
-type Action = {
+type ApplicationModalAction = {
   openApplicationModal: () => void;
   closeApplicationModal: () => void;
-}
+};
 
-const useShowApplicationModal = create<State & Action>((set) => ({
+const useShowApplicationModal = create<ApplicationModalState & ApplicationModalAction>((set) => ({
   applicationModalShown: false,
   openApplicationModal: () => set({ applicationModalShown: true }),
   closeApplicationModal: () => set({ applicationModalShown: false }),
-}))
+}));
 
-export default useShowApplicationModal
+export default useShowApplicationModal;

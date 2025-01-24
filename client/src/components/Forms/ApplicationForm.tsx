@@ -9,7 +9,7 @@ import { createApplication } from "@/app/(main)/dashboard/actions";
 import CustomInput from "../Inputs/CustomInput";
 import CustomDropdown from "../Inputs/CustomDropdown";
 import CustomDateInput from "../Inputs/CustomDateInput";
-import useShowApplicationModal from "@/lib/store/modalStore";
+import useShowApplicationModal from "@/lib/store/useShowApplicationModal";
 import LocationInput from "../Inputs/LocationInput";
 import CustomButton from "../UserInterface/CustomButton";
 
