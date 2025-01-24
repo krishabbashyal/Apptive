@@ -24,7 +24,14 @@ const CustomButton = ({
 }: CustomButtonProps) => {   
   return (     
     <button 
-      className={`h-10 px-4 rounded-lg hover:bg-opacity-80 text-white ${customClasses}`}
+    className={`
+      h-10 px-4 rounded-lg 
+      text-white 
+      transition-all duration-300 ease-in-out
+      hover:scale-105 
+      active:scale-95 
+      ${customClasses}
+    `}
       onClick={onClick}
       disabled={isSubmitting}
     >     

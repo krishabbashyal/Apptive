@@ -78,7 +78,7 @@ const LoginForm = () => {
             label="Log in"
             isSubmitting={isSubmitting}
             submittingText="Logging in..."
-            customClasses="mt-4 h-12 rounded-md from-accent to-accent px-4 py-2 font-medium text-white transition-all duration-200 enabled:bg-gradient-to-tr hover:enabled:opacity-90 disabled:cursor-not-allowed disabled:bg-spacer"
+            customClasses="mt-4 h-12 rounded-md bg-accent px-4 py-2 font-medium text-white transition-all duration-200 disabled:cursor-not-allowed disabled:bg-spacer"
           />
 
           {errors.root && (
