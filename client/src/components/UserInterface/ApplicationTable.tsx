@@ -47,7 +47,7 @@ function ApplicationTable({ applicationData }: ApplicationTableProps) {
         </thead>
         <tbody className="divide-y divide-[#242424]">
           {applicationData.length > 0 ? (
-            applicationData.map((application: Application) => (
+            applicationData.toReversed().map((application: Application) => (
               <ApplicationTableRow
                 key={application.id}
                 application={application}
