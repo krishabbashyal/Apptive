@@ -47,31 +47,23 @@ const ConfirmArchiveModal = () => {
                 />
               </button>
             </div>
-            <h1 className="text-left text-2xl font-medium sm:text-3xl">
-              Archive this application?
-            </h1>
-            <p className="mt-0.5">You can always unarchive it later</p>
-            <div className="mt-6 text-lg">
-              <div className="flex w-full items-center justify-center gap-x-2 rounded-lg border border-dashed border-spacer bg-accentHighlight/60 p-4">
-                <p className="">{company}</p>
-                <p>|</p>
-                <p className="font-extralight">{title}</p>
-              </div>
+            <div className="border-b border-spacer/50 pb-6">
+              <h1 className="text-2xl font-medium sm:text-3xl ">
+                Archive application?
+              </h1>
+              <p className="mt-0.5">You can always revert this from the archive tab</p>
             </div>
-            <p className="absolute mt-6 text-sm text-spacer">
-              id: <span className="font-bold text-danger/30">{id}</span>
-            </p>
             <div className="mt-6 flex justify-end gap-4">
               <CustomButton
                 label="Cancel"
                 onClick={closeArchiveModal}
-                customClasses="bg-spacer"
+                customClasses="border-2 border-spacer w-32"
               />
 
               <CustomButton
                 label="Archive"
                 onClick={() => handleArchiveApplication(id)}
-                customClasses="bg-danger"
+                customClasses="bg-danger w-32"
               />
             </div>
           </div>
