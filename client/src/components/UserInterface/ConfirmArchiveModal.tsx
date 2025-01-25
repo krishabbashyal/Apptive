@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-
+import { archiveApplication } from "@/app/(main)/dashboard/actions";
 import { X } from "@phosphor-icons/react";
 import CustomButton from "./CustomButton";
 
@@ -12,9 +12,9 @@ const ConfirmArchiveModal = () => {
     useShowArchiveModal();
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleArchiveApplication = (id: string | null) => {
+  const handleArchiveApplication = async (id: string | null) => {
     if (!id) return;
-    console.log("Archive application: ", id);
+    await archiveApplication(id);
   };
 
   return (
