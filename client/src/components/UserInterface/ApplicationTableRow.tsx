@@ -40,7 +40,7 @@ const handleArchiveApplication = (id: string, title: string, company: string) =>
   };
 
   const formatSalary = (salary: number | null) => {
-    if (!salary) return "N/A";
+    if (!salary) return "---";
     return new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
@@ -79,7 +79,7 @@ const handleArchiveApplication = (id: string, title: string, company: string) =>
               {application.location_city}, {application.location_state}
             </span>
             <span className="text-sm text-gray-400">
-              {application.work_arrangement || "N/A"}
+              {application.work_arrangement}
             </span>
           </div>
         </td>
@@ -93,7 +93,7 @@ const handleArchiveApplication = (id: string, title: string, company: string) =>
             </span>
           </div>
         </td>
-        <td className="px-6 py-4 text-gray-200">
+        <td className={`px-6 py-4 ${ application.salary === null && "text-gray-200 pl-[52px] tracking-[-1.5px]"}`}>
           {formatSalary(application.salary)}
         </td>
         <td className="px-6 py-4">
