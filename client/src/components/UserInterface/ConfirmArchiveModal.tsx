@@ -8,7 +8,7 @@ import CustomButton from "./CustomButton";
 import useShowArchiveModal from "@/lib/store/useShowArchiveModal";
 
 const ConfirmArchiveModal = () => {
-  const { archiveModalShown, id, title, company, closeArchiveModal } =
+  const { archiveModalShown, id, closeArchiveModal } =
     useShowArchiveModal();
   const [isHovered, setIsHovered] = useState(false);
 
