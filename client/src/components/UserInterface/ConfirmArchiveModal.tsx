@@ -7,10 +7,15 @@ import CustomButton from "./CustomButton";
 
 import useShowArchiveModal from "@/lib/store/useShowArchiveModal";
 
-function ConfirmArchiveModal() {
+const ConfirmArchiveModal = () => {
   const { archiveModalShown, id, title, company, closeArchiveModal } =
     useShowArchiveModal();
   const [isHovered, setIsHovered] = useState(false);
+
+  const handleArchiveApplication = (id: string | null) => {
+    if (!id) return;
+    console.log("Archive application: ", id);
+  };
 
   return (
     archiveModalShown && (
@@ -22,9 +27,9 @@ function ConfirmArchiveModal() {
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="w-[36rem] bg-foreground rounded-lg border border-spacer/50"
+          className="w-[36rem] rounded-lg border border-spacer/50 bg-foreground"
         >
-          <div className="py-6 px-10">
+          <div className="px-10 py-6">
             <div className="flex justify-end">
               <button
                 type="button"
@@ -47,13 +52,15 @@ function ConfirmArchiveModal() {
             </h1>
             <p className="mt-0.5">You can always unarchive it later</p>
             <div className="mt-6 text-lg">
-              <div className="bg-accentHighlight/60 rounded-lg border border-dashed items-center justify-center flex border-spacer p-4 w-full gap-x-2">
+              <div className="flex w-full items-center justify-center gap-x-2 rounded-lg border border-dashed border-spacer bg-accentHighlight/60 p-4">
                 <p className="">{company}</p>
                 <p>|</p>
                 <p className="font-extralight">{title}</p>
               </div>
             </div>
-            <p className="mt-6 absolute text-sm text-spacer">id: <span className="font-bold text-danger/30">{id}</span></p>
+            <p className="absolute mt-6 text-sm text-spacer">
+              id: <span className="font-bold text-danger/30">{id}</span>
+            </p>
             <div className="mt-6 flex justify-end gap-4">
               <CustomButton
                 label="Cancel"
@@ -63,7 +70,7 @@ function ConfirmArchiveModal() {
 
               <CustomButton
                 label="Archive"
-                onClick={closeArchiveModal}
+                onClick={() => handleArchiveApplication(id)}
                 customClasses="bg-danger"
               />
             </div>
@@ -72,6 +79,6 @@ function ConfirmArchiveModal() {
       </div>
     )
   );
-}
+};
 
 export default ConfirmArchiveModal;
