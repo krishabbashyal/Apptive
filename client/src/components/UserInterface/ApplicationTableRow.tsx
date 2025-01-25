@@ -24,8 +24,8 @@ const handleApplicationLink = () => {
   console.log("Application link:", application);
 };
 
-const handleArchiveApplication = (id: string) => {
-  openArchiveModal(id);
+const handleArchiveApplication = (id: string, title: string, company: string) => {
+  openArchiveModal(id, title, company);
 };
 
   const getStatusColor = (status: string) => {
@@ -110,7 +110,7 @@ const handleArchiveApplication = (id: string) => {
           <button onClick={handleApplicationLink} disabled={application.listing_url === null}>
             <LinkIcon size={24} className="text-blue-400 hover:text-blue-600" />
           </button>
-          <button onClick={() => handleArchiveApplication(application.id)}>
+          <button onClick={() => handleArchiveApplication(application.id, application.job_title, application.company_name)}>
             <Archive  size={24} className="text-rose-400 hover:text-rose-500"  />
           </button>
           
