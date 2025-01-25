@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Application } from "@prisma/client";
-import { Buildings, CaretUp, CaretDown } from "@phosphor-icons/react";
+import { Buildings, CaretDown } from "@phosphor-icons/react";
 import ApplicationRowActions from "./ApplicationRowActions";
 
 interface ApplicationTableRowProps {
@@ -87,12 +87,12 @@ const ApplicationTableRow = ({ application }: ApplicationTableRowProps) => {
             {application.application_status}
           </span>
         </td>
-        <td className="py-4 flex items-center justify-center gap-x-3">
+        <td className="py-4 flex items-center justify-center gap-x-4">
           <button
             onClick={() => setIsNotesOpen(!isNotesOpen)}
-            className="rounded-lg border border-spacer/20 bg-spacer/20 p-0.5 mt-0.5 text-gray-400 transition-all duration-200 ease-in-out hover:scale-110 hover:border-accent hover:bg-spacer/50 hover:text-gray-200"
+            className="rounded-lg border border-spacer/20 bg-spacer/20 p-0.5 mt-0.5 text-gray-400 transition-all duration-200 ease-in-out hover:scale-110 flex items-center gap-x-3 hover:border-accent hover:bg-spacer/50 hover:text-gray-200"
           >
-            {isNotesOpen ? <CaretUp size={23} /> : <CaretDown size={23} />}
+            <CaretDown size={24} className={`${isNotesOpen ? "rotate-180 duration-300" : "rotate-0 duration-300"}`} />
           </button>
           <ApplicationRowActions application={application} />
         </td>
