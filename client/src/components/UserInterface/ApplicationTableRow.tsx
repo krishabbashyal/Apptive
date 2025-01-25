@@ -4,6 +4,7 @@ import { Buildings, CaretDown, CaretUp } from "@phosphor-icons/react";
 import { Link as LinkIcon } from "@phosphor-icons/react";
 import { Archive } from "@phosphor-icons/react";
 import { NotePencil } from "@phosphor-icons/react";
+import useShowArchiveModal from "@/lib/store/useShowArchiveModal";
 
 interface ApplicationTableRowProps {
   application: Application;
@@ -12,19 +13,19 @@ interface ApplicationTableRowProps {
 const ApplicationTableRow = ({ application }: ApplicationTableRowProps) => {
   const [isNotesOpen, setIsNotesOpen] = useState(false);
 
+  const { openArchiveModal } = useShowArchiveModal();
+
 const handleApplicationEdit = () => {
   // Handle application edit logic here
   console.log("Edit application:", application);
 };
-
-const handleApplicationArchive = () => {
-  // Handle application archive logic here
-  console.log("Archive application:", application);
-};
-
 const handleApplicationLink = () => {
   // Handle application archive logic here
   console.log("Application link:", application);
+};
+
+const handleArchiveApplication = (id: string, title: string, company: string) => {
+  openArchiveModal(id, title, company);
 };
 
   const getStatusColor = (status: string) => {
@@ -39,7 +40,7 @@ const handleApplicationLink = () => {
   };
 
   const formatSalary = (salary: number | null) => {
-    if (!salary) return "N/A";
+    if (!salary) return "---";
     return new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
@@ -78,7 +79,7 @@ const handleApplicationLink = () => {
               {application.location_city}, {application.location_state}
             </span>
             <span className="text-sm text-gray-400">
-              {application.work_arrangement || "N/A"}
+              {application.work_arrangement}
             </span>
           </div>
         </td>
@@ -92,7 +93,7 @@ const handleApplicationLink = () => {
             </span>
           </div>
         </td>
-        <td className="px-6 py-4 text-gray-200">
+        <td className={`px-6 py-4 ${ application.salary === null && "text-gray-200 pl-[52px] tracking-[-1.5px]"}`}>
           {formatSalary(application.salary)}
         </td>
         <td className="px-6 py-4">
@@ -109,7 +110,7 @@ const handleApplicationLink = () => {
           <button onClick={handleApplicationLink} disabled={application.listing_url === null}>
             <LinkIcon size={24} className="text-blue-400 hover:text-blue-600" />
           </button>
-          <button onClick={handleApplicationArchive}>
+          <button onClick={() => handleArchiveApplication(application.id, application.job_title, application.company_name)}>
             <Archive  size={24} className="text-rose-400 hover:text-rose-500"  />
           </button>
           

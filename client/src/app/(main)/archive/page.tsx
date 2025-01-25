@@ -1,9 +1,13 @@
-import React from 'react'
+"use server";
 
-const Archive = () => {
-  return (
-    <div>Archive Page</div>
-  )
-}
+import React from "react";
+import { fetchAllActiveApplications } from "../dashboard/actions";
 
-export default Archive
+
+const Archive = async () => {
+  const data = await fetchAllActiveApplications();
+
+  return <div>{JSON.stringify(data)}</div>;
+};
+
+export default Archive;

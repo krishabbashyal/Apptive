@@ -31,7 +31,7 @@ const LandingPage = () => {
               Stay organized, efficient, and focused on your job search.
             </p>
             <div className="mt-8 flex flex-col gap-6 md:flex-row lg:mt-12">
-              <Link href="/dashboard">
+              <Link href="/signup">
                 <CustomButton
                   label="Get Started"
                   customClasses="bg-accent w-48 h-14 relative overflow-hidden group"

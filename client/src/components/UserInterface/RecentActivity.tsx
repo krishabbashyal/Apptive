@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar";
 import { Plus } from "@phosphor-icons/react";
 import ApplicationTable from "./ApplicationTable";
 import CustomButton from "./CustomButton";
-import useShowApplicationModal from "@/lib/store/modalStore";
+import useShowApplicationModal from "@/lib/store/useShowApplicationModal";
 import { Application } from "@prisma/client";
 
 interface RecentActivityProps {

@@ -27,19 +27,21 @@ model Application {
   application_status String
   work_arrangement   String?
   is_archived        Boolean  @default(false)
+  archived_on        DateTime? 
   notes              String?
   listing_url        String?
   userId             String // Supabase user ID 
+  updated_at         DateTime? @updatedAt
 }
 
 model Location {
   id           String        @id @default(cuid())
-  state_code    String
-  state_name    String
+  state_code   String
+  state_name   String
   city         String
   county       String
   latitude     Float
   longitude    Float
-  query_count   Int           @default(0) // consider adding an index for performance if querying by this field is frequent.
+  query_count  Int           @default(0) // consider adding an index for performance if querying by this field is frequent.
   applications Application[]
 }

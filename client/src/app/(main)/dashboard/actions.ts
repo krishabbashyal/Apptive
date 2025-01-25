@@ -55,6 +55,41 @@ export const fetchAllActiveApplications = async () => {
   const applications = await prisma.application.findMany({
     where: {
       userId: userId,
+      is_archived: false,
+    },
+  });
+  return applications;
+};
+
+export const archiveApplication = async (id: string) => {
+
+  try {
+    await prisma.application.update({
+      where: {
+        id: id,
+      },
+      data: {
+        is_archived: true,
+      },
+    });
+  } catch (error) {
+    console.error("Error archiving application:", error);
+  }
+  console.log("Archived application with ID:", id);
+}
+
+export const fetchAllArchivedApplications = async () => {
+  const res = await getUser();
+  const userId = res?.id;
+
+  if (!userId) {
+    throw new Error("User ID is undefined. Cannot fetch applications.");
+  }
+
+  const applications = await prisma.application.findMany({
+    where: {
+      userId: userId,
+      is_archived: true,
     },
   });
   return applications;

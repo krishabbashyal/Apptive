@@ -9,7 +9,7 @@ import { createApplication } from "@/app/(main)/dashboard/actions";
 import CustomInput from "../Inputs/CustomInput";
 import CustomDropdown from "../Inputs/CustomDropdown";
 import CustomDateInput from "../Inputs/CustomDateInput";
-import useShowApplicationModal from "@/lib/store/modalStore";
+import useShowApplicationModal from "@/lib/store/useShowApplicationModal";
 import LocationInput from "../Inputs/LocationInput";
 import CustomButton from "../UserInterface/CustomButton";
 
@@ -53,11 +53,11 @@ function ApplicationForm() {
           closeApplicationModal();
           reset();
         }}
-        className="absolute z-10 flex h-full w-[calc(100%-15rem)] items-center justify-center bg-black bg-opacity-85"
+        className="absolute z-10 flex h-full w-[calc(100%-15rem)] items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm"
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="w-[38rem] bg-foreground"
+          className="w-[38rem] bg-foreground  border border-spacer/50 rounded-lg"
         >
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -75,11 +75,11 @@ function ApplicationForm() {
                 }}
               >
                 <X
-                  className="cursor-pointer"
+                  className="cursor-pointer hover:bg-spacer hover:bg-opacity-25 p-1 rounded hover:cursor-pointer"
                   onMouseOver={() => setIsHovered(true)}
                   onMouseOut={() => setIsHovered(false)}
                   color={isHovered ? "#f25757" : "#FFFFFF"}
-                  size={26}
+                  size={32}
                 />
               </button>
             </div>
