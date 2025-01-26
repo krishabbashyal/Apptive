@@ -38,11 +38,6 @@ function ApplicationTable({ applicationData }: ApplicationTableProps) {
                 Status
               </span>
             </th>
-            <th className="px-6 py-4 text-center">
-              <span className="text-sm font-medium uppercase tracking-wider text-gray-300">
-                Actions
-              </span>
-            </th>
           </tr>
         </thead>
         <tbody className="divide-y divide-[#242424]">

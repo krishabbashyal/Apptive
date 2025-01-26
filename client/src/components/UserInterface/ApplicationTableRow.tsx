@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { Application } from "@prisma/client";
-import { Buildings, CaretDown, CaretUp } from "@phosphor-icons/react";
-import { Link as LinkIcon } from "@phosphor-icons/react";
-import { Archive } from "@phosphor-icons/react";
-import { NotePencil } from "@phosphor-icons/react";
-import useShowArchiveModal from "@/lib/store/useShowArchiveModal";
+import { Buildings, CaretDown } from "@phosphor-icons/react";
+import ApplicationRowActions from "./ApplicationRowActions";
 
 interface ApplicationTableRowProps {
   application: Application;
@@ -12,21 +9,6 @@ interface ApplicationTableRowProps {
 
 const ApplicationTableRow = ({ application }: ApplicationTableRowProps) => {
   const [isNotesOpen, setIsNotesOpen] = useState(false);
-
-  const { openArchiveModal } = useShowArchiveModal();
-
-const handleApplicationEdit = () => {
-  // Handle application edit logic here
-  console.log("Edit application:", application);
-};
-const handleApplicationLink = () => {
-  // Handle application archive logic here
-  console.log("Application link:", application);
-};
-
-const handleArchiveApplication = (id: string, title: string, company: string) => {
-  openArchiveModal(id, title, company);
-};
 
   const getStatusColor = (status: string) => {
     const colors = {
@@ -58,7 +40,7 @@ const handleArchiveApplication = (id: string, title: string, company: string) =>
 
   return (
     <>
-      <tr className=" even:bg-background odd:bg-[#101010] hover:bg-accentHighlight hover:bg-opacity-50">
+      <tr className="odd:bg-[#101010] even:bg-background hover:bg-accentHighlight hover:bg-opacity-50">
         <td className="px-6 py-4">
           <div className="flex flex-row items-center">
             <Buildings
@@ -93,7 +75,9 @@ const handleArchiveApplication = (id: string, title: string, company: string) =>
             </span>
           </div>
         </td>
-        <td className={`px-6 py-4 ${ application.salary === null && "text-gray-200 pl-[52px] tracking-[-1.5px]"}`}>
+        <td
+          className={`px-6 py-4 ${application.salary === null ? "pl-[51px] tracking-[-1.5px] text-gray-200" : ""}`}
+        >
           {formatSalary(application.salary)}
         </td>
         <td className="px-6 py-4">
@@ -103,28 +87,20 @@ const handleArchiveApplication = (id: string, title: string, company: string) =>
             {application.application_status}
           </span>
         </td>
-        <td className="px-6 gap-x-3 justify-center flex mt-7 items-center">
-        <button onClick={handleApplicationEdit}>
-            <NotePencil  size={24} className="text-amber-300 hover:text-amber-600"  />
-          </button>
-          <button onClick={handleApplicationLink} disabled={application.listing_url === null}>
-            <LinkIcon size={24} className="text-blue-400 hover:text-blue-600" />
-          </button>
-          <button onClick={() => handleArchiveApplication(application.id, application.job_title, application.company_name)}>
-            <Archive  size={24} className="text-rose-400 hover:text-rose-500"  />
-          </button>
-          
+        <td className="py-4 flex items-center justify-center gap-x-4">
           <button
             onClick={() => setIsNotesOpen(!isNotesOpen)}
-            className="absolute right-[125px] text-gray-400 hover:text-gray-200"
+            className="rounded-lg border border-spacer/20 bg-spacer/20 p-0.5 mt-0.5 text-gray-400 transition-all duration-200 ease-in-out hover:scale-110 flex items-center gap-x-3 hover:border-accent hover:bg-spacer/50 hover:text-gray-200"
           >
-            {isNotesOpen ? <CaretUp size={24} /> : <CaretDown size={24} />}
+            <CaretDown size={24} className={`${isNotesOpen ? "rotate-180 duration-300" : "rotate-0 duration-300"}`} />
           </button>
+          <ApplicationRowActions application={application} />
         </td>
       </tr>
+
       {isNotesOpen && (
-        <tr className="even:bg-background odd:bg-[#101010]">
-          <td colSpan={7} className="px-6 py-4">
+        <tr className="odd:bg-[#101010] even:bg-background">
+          <td colSpan={6} className="px-6 py-4">
             <div className="ml-14">
               <p className="mb-2 font-semibold text-gray-300">Notes:</p>
               <p className="whitespace-pre-wrap text-gray-400">
