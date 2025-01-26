@@ -15,7 +15,7 @@ interface ButtonProps {
   setIsOpen: (isOpen: boolean) => void;
 }
 
-const EditButton = ({ application }: ButtonProps) => {
+const EditButton = () => {
   return (
     <button
       onClick={() => {}}
@@ -27,7 +27,7 @@ const EditButton = ({ application }: ButtonProps) => {
   );
 };
 
-const LinkButton = ({ application }: ButtonProps) => {
+const LinkButton = () => {
   return (
     <button
       onClick={() => {}}
@@ -116,8 +116,8 @@ const ApplicationRowActions = ({ application }: ApplicationRowActionsProps) => {
       {isOpen && (
         <div className="absolute right-0 z-10 mt-2 w-52 rounded-lg border border-spacer bg-foreground py-1 shadow-lg">
           <div className="flex flex-col">
-            <EditButton application={application} setIsOpen={setIsOpen} />
-            <LinkButton application={application} setIsOpen={setIsOpen} />
+            <EditButton />
+            <LinkButton/>
             <ArchiveButton application={application} setIsOpen={setIsOpen} />
           </div>
         </div>
