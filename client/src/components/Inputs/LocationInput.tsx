@@ -15,9 +15,15 @@ interface LocationInputProps {
 }
 
 const LocationInput = ({ register, setValue, error, label, id, initialQuery }: LocationInputProps) => {
-  const [query, setQuery] = useState(initialQuery || '')
+  const [query, setQuery] = useState('')
   const [results, setResults] = useState<Location[]>([])
   const [showSuggestions, setShowSuggestions] = useState(false)
+
+  useEffect(() => {
+    if (initialQuery) {
+      setQuery(initialQuery)
+    }
+  }, [initialQuery])
 
   useEffect(() => {
     const timer = setTimeout(async () => {
