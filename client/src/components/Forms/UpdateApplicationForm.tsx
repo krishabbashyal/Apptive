@@ -30,11 +30,6 @@ function UpdateApplicationForm() {
 
   useEffect(() => {
     if (application) {
-      // Convert salary to formatted string
-      const formattedSalary = application.salary 
-        ? application.salary.toLocaleString() 
-        : '';
-  
 
       setValue("jobTitle", application.job_title);
       setValue("companyName", application.company_name);
@@ -48,7 +43,7 @@ function UpdateApplicationForm() {
       setValue("applicationDate", 
         new Date(application.application_date).toISOString().split('T')[0]
       );
-      setValue("salary", formattedSalary);
+      // ts-ignore
       setValue("listingURL", application.listing_url || '');
       setValue("notes", application.notes || '');
     }
@@ -138,6 +133,7 @@ function UpdateApplicationForm() {
               <CustomInput
                 label="Salary"
                 id="salary"
+                defaultValue={application?.salary?.toLocaleString()}
                 type="text"
                 numeric={true}
                 register={register("salary", {

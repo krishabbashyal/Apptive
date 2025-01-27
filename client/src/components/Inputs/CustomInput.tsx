@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { FieldError, UseFormRegisterReturn } from "react-hook-form";
 import { useState, ChangeEvent } from "react";
 import { Eye, EyeSlash } from "@phosphor-icons/react";
@@ -9,6 +10,7 @@ interface CustomInputProps {
   register: UseFormRegisterReturn;
   numeric?: boolean;
   error?: FieldError;
+  defaultValue?: string
 }
 
 const CustomInput = ({
@@ -18,10 +20,18 @@ const CustomInput = ({
   register,
   numeric = false,
   error,
+  defaultValue = ""
 }: CustomInputProps) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [displayValue, setDisplayValue] = useState("");
+  const [displayValue, setDisplayValue] = useState(defaultValue);
 
+  useEffect(() => {
+    if (numeric) {
+      setDisplayValue(formatNumber(defaultValue.replace(/,/g, '')));
+    } else {
+      setDisplayValue(defaultValue);
+    }
+  }, [defaultValue, numeric]);
 
 const formatNumber = (value: string) => {
   const formattedValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
