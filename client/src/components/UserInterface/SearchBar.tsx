@@ -3,7 +3,7 @@
 import React from 'react'
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import { X } from '@phosphor-icons/react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 interface SearchBarProps {
   placeholder?: string
@@ -13,9 +13,6 @@ const SearchBar = ({placeholder}: SearchBarProps) => {
 
   const [searchTerm, setSearchTerm] = useState('')
 
-  useEffect(() => {
-    console.log(searchTerm)
-  }, [searchTerm])
 
   return (
     <div>
