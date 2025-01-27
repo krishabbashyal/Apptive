@@ -25,7 +25,7 @@ model Application {
   application_date   DateTime
   salary             Int?
   application_status String
-  work_arrangement   String?
+  work_arrangement   String
   is_archived        Boolean  @default(false)
   archived_on        DateTime? 
   notes              String?
