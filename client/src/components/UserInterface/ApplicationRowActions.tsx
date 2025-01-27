@@ -6,19 +6,24 @@ import {
   Link as LinkIcon,
   Archive,
 } from "@phosphor-icons/react";
-
+import useShowUpdateModal from "@/lib/store/useShowUpdateModal";
 import { archiveApplication } from "@/app/(main)/dashboard/actions";
-
 
 interface ButtonProps {
   application: Application;
   setIsOpen: (isOpen: boolean) => void;
 }
 
-const EditButton = () => {
+const EditButton = ({ application, setIsOpen }: ButtonProps) => {
+  const handleEditButtonPressed = () => {
+    openUpdateModal(application);
+    setIsOpen(false);
+    console.log("Edit button pressed", application);
+  };
+  const { openUpdateModal } = useShowUpdateModal();
   return (
     <button
-      onClick={() => {}}
+      onClick={handleEditButtonPressed}
       className="flex items-center gap-x-4 border-b border-spacer/30 px-4 py-2.5 text-left transition-colors last:border-0 hover:text-yellow-500"
     >
       <PencilSimple size={20} />
@@ -46,7 +51,6 @@ const ArchiveButton = ({ application, setIsOpen }: ButtonProps) => {
     await archiveApplication(id);
     setShowConfirmation(false);
     setIsOpen(false);
-
   };
 
   return (
@@ -116,8 +120,8 @@ const ApplicationRowActions = ({ application }: ApplicationRowActionsProps) => {
       {isOpen && (
         <div className="absolute right-0 z-10 mt-2 w-52 rounded-lg border border-spacer bg-foreground py-1 shadow-lg">
           <div className="flex flex-col">
-            <EditButton />
-            <LinkButton/>
+            <EditButton application={application} setIsOpen={setIsOpen} />
+            <LinkButton />
             <ArchiveButton application={application} setIsOpen={setIsOpen} />
           </div>
         </div>
