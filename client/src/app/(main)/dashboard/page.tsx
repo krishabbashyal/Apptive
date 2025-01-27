@@ -3,13 +3,14 @@ import React from "react";
 import ApplicationForm from "@/components/Forms/ApplicationForm";
 import StatCard from "@/components/UserInterface/StatCard";
 import RecentActivityContainer from "@/components/UserInterface/RecentActivityContainer";
-import ConfirmArchiveModal from "@/components/UserInterface/ConfirmArchiveModal";
+
+import UpdateApplicationForm from "@/components/Forms/UpdateApplicationForm";
 
 const Dashboard = () => {
   return (
     <div className="h-full w-full">
       <ApplicationForm />
-      <ConfirmArchiveModal />
+      <UpdateApplicationForm />
       <div className="mx-16 flex flex-col h-full">
         <div className="flex flex-row justify-between gap-x-8 pt-8">
           <StatCard stat="12" description="Applications sent" />
