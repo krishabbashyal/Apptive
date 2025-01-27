@@ -9,12 +9,13 @@ interface LocationInputProps {
   register: UseFormRegisterReturn
   setValue: UseFormSetValue<any>  // eslint-disable-line
   error?: Merge<FieldError, FieldErrorsImpl<{ id: string; city: string; state_code: string }>>;
+  initialQuery?: string
   label: string
   id: string
 }
 
-const LocationInput = ({ register, setValue, error, label, id }: LocationInputProps) => {
-  const [query, setQuery] = useState('')
+const LocationInput = ({ register, setValue, error, label, id, initialQuery }: LocationInputProps) => {
+  const [query, setQuery] = useState(initialQuery || '')
   const [results, setResults] = useState<Location[]>([])
   const [showSuggestions, setShowSuggestions] = useState(false)
 
