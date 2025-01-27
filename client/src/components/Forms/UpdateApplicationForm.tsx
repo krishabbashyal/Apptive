@@ -80,9 +80,9 @@ function UpdateApplicationForm() {
               </button>
             </div>
             <h1 className="text-left text-2xl font-medium sm:text-3xl">
-              Log a new application
+              Update application
             </h1>
-            <p className="mt-0.5">Enter details about your application</p>
+            <p className="mt-0.5">Enter new details about your application</p>
             <div className="mt-6 flex flex-col gap-4 gap-y-6 sm:grid sm:grid-cols-2">
               <CustomInput
                 label="Job title"
@@ -122,9 +122,10 @@ function UpdateApplicationForm() {
                 error={errors.applicationStatus}
                 options={[
                   { value: "Applied", default: true },
-                  { value: "Bookmarked" },
                   { value: "Interviewing" },
+                  { value: "Accepted" },
                   { value: "Rejected" },
+                  { value: "Bookmarked" },
                 ]}
               />
               <CustomDropdown
