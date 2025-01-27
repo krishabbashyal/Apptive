@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { applicationSchema, ApplicationSchemaType } from "@/lib/schemas";
@@ -24,9 +24,38 @@ function UpdateApplicationForm() {
     resolver: zodResolver(applicationSchema),
   });
 
-  const { updateModalShown , closeUpdateModal } =
+  const { updateModalShown, closeUpdateModal, application } =
     useShowUpdateModal();
   const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (application) {
+      // Convert salary to formatted string
+      const formattedSalary = application.salary 
+        ? application.salary.toLocaleString() 
+        : '';
+  
+
+      setValue("jobTitle", application.job_title);
+      setValue("companyName", application.company_name);
+      setValue("location", { 
+        id: application.locationId,
+        city: application.location_city,
+        state_code: application.location_state
+      });
+      setValue("applicationStatus", application.application_status);
+      setValue("workArrangement", application.work_arrangement);
+      setValue("applicationDate", 
+        new Date(application.application_date).toISOString().split('T')[0]
+      );
+      setValue("salary", formattedSalary);
+      setValue("listingURL", application.listing_url || '');
+      setValue("notes", application.notes || '');
+    }
+
+    console.log(application?.salary);
+
+  }, [application, setValue]);
 
   const onSubmit = async (data: ApplicationSchemaType) => {
     try {
@@ -53,7 +82,7 @@ function UpdateApplicationForm() {
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="w-[38rem] bg-foreground  border border-spacer/50 rounded-lg"
+          className="w-[38rem] rounded-lg border border-spacer/50 bg-foreground"
         >
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -71,7 +100,7 @@ function UpdateApplicationForm() {
                 }}
               >
                 <X
-                  className="cursor-pointer hover:bg-spacer hover:bg-opacity-25 p-1 rounded hover:cursor-pointer"
+                  className="cursor-pointer rounded p-1 hover:cursor-pointer hover:bg-spacer hover:bg-opacity-25"
                   onMouseOver={() => setIsHovered(true)}
                   onMouseOut={() => setIsHovered(false)}
                   color={isHovered ? "#f25757" : "#FFFFFF"}
@@ -104,6 +133,7 @@ function UpdateApplicationForm() {
                 register={register("location")}
                 setValue={setValue}
                 error={errors.location}
+                initialQuery={`${application?.location_city}, ${application?.location_state}`}
               />
               <CustomInput
                 label="Salary"
