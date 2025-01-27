@@ -48,7 +48,7 @@ function UpdateApplicationForm() {
       setValue("notes", application.notes || '');
     }
 
-    console.log(application?.salary);
+
 
   }, [application, setValue]);
 
