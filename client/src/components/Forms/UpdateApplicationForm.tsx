@@ -49,6 +49,7 @@ function UpdateApplicationForm() {
   const onSubmit = async (data: ApplicationSchemaType) => {
     try {
       await updateApplication(application!, data);
+      closeUpdateModal();
     } catch (error) {
       console.log(error);
     }
@@ -131,7 +132,7 @@ function UpdateApplicationForm() {
                 type="text"
                 numeric={true}
                 register={register("salary", {
-                  setValueAs: (num) => parseInt(num.replace(/,/g, "")),
+                  setValueAs: (num) => parseInt(String(num).replace(/,/g, "")),
                 })}
                 error={errors.salary}
               />
