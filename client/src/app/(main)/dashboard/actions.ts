@@ -3,7 +3,7 @@
 import { applicationSchema, ApplicationSchemaType } from "@/lib/schemas";
 import { prisma } from "@/lib/prisma";
 import { getUser } from "@/app/(auth)/actions";
-
+import { Application } from "@prisma/client";
 
 const toLocalISODateTime = (dateStr: string): Date => {
   // This preserves local timezone
@@ -38,7 +38,37 @@ export const createApplication = async (data: ApplicationSchemaType) => {
         userId: userId,
       },
     });
+  } else {
+    console.log("Invalid data", data);
+  }
+};
 
+export const updateApplication = async (
+  application: Application,
+  data: ApplicationSchemaType,
+) => {
+  const validatedData = applicationSchema.safeParse(data);
+  if (validatedData.success) {
+    console.log("Valid data", data);
+
+    await prisma.application.update({
+      where: {
+        id: application.id,
+      },
+      data: {
+        job_title: data.jobTitle,
+        company_name: data.companyName,
+        locationId: data.location.id,
+        location_city: data.location.city,
+        location_state: data.location.state_code,
+        salary: data.salary,
+        application_status: data.applicationStatus,
+        work_arrangement: data.workArrangement,
+        application_date: toLocalISODateTime(data.applicationDate),
+        listing_url: data.listingURL,
+        notes: data.notes,
+      },
+    });
   } else {
     console.log("Invalid data", data);
   }
@@ -62,7 +92,6 @@ export const fetchAllActiveApplications = async () => {
 };
 
 export const archiveApplication = async (id: string) => {
-
   try {
     await prisma.application.update({
       where: {
@@ -76,7 +105,7 @@ export const archiveApplication = async (id: string) => {
     console.error("Error archiving application:", error);
   }
   console.log("Archived application with ID:", id);
-}
+};
 
 export const fetchAllArchivedApplications = async () => {
   const res = await getUser();
