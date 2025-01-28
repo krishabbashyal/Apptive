@@ -13,10 +13,10 @@ const ApplicationTableRow = ({ application }: ApplicationTableRowProps) => {
   const getStatusColor = (status: string) => {
     const colors = {
       Applied: "bg-accentHighlight text-accent",
-      Interview: "bg-purple-900 text-purple-200",
-      Offer: "bg-green-900 text-green-200",
-      Rejected: "bg-red-900 text-red-200",
-      Pending: "bg-yellow-900 text-yellow-200",
+      Interviewing: "bg-yellow-300/10 text-yellow-200",
+      Accepted: "bg-green-900/10 text-green-600",
+      Rejected: "bg-danger/10 text-danger",
+      Bookmarked: "bg-blue-800/10 text-blue-500",
     };
     return colors[status as keyof typeof colors] || "bg-gray-800 text-gray-200";
   };
