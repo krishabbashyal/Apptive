@@ -4,6 +4,7 @@ import { applicationSchema, ApplicationSchemaType } from "@/lib/schemas";
 import { prisma } from "@/lib/prisma";
 import { getUser } from "@/app/(auth)/actions";
 import { Application } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 
 const toLocalISODateTime = (dateStr: string): Date => {
   // This preserves local timezone
@@ -41,6 +42,7 @@ export const createApplication = async (data: ApplicationSchemaType) => {
   } else {
     console.log("Invalid data", data);
   }
+  revalidatePath('/dashboard', 'layout');
 };
 
 export const updateApplication = async (
@@ -72,6 +74,8 @@ export const updateApplication = async (
   } else {
     console.log("Invalid data", data);
   }
+  revalidatePath('/dashboard', 'layout');
+
 };
 
 export const fetchAllActiveApplications = async () => {
@@ -86,6 +90,9 @@ export const fetchAllActiveApplications = async () => {
     where: {
       userId: userId,
       is_archived: false,
+    },
+    orderBy: {
+      application_date: "desc",
     },
   });
   return applications;
@@ -105,6 +112,7 @@ export const archiveApplication = async (id: string) => {
     console.error("Error archiving application:", error);
   }
   console.log("Archived application with ID:", id);
+  revalidatePath('/dashboard', 'layout');
 };
 
 export const fetchAllArchivedApplications = async () => {
