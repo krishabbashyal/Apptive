@@ -68,7 +68,7 @@ function UpdateApplicationForm() {
           closeUpdateModal();
           reset();
         }}
-        className="absolute z-10 flex h-full w-[calc(100%-15rem)] items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm"
+        className="absolute z-20 flex h-full w-[calc(100%-15rem)] items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm"
       >
         <div
           onClick={(e) => e.stopPropagation()}
