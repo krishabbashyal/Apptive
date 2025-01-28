@@ -9,11 +9,11 @@ interface ApplicationTableProps {
 
 function ApplicationTable({ applicationData }: ApplicationTableProps) {
   return (
-    <div className=" rounded-xl bg-background">
-      <div className="overflow-y-auto max-h-[calc(100vh-22rem)]">
+    <div className="rounded-xl bg-background">
+      <div className="overflow-y-auto max-h-[calc(100vh-22rem)] slim-scroll">
         <table className="w-full">
-          <thead>
-            <tr className="border-b border-[#242424]">
+          <thead className="bg-background rounded-xl sticky top-0 z-10 w-full border-b border-[#242424]">
+            <tr className="border-b border-[#242424] w-full">
               <th className="px-6 py-4 text-left">
                 <span className="text-sm font-medium uppercase tracking-wider text-gray-300">
                   Company & Role
@@ -37,6 +37,11 @@ function ApplicationTable({ applicationData }: ApplicationTableProps) {
               <th className="px-6 py-4 text-left">
                 <span className="text-sm font-medium uppercase tracking-wider text-gray-300">
                   Status
+                </span>
+              </th>
+              <th className="px-6 py-4 text-left">
+                <span className="text-sm font-medium uppercase tracking-wider text-gray-300">
+             
                 </span>
               </th>
             </tr>
