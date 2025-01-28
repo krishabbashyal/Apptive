@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { applicationSchema, ApplicationSchemaType } from "@/lib/schemas";
 import { X } from "@phosphor-icons/react";
-
+import { updateApplication } from "@/app/(main)/dashboard/actions";
 import CustomInput from "../Inputs/CustomInput";
 import CustomDropdown from "../Inputs/CustomDropdown";
 import CustomDateInput from "../Inputs/CustomDateInput";
@@ -23,38 +23,32 @@ function UpdateApplicationForm() {
   } = useForm<ApplicationSchemaType>({
     resolver: zodResolver(applicationSchema),
   });
-
   const { updateModalShown, closeUpdateModal, application } =
     useShowUpdateModal();
   const [isHovered, setIsHovered] = useState(false);
-
   useEffect(() => {
     if (application) {
-
       setValue("jobTitle", application.job_title);
       setValue("companyName", application.company_name);
-      setValue("location", { 
+      setValue("location", {
         id: application.locationId,
         city: application.location_city,
-        state_code: application.location_state
+        state_code: application.location_state,
       });
       setValue("applicationStatus", application.application_status);
       setValue("workArrangement", application.work_arrangement);
-      setValue("applicationDate", 
-        new Date(application.application_date).toISOString().split('T')[0]
+      setValue(
+        "applicationDate",
+        new Date(application.application_date).toISOString().split("T")[0],
       );
-      // ts-ignore
-      setValue("listingURL", application.listing_url || '');
-      setValue("notes", application.notes || '');
+      setValue("listingURL", application.listing_url || "");
+      setValue("notes", application.notes || "");
     }
-
-
-
   }, [application, setValue]);
 
   const onSubmit = async (data: ApplicationSchemaType) => {
     try {
-      console.log(data);
+      await updateApplication(application!, data);
     } catch (error) {
       console.log(error);
     }
