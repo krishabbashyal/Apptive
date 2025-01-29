@@ -52,7 +52,14 @@ export const updateApplication = async (
   const validatedData = applicationSchema.safeParse(data);
   if (validatedData.success) {
     console.log("Valid data", data);
+    
 
+    const hadResponse = data.applicationStatus === "Interviewing" || data.applicationStatus === "Accepted" 
+      ? true 
+      : data.applicationStatus === "Applied" 
+        ? false 
+        : application.had_response;
+   
     await prisma.application.update({
       where: {
         id: application.id,
@@ -69,13 +76,13 @@ export const updateApplication = async (
         application_date: toLocalISODateTime(data.applicationDate),
         listing_url: data.listingURL,
         notes: data.notes,
+        had_response: hadResponse,
       },
     });
   } else {
-    console.log("Invalid data", data);
+    console.log("Invalid data", validatedData.error);
   }
   revalidatePath('/dashboard', 'layout');
-
 };
 
 export const fetchAllActiveApplications = async () => {
