@@ -1,11 +1,11 @@
 "use server";
 
 import React from "react";
-import { fetchAllActiveApplications } from "../dashboard/actions";
+import { fetchAllArchivedApplications } from "../dashboard/actions";
 
 
 const Archive = async () => {
-  const data = await fetchAllActiveApplications();
+  const data = await fetchAllArchivedApplications();
 
   return <div>{JSON.stringify(data)}</div>;
 };
