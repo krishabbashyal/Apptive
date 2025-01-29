@@ -15,7 +15,7 @@ const StatCardContainer = async () => {
     (application) => application.application_status === "Applied",
   ).length;
 
-  const inProgress = activeApplications.filter(
+  const interviewing = activeApplications.filter(
     (application) => application.application_status === "Interviewing",
   ).length;
 
@@ -32,7 +32,7 @@ const StatCardContainer = async () => {
       allApplications.length) *
     100;
 
-  const totalInterviews = activeApplications.filter(
+  const totalInterviews = allApplications.filter(
     (application) => application.had_response,
   ).length;
 
@@ -40,11 +40,11 @@ const StatCardContainer = async () => {
     <div className="flex flex-row justify-between gap-x-8 pt-8">
       <StatCard stat={allApplications.length} description="Applications sent" />
       <StatCard stat={awaitingResponse} description="Awaiting response" />
-      <StatCard stat={inProgress} description="Interviewing" />
+      <StatCard stat={interviewing} description="Interviewing" />
       <StatCard stat={rejected} description="Rejected" />
       <StatCard stat={totalInterviews} description="Total interviews" />
       <StatCard stat={offers} description="Offers received" />
-      <StatCard stat={responseRate} description="Response rate" />
+      <StatCard stat={responseRate} description="Interview rate" />
     </div>
   );
 };
