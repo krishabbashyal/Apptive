@@ -109,7 +109,7 @@ const ApplicationRowActions = ({ application }: ApplicationRowActionsProps) => {
   }, []);
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="" ref={dropdownRef}>
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -118,7 +118,7 @@ const ApplicationRowActions = ({ application }: ApplicationRowActionsProps) => {
         <DotsThreeVertical size={24} />
       </button>
       {isOpen && (
-        <div className="absolute right-0 z-10 mt-2 w-52 rounded-lg border border-spacer bg-foreground py-1 shadow-lg">
+        <div className="absolute right-[150px] z-10 mt-1 w-52 rounded-lg border border-spacer bg-foreground py-1 shadow-lg">
           <div className="flex flex-col">
             <EditButton application={application} setIsOpen={setIsOpen} />
             <LinkButton />
