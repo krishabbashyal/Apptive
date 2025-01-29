@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface StatCardProps {
-  stat: string
+  stat: number | string
   description: string
 }
 
