@@ -32,14 +32,17 @@ const EditButton = ({ application, setIsOpen }: ButtonProps) => {
   );
 };
 
-const LinkButton = () => {
+const LinkButton = ({ application, setIsOpen }: ButtonProps) => {
   return (
     <button
-      onClick={() => {}}
-      className="flex items-center gap-x-4 border-b border-spacer/30 px-4 py-2.5 text-left transition-colors last:border-0 hover:text-blue-500"
+      onClick={() => setIsOpen(false)}      
+      className="flex items-center gap-x-4 border-b border-spacer/30 px-4 py-2.5 text-left transition-colors last:border-0 hover:text-blue-500 disabled:cursor-not-allowed disabled:bg-spacer/10 disabled:text-spacer"
+      disabled={application.listing_url === ""}
     >
-      <LinkIcon size={20} />
-      <p>Application link</p>
+      <a className={`flex gap-x-4 ${application.listing_url === "" && "pointer-events-none"}`} href={application.listing_url || ""}>
+        <LinkIcon size={20} />
+        <p>Application link</p>
+      </a>
     </button>
   );
 };
@@ -121,7 +124,7 @@ const ApplicationRowActions = ({ application }: ApplicationRowActionsProps) => {
         <div className="absolute right-[150px] z-10 mt-1 w-52 rounded-lg border border-spacer bg-foreground py-1 shadow-lg">
           <div className="flex flex-col">
             <EditButton application={application} setIsOpen={setIsOpen} />
-            <LinkButton />
+            <LinkButton application={application} setIsOpen={setIsOpen} />
             <ArchiveButton application={application} setIsOpen={setIsOpen} />
           </div>
         </div>
