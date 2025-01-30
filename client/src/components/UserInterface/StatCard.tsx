@@ -7,9 +7,9 @@ interface StatCardProps {
 
 const StatCard = ({stat, description}: StatCardProps) => {
   return (
-    <div className='min-w-40 flex flex-col flex-grow bg-foreground rounded-xl py-6 border border-spacer hover:border-accent text-center'>
-      <p className='text-3xl font-semibold'>{description === 'Interview rate' ? stat + '%' : stat}</p>
-      <p className='font-medium text-lg mt-2'>{description}</p>  
+    <div className='flex flex-col flex-grow bg-foreground rounded-xl py-6 text-center hover:text-accent hover:ring-[2px] hover:ring-accent/50'>
+      <p className='text-3xl font-semibold'>{description === 'Interview Rate' ? stat + '%' : stat}</p>
+      <p className='text-lg font-light mt-2'>{description}</p>  
     </div>
   )
 }
