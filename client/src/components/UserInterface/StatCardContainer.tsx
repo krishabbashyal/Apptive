@@ -38,13 +38,13 @@ const StatCardContainer = async () => {
 
   return (
     <div className="flex flex-row justify-between gap-x-8 pt-8">
-      <StatCard stat={allApplications.length} description="Applications sent" />
-      <StatCard stat={awaitingResponse} description="Awaiting response" />
+      <StatCard stat={allApplications.length} description="Total Applications" />
+      <StatCard stat={awaitingResponse} description="Awaiting Response" />
       <StatCard stat={interviewing} description="Interviewing" />
       <StatCard stat={rejected} description="Rejected" />
-      <StatCard stat={totalInterviews} description="Total interviews" />
-      <StatCard stat={offers} description="Offers received" />
-      <StatCard stat={responseRate} description="Interview rate" />
+      <StatCard stat={totalInterviews} description="Total Interviews" />
+      <StatCard stat={offers} description="Offers Received" />
+      <StatCard stat={responseRate} description="Interview Rate" />
     </div>
   );
 };
