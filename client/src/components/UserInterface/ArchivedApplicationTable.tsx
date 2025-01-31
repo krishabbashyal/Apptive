@@ -1,0 +1,81 @@
+import React from "react";
+import { Application } from "@prisma/client";
+import ArchiveTableRow from "./ArchiveTableRow";
+import { FolderOpen } from "@phosphor-icons/react";
+
+interface ArchivedApplicationTableProps {
+  applicationData: Application[];
+}
+
+function ArchivedApplicationTable({ applicationData }: ArchivedApplicationTableProps) {
+  return (
+    <div className="rounded-xl bg-background">
+      <div className="overflow-y-auto max-h-[calc(100vh-22rem)] slim-scroll">
+        <table className="w-full">
+          <thead className="bg-background rounded-xl sticky top-0 z-10 w-full border-b border-[#242424]">
+            <tr className="border-b border-[#242424] w-full">
+              <th className="px-6 py-4 text-left">
+                <span className="text-sm font-medium uppercase tracking-wider text-gray-300">
+                  Company & Role
+                </span>
+              </th>
+              <th className="px-6 py-4 text-left">
+                <span className="text-sm font-medium uppercase tracking-wider text-gray-300">
+                  Location
+                </span>
+              </th>
+              <th className="px-6 py-4 text-left">
+                <span className="text-sm font-medium uppercase tracking-wider text-gray-300">
+                  Application Date
+                </span>
+              </th>
+              <th className="px-6 py-4 text-left">
+                <span className="text-sm font-medium uppercase tracking-wider text-gray-300">
+                  Salary
+                </span>
+              </th>
+              <th className="px-6 py-4 text-left">
+                <span className="text-sm font-medium uppercase tracking-wider text-gray-300">
+                  Archive Date
+                </span>
+              </th>
+              <th className="px-6 py-4 text-left">
+                <span className="text-sm font-medium uppercase tracking-wider text-gray-300">
+             
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-[#242424] pb-96">
+            {applicationData.length > 0 ? (
+              applicationData.map((application: Application) => (
+                <ArchiveTableRow
+                  key={application.id}
+                  application={application}
+                />
+              ))
+            ) : (
+              <tr>
+                <td colSpan={6} className="px-6 py-12 h-96">
+                  <div className="flex flex-col items-center justify-center text-center">
+                    <div className="rounded-full bg-accentHighlight/60 p-3 mb-4">
+                      <FolderOpen size={24} className="text-accent" />
+                    </div>
+                    <p className="text-base font-medium text-gray-300">
+                      No archived applications yet
+                    </p>
+                    <p className="mt-1 text-sm text-gray-300">
+                      When you archive applications you would not longer like to see, you can find them
+                    </p>
+                  </div>
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+export default ArchivedApplicationTable;
