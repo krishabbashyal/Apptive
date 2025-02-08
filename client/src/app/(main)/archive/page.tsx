@@ -1,13 +1,16 @@
 "use server";
 
 import React from "react";
-import { fetchAllArchivedApplications } from "../dashboard/actions";
+import RecentArchiveContainer from "@/components/UserInterface/RecentArchiveContainer";
+
 
 
 const Archive = async () => {
-  const data = await fetchAllArchivedApplications();
-
-  return <div>{JSON.stringify(data)}</div>;
+  return (
+    <div className="mx-12 pt-8 h-full">
+      <RecentArchiveContainer />
+    </div>
+  )
 };
 
 export default Archive;
