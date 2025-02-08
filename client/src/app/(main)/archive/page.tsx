@@ -7,7 +7,7 @@ import RecentArchiveContainer from "@/components/UserInterface/RecentArchiveCont
 
 const Archive = async () => {
   return (
-    <div className="mx-16 pt-8 h-full">
+    <div className="mx-12 pt-8 h-full">
       <RecentArchiveContainer />
     </div>
   )

@@ -11,7 +11,7 @@ const Dashboard = () => {
     <div className="h-full w-full">
       <ApplicationForm />
       <UpdateApplicationForm />
-      <div className="mx-16 flex flex-col h-full">
+      <div className="mx-12 flex flex-col h-full">
         <StatCardContainer />
         <div className="mt-8 h-full">
           <RecentActivityContainer />
