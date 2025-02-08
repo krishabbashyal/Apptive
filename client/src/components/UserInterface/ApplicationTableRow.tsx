@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Application } from "@prisma/client";
 import { Buildings, CaretDown } from "@phosphor-icons/react";
 import ApplicationRowActions from "./ApplicationRowActions";
+import ApplicationStatus from "./ApplicationStatus";
 
 interface ApplicationTableRowProps {
   application: Application;
@@ -9,17 +10,6 @@ interface ApplicationTableRowProps {
 
 const ApplicationTableRow = ({ application }: ApplicationTableRowProps) => {
   const [isNotesOpen, setIsNotesOpen] = useState(false);
-
-  const getStatusColor = (status: string) => {
-    const colors = {
-      Applied: "bg-accentHighlight text-accent",
-      Interviewing: "bg-yellow-300/10 text-yellow-200",
-      Accepted: "bg-green-900/10 text-green-600",
-      Rejected: "bg-danger/10 text-danger",
-      Bookmarked: "bg-blue-800/10 text-blue-500",
-    };
-    return colors[status as keyof typeof colors] || "bg-gray-800 text-gray-200";
-  };
 
   const formatSalary = (salary: number | null) => {
     if (!salary) return "---";
@@ -81,11 +71,7 @@ const ApplicationTableRow = ({ application }: ApplicationTableRowProps) => {
           {formatSalary(application.salary)}
         </td>
         <td className="px-6 py-4">
-          <span
-            className={`rounded-full px-2 py-1 text-sm ${getStatusColor(application.application_status)}`}
-          >
-            {application.application_status}
-          </span>
+          <ApplicationStatus application={application} />
         </td>
         <td className="py-4 flex items-center justify-center gap-x-4">
           <button
