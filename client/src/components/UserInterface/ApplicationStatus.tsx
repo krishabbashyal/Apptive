@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Application } from "@prisma/client";
 import { Prohibit, BookmarkSimple, Users, CheckCircle, Hourglass } from "@phosphor-icons/react";
+import { updateApplicationStatus } from "@/app/(main)/dashboard/actions";
 
 interface ButtonProps {
   application: Application;
@@ -30,10 +31,19 @@ const getDropdownColor = (status: string) => {
   return colors[status as keyof typeof colors] || "bg-gray-800 text-gray-200";
 };
 
+const handleApplicationStatusUpdate = async (application: Application, status: string, setIsOpen: (isOpen: boolean) => void) => {
+  try {
+    await updateApplicationStatus(application, status);
+    setIsOpen(false);
+  } catch (error) {
+    console.error("Error updating application status:", error);
+  }
+}
+
 const StatusOptions = ({ application, setIsOpen, label }: ButtonProps) => {
   return (
     <button
-      onClick={() => setIsOpen(false)}      
+      onClick={() => handleApplicationStatusUpdate(application, label, setIsOpen)}      
       className={`flex items-center gap-x-4 border-b border-spacer/30 px-4 py-2.5 text-left transition-colors last:border-0 disabled:cursor-not-allowed disabled:bg-spacer/10 disabled:text-spacer ${getDropdownColor(label)}`}
       disabled={application.application_status === label}
     >
