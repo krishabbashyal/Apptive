@@ -56,7 +56,7 @@ export const updateApplication = async (
 
     const hadResponse = data.applicationStatus === "Interviewing" || data.applicationStatus === "Accepted" 
       ? true 
-      : data.applicationStatus === "Applied" 
+      : data.applicationStatus === "Applied" || data.applicationStatus === "Bookmarked"
         ? false 
         : application.had_response;
    
