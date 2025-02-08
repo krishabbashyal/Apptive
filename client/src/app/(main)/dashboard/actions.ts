@@ -45,6 +45,25 @@ export const createApplication = async (data: ApplicationSchemaType) => {
   revalidatePath('/dashboard', 'layout');
 };
 
+export const updateApplicationStatus = async (application: Application, status: string) => {
+  const hadResponse = status === "Interviewing" || status === "Accepted" 
+  ? true 
+  : status === "Applied" || status === "Bookmarked"
+    ? false 
+    : application.had_response;
+
+  await prisma.application.update({
+    where: {
+      id: application.id,
+    },
+    data: {
+      application_status: status,
+      had_response: hadResponse
+    },
+  });
+  revalidatePath('/dashboard', 'layout');
+}
+
 export const updateApplication = async (
   application: Application,
   data: ApplicationSchemaType,
