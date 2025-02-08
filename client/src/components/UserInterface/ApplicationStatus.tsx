@@ -3,7 +3,6 @@ import { Application } from "@prisma/client";
 
 interface ApplicationStatusProps {
   application: Application;
-  setIsOpen: (isOpen: boolean) => void;
 }
 const ApplicationStatus = ({ application }: ApplicationStatusProps) => {
   const [isOpen, setIsOpen] = useState(false);
