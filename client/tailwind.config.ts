@@ -93,6 +93,69 @@ const config: Config = {
           },
         },
 
+        "fade-out": {
+          "0%": {
+            opacity: "1",
+            filter: "blur(0)",
+          },
+          "100%": {
+            opacity: "0",
+            filter: "blur(8px)",
+          },
+        },
+
+        "fade-in-top-right": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(-500px) translateX(1000px) scale(0.2)",
+            filter: "blur(16px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0) translateX(0) scale(1)",
+            filter: "blur(0)",
+          },
+        },
+
+        "fade-in-right": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(0) translateX(1000px) scale(0.2)",
+            filter: "blur(16px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0) translateX(0) scale(1)",
+            filter: "blur(0)",
+          }
+        },
+
+        "fade-out-right": {
+          "0%": {
+            opacity: "1",
+            transform: "translateY(0) translateX(0) scale(1)",
+            filter: "blur(0)",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "translateY(0) translateX(1000px) scale(0.2)",
+            filter: "blur(16px)",
+          }
+        },
+
+        "fade-out-top-right": {
+          "0%": {
+            opacity: "1",
+            transform: "translateY(0) translateX(0) scale(1)",
+            filter: "blur(0)",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "translateY(-500px) translateX(1000px) scale(0.2)",
+            filter: "blur(16px)",
+          },
+        },
+
         "fade-in-up": {
           "0%": {
             opacity: "0",
@@ -108,11 +171,16 @@ const config: Config = {
       },
       animation: {
         shake: "shake 0.3s ease-in-out",
-        "fade-in-up-bounce": "fade-in-up-bounce 0.3s ease-in-out 0.5s forwards",
-        "fade-in-left-bounce": "fade-in-left-bounce 0.3s ease-in-out 0.5s forwards",
-        "fade-in-right-bounce": "fade-in-right-bounce 0.3s ease-in-out 0.5s forwards",
-        "fade-in-up": "fade-in-up 0.3s ease-in-out 0.5s forwards",
-        "fade-in": "fade-in 0.3s ease-in-out 0.5s forwards",
+        "fade-in-up-bounce": "fade-in-up-bounce 0.3s ease-in-out forwards",
+        "fade-in-left-bounce": "fade-in-left-bounce 0.3s ease-in-out forwards",
+        "fade-in-right-bounce": "fade-in-right-bounce 0.3s ease-in-out forwards",
+        "fade-in-up": "fade-in-up 0.3s ease-in-out forwards",
+        "fade-in": "fade-in 0.3s ease-in-out forwards",
+        "fade-in-right": "fade-in-right 0.3s ease-in-out forwards",
+        "fade-in-top-right": "fade-in-top-right 0.3s ease-in-out forwards",
+        "fade-out-top-right": "fade-out-top-right 0.3s ease-in-out forwards",
+        'fade-out': 'fade-out 0.3s ease-in-out forwards',
+        "fade-out-right": "fade-out-right 0.3s ease-in-out forwards",
       },
       animationDelay: {
         "100": "100ms",
