@@ -27,11 +27,22 @@ function ApplicationForm() {
   const { applicationModalShown, closeApplicationModal } =
     useShowApplicationModal();
   const [isHovered, setIsHovered] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+
+  const handleIsClosing = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      closeApplicationModal();
+      setIsClosing(false);
+      reset();
+    }, 300)
+  };
 
   const onSubmit = async (data: ApplicationSchemaType) => {
     try {
       await createApplication(data);
-      closeApplicationModal();
+      handleIsClosing();
+      reset();
     } catch (error) {
       // Handle specific error cases
       // setError("root", {
@@ -50,14 +61,14 @@ function ApplicationForm() {
     applicationModalShown && (
       <div
         onClick={() => {
-          closeApplicationModal();
+          handleIsClosing();
           reset();
         }}
-        className="absolute z-20 flex h-full w-[calc(100%-15rem)] items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm"
+        className={`absolute z-20 flex h-full w-[calc(100%-15rem)] items-center justify-center bg-black bg-opacity-40 backdrop-blur-sm animate-fade-in opacity-0 ${isClosing ? 'animate-fade-out' : ''}`}
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="w-[38rem] bg-foreground  border border-spacer/50 rounded-lg"
+          className={`w-[38rem] bg-foreground  border border-spacer/50 rounded-lg animate-fade-in-top-right opacity-0 ${isClosing ? 'animate-fade-out-top-right' : ''}`}
         >
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -69,7 +80,7 @@ function ApplicationForm() {
               <button
                 type="button"
                 onClick={() => {
-                  closeApplicationModal();
+                  handleIsClosing();
                   setIsHovered(false);
                   reset();
                 }}

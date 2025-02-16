@@ -26,6 +26,17 @@ function UpdateApplicationForm() {
   const { updateModalShown, closeUpdateModal, application } =
     useShowUpdateModal();
   const [isHovered, setIsHovered] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+
+  const handleIsClosing = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      closeUpdateModal();
+      setIsClosing(false);
+      reset();
+    }, 300)
+  };
+
   useEffect(() => {
     if (application) {
       setValue("jobTitle", application.job_title);
@@ -49,7 +60,7 @@ function UpdateApplicationForm() {
   const onSubmit = async (data: ApplicationSchemaType) => {
     try {
       await updateApplication(application!, data);
-      closeUpdateModal();
+      handleIsClosing();
     } catch (error) {
       console.log(error);
     }
@@ -65,14 +76,13 @@ function UpdateApplicationForm() {
     updateModalShown && (
       <div
         onClick={() => {
-          closeUpdateModal();
-          reset();
+          handleIsClosing();
         }}
-        className="absolute z-20 flex h-full w-[calc(100%-15rem)] items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm"
+        className={`absolute z-20 flex h-full w-[calc(100%-15rem)] items-center justify-center bg-black bg-opacity-40 backdrop-blur-sm animate-fade-in opacity-0 ${isClosing ? "animate-fade-out" : ""}`}
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="w-[38rem] rounded-lg border border-spacer/50 bg-foreground"
+          className={`w-[38rem] rounded-lg border border-spacer/50 bg-foreground animate-fade-in-right ${isClosing ? "animate-fade-out-right" : ""}`}
         >
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -84,9 +94,8 @@ function UpdateApplicationForm() {
               <button
                 type="button"
                 onClick={() => {
-                  closeUpdateModal();
+                  handleIsClosing();
                   setIsHovered(false);
-                  reset();
                 }}
               >
                 <X
