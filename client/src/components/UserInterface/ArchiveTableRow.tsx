@@ -10,16 +10,16 @@ interface ArchiveTableRowProps {
 const ArchiveTableRow = ({ application }: ArchiveTableRowProps) => {
   const [isNotesOpen, setIsNotesOpen] = useState(false);
 
-  const getStatusColor = (status: string) => {
-    const colors = {
-      Applied: "bg-accentHighlight text-accent",
-      Interviewing: "bg-yellow-300/10 text-yellow-200",
-      Accepted: "bg-green-900/10 text-green-600",
-      Rejected: "bg-danger/10 text-danger",
-      Bookmarked: "bg-blue-800/10 text-blue-500",
-    };
-    return colors[status as keyof typeof colors] || "bg-gray-800 text-gray-200";
-  };
+  // const getStatusColor = (status: string) => {
+  //   const colors = {
+  //     Applied: "bg-accentHighlight text-accent",
+  //     Interviewing: "bg-yellow-300/10 text-yellow-200",
+  //     Accepted: "bg-green-900/10 text-green-600",
+  //     Rejected: "bg-danger/10 text-danger",
+  //     Bookmarked: "bg-blue-800/10 text-blue-500",
+  //   };
+  //   return colors[status as keyof typeof colors] || "bg-gray-800 text-gray-200";
+  // };
 
   const formatSalary = (salary: number | null) => {
     if (!salary) return "---";
@@ -81,15 +81,20 @@ const ArchiveTableRow = ({ application }: ArchiveTableRowProps) => {
           {formatSalary(application.salary)}
         </td>
         <td className="px-6 py-4">
-          <span
-            className={`rounded-full px-2 py-1 text-sm ${getStatusColor(application.application_status)}`}
-          >
-            Archive Date
-            
-          </span>
+        <div className="flex flex-col">
+            <span className="text-gray-200">
+              {new Date(application.application_date).toLocaleDateString()}
+            </span>
+            <span className="text-sm text-gray-400">
+              {getTimeAgo(application.application_date)}
+            </span>
+          </div>
           
         </td>
-        <td className="py-4 flex items-center justify-center gap-x-4">
+        <td className="py-4 flex items-center justify-center gap-x-4 mt-1.5">
+          <button className="rounded-lg border border-spacer/20 bg-spacer/20 p-0.5 text-gray-400 transition-all duration-200 ease-in-out hover:scale-110 hover:border-accent hover:bg-spacer/50 hover:text-gray-200">
+            Restore
+          </button>
           <button
             onClick={() => setIsNotesOpen(!isNotesOpen)}
             className="rounded-lg border border-spacer/20 bg-spacer/20 p-0.5 mt-0.5 text-gray-400 transition-all duration-200 ease-in-out hover:scale-110 flex items-center gap-x-3 hover:border-accent hover:bg-spacer/50 hover:text-gray-200"
@@ -97,7 +102,7 @@ const ArchiveTableRow = ({ application }: ArchiveTableRowProps) => {
             <CaretDown size={24} className={`${isNotesOpen ? "rotate-180 duration-300" : "rotate-0 duration-300"}`} />
           </button>
 
-          <ApplicationRowActions application={application} />
+          {/* <ApplicationRowActions application={application} /> */}
         </td>
       </tr>
 
