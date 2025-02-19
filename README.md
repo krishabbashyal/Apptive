@@ -1,6 +1,6 @@
 Feature Roadmap
 
-Achrievements first
+Acheievements, add some gamify elements to the app to keep users motivated and conistantly applying. 
 
 A resume and cover letter tracker. Users often tailor these for each application, so keeping track of which versions they sent where would be helpful.
 
