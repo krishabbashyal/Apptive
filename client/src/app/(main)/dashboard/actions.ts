@@ -132,6 +132,7 @@ export const archiveApplication = async (id: string) => {
       },
       data: {
         is_archived: true,
+        archived_on: new Date(),
       },
     });
   } catch (error) {
