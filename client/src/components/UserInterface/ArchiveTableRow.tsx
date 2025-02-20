@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Application } from "@prisma/client";
 import { Buildings, CaretDown } from "@phosphor-icons/react";
-import ApplicationRowActions from "./ApplicationRowActions";
+
 
 interface ArchiveTableRowProps {
   application: Application;
