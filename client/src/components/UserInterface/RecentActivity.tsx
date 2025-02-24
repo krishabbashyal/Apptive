@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 import { Plus } from "@phosphor-icons/react";
 import ApplicationTable from "./ApplicationTable";
@@ -13,7 +13,17 @@ interface RecentActivityProps {
 }
 
 const RecentActivity = ({ applicationData }: RecentActivityProps) => {
+  const [searchTerm, setSearchTerm] = useState("");
   const { openApplicationModal } = useShowApplicationModal();
+
+  const filteredData = applicationData.filter(application =>
+    application.company_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    application.location_city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    application.location_state.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    application.job_title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    application.location_city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    application.application_status.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="h-full rounded-tr-xl rounded-tl-xl bg-foreground">
@@ -21,7 +31,7 @@ const RecentActivity = ({ applicationData }: RecentActivityProps) => {
         <div className="flex flex-row justify-between">
           <h1 className="text-3xl">Recent Activity</h1>
           <div className="flex flex-row gap-x-4">
-            <SearchBar />
+            <SearchBar onSearchChange={setSearchTerm} />
             <CustomButton
               onClick={openApplicationModal}
               label="Create"
@@ -31,7 +41,7 @@ const RecentActivity = ({ applicationData }: RecentActivityProps) => {
           </div>
         </div>
         <div className="mt-8">
-          <ApplicationTable applicationData={applicationData} />
+          <ApplicationTable applicationData={filteredData} />
         </div>
       </div>
     </div>
