@@ -1,29 +1,42 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { MagnifyingGlass } from "@phosphor-icons/react";
-import { X } from '@phosphor-icons/react';
-import { useState } from 'react';
+import React, { useState } from "react";
+import { MagnifyingGlass, X } from "@phosphor-icons/react";
 
 interface SearchBarProps {
-  placeholder?: string
+  onSearchChange: (searchTerm: string) => void;
 }
 
-const SearchBar = ({placeholder}: SearchBarProps) => {
+const SearchBar = ({ onSearchChange }: SearchBarProps) => {
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const [searchTerm, setSearchTerm] = useState('')
-
+  const handleSearchTermChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+    onSearchChange(e.target.value);
+  };
 
   return (
     <div>
       {searchTerm.length > 0 && (
-        <X onClick={() => setSearchTerm('')} className='hover:bg-foreground p-0.5 rounded hover:bg-opacity-25 absolute ml-64 mt-2  hover:cursor-pointer' size={22} />
+        <X
+          onClick={() => {
+            setSearchTerm("");
+            onSearchChange("");
+          }}
+          className="absolute ml-64 mt-2 rounded p-0.5 hover:cursor-pointer hover:bg-foreground hover:bg-opacity-25"
+          size={22}
+        />
       )}
-      <MagnifyingGlass className='absolute ml-2 mt-2' size={24} />
-      <input placeholder={placeholder || 'Search'} onChange={(e) => setSearchTerm(e.target.value)} value={searchTerm} className='h-10 w-72 rounded-lg bg-spacer border focus:border-accent border-spacer pl-10 focus:outline-none' type="text" />
-
+      <MagnifyingGlass className="absolute ml-2 mt-2" size={24} />
+      <input
+        placeholder={"Search"}
+        onChange={handleSearchTermChange}
+        value={searchTerm}
+        className="h-10 w-72 rounded-lg border border-spacer bg-spacer pl-10 focus:border-accent focus:outline-none"
+        type="text"
+      />
     </div>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;
