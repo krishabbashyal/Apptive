@@ -16,20 +16,33 @@ const RecentActivity = ({ applicationData }: RecentActivityProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const { openApplicationModal } = useShowApplicationModal();
 
-  const filteredData = applicationData.filter(application =>
-    application.company_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    application.location_city.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    application.location_state.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    application.job_title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    application.location_city.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    application.application_status.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredData = applicationData.filter(
+    (application) =>
+      application.company_name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()) ||
+      application.location_city
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()) ||
+      application.location_state
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()) ||
+      application.job_title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      application.location_city
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()) ||
+      application.application_status
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()),
   );
 
   return (
-    <div className="h-full rounded-tr-xl rounded-tl-xl bg-foreground">
+    <div className="h-full rounded-tl-xl rounded-tr-xl bg-foreground">
       <div className="mx-10 py-6">
         <div className="flex flex-row justify-between">
-          <h1 className="text-3xl">Recent Activity</h1>
+          <h1 className="text-3xl font-semibold text-gray-100">
+            Recent Applications
+          </h1>
           <div className="flex flex-row gap-x-4">
             <SearchBar onSearchChange={setSearchTerm} />
             <CustomButton
