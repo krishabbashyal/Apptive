@@ -26,7 +26,9 @@ function RecentArchive({applicationData}: RecentArchiveProps) {
     <div className="h-full rounded-tr-xl rounded-tl-xl bg-foreground">
     <div className="mx-10 py-6">
       <div className="flex flex-row justify-between">
-        <h1 className="text-3xl">Archived Applications</h1>
+      <h1 className="text-3xl font-semibold text-gray-100">
+            Archived Applications
+          </h1>
         <div className="flex flex-row gap-x-4">
           <SearchBar onSearchChange={setSearchTerm} />
           <CustomButton
