@@ -42,15 +42,19 @@ export const createApplication = async (data: ApplicationSchemaType) => {
   } else {
     console.log("Invalid data", data);
   }
-  revalidatePath('/dashboard', 'layout');
+  revalidatePath("/dashboard", "layout");
 };
 
-export const updateApplicationStatus = async (application: Application, status: string) => {
-  const hadResponse = status === "Interviewing" || status === "Accepted" 
-  ? true 
-  : status === "Applied" || status === "Bookmarked"
-    ? false 
-    : application.had_response;
+export const updateApplicationStatus = async (
+  application: Application,
+  status: string,
+) => {
+  const hadResponse =
+    status === "Interviewing" || status === "Accepted"
+      ? true
+      : status === "Applied" || status === "Bookmarked"
+        ? false
+        : application.had_response;
 
   await prisma.application.update({
     where: {
@@ -58,11 +62,11 @@ export const updateApplicationStatus = async (application: Application, status: 
     },
     data: {
       application_status: status,
-      had_response: hadResponse
+      had_response: hadResponse,
     },
   });
-  revalidatePath('/dashboard', 'layout');
-}
+  revalidatePath("/dashboard", "layout");
+};
 
 export const updateApplication = async (
   application: Application,
@@ -71,14 +75,16 @@ export const updateApplication = async (
   const validatedData = applicationSchema.safeParse(data);
   if (validatedData.success) {
     console.log("Valid data", data);
-    
 
-    const hadResponse = data.applicationStatus === "Interviewing" || data.applicationStatus === "Accepted" 
-      ? true 
-      : data.applicationStatus === "Applied" || data.applicationStatus === "Bookmarked"
-        ? false 
-        : application.had_response;
-   
+    const hadResponse =
+      data.applicationStatus === "Interviewing" ||
+      data.applicationStatus === "Accepted"
+        ? true
+        : data.applicationStatus === "Applied" ||
+            data.applicationStatus === "Bookmarked"
+          ? false
+          : application.had_response;
+
     await prisma.application.update({
       where: {
         id: application.id,
@@ -101,7 +107,7 @@ export const updateApplication = async (
   } else {
     console.log("Invalid data", validatedData.error);
   }
-  revalidatePath('/dashboard', 'layout');
+  revalidatePath("/dashboard", "layout");
 };
 
 export const fetchAllActiveApplications = async () => {
@@ -139,7 +145,7 @@ export const archiveApplication = async (id: string) => {
     console.error("Error archiving application:", error);
   }
   console.log("Archived application with ID:", id);
-  revalidatePath('/dashboard', 'layout');
+  revalidatePath("/dashboard", "layout");
 };
 
 export const fetchAllArchivedApplications = async () => {
@@ -171,4 +177,35 @@ export const searchLocations = async (query: string) => {
     },
   });
   return results;
+};
+
+export const fetchLocationStats = async () => {
+  const res = await getUser();
+  const userId = res?.id;
+  const locationStats = await prisma.location.findMany({
+    where: {
+      id: {
+        in: await prisma.application
+          .findMany({
+            where: {
+              userId: userId,
+            },
+            select: { locationId: true },
+            distinct: ["locationId"],
+          })
+          .then((apps) => apps.map((a) => a.locationId)),
+      },
+    },
+    select: {
+      id: true,
+      city: true,
+      state_name: true,
+      latitude: true,
+      longitude: true,
+      _count: {
+        select: { applications: { where: { userId: userId }}  },
+      },
+    },
+  });
+  return locationStats;
 };
