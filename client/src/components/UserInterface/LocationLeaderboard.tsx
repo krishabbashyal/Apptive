@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react";
 import { Trophy } from "@phosphor-icons/react/dist/ssr";
 
