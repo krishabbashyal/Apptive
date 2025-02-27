@@ -37,9 +37,9 @@ const HeatmapLayer = () => {
       }
       
       heatLayerRef.current = L.heatLayer(HEATMAP_DATA, {
-        radius: 35,
-        blur: 25,
-        minOpacity: 0.3,
+        radius: 20,
+        blur: 20,
+        minOpacity: 0.5,
         max: 1,
         maxZoom: 40,
         gradient: { 0.2: '#57068c', 0.5: '#BB86FC', 0.8: '#ff00ff' },
