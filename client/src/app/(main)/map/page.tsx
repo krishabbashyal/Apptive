@@ -1,8 +1,22 @@
+'use server'
+
 import React from "react";
 import ApplicationMap from "@/components/UserInterface/ApplicationMap";
 import LocationLeaderboard from "@/components/UserInterface/LocationLeaderboard";
+import { fetchLocationStats } from "../actions";
 
 const Map = () => {
+
+  const fetchData = async () => {
+    const data = await fetchLocationStats();
+    console.log("\n\n\nLocation Data:\n\n\n ", data);
+  };
+
+  fetchData();
+
+
+
+
   return (
     <div className="mx-12 h-full pt-8">
       <div className="h-full rounded-tl-xl rounded-tr-xl bg-foreground">
