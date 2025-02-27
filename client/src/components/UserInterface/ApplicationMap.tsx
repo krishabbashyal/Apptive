@@ -67,7 +67,7 @@ const HeatmapLayer = () => {
 
 const ApplicationMap = () => {
   return (
-    <div className="h-[1275px] w-[1500px] rounded-x overflow-clip relative">
+    <div className="h-[1250px] w-[1500px]">
       <MapContainer
         center={[37.8, -96]} // Center of USA
         zoom={5}
