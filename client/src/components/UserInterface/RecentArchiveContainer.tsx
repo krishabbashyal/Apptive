@@ -1,7 +1,7 @@
 "use server";
 
 import React from "react";
-import { fetchAllArchivedApplications } from "@/app/(main)/dashboard/actions";
+import { fetchAllArchivedApplications } from "@/app/(main)/actions";
 import RecentArchive from "./RecentArchive";
 
 const RecentArchiveContainer = async () => {

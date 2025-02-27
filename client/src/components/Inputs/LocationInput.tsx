@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { Location } from '@prisma/client'
 import { FieldError, UseFormRegisterReturn, UseFormSetValue, Merge, FieldErrorsImpl } from 'react-hook-form'
-import { searchLocations } from '../../app/(main)/dashboard/actions'
+import { searchLocations } from '../../app/(main)/actions'
 import AutocompleteSuggestions from '../UserInterface/AutocompleteSuggestions'
 
 interface LocationInputProps {

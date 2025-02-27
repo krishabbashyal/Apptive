@@ -2,8 +2,8 @@
 
 import React from "react";
 import StatCard from "./StatCard";
-import { fetchAllActiveApplications } from "@/app/(main)/dashboard/actions";
-import { fetchAllArchivedApplications } from "@/app/(main)/dashboard/actions";
+import { fetchAllActiveApplications } from "@/app/(main)/actions";
+import { fetchAllArchivedApplications } from "@/app/(main)/actions";
 
 const StatCardContainer = async () => {
   const activeApplications = await fetchAllActiveApplications();

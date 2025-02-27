@@ -7,7 +7,7 @@ import {
   Archive,
 } from "@phosphor-icons/react";
 import useShowUpdateModal from "@/lib/store/useShowUpdateModal";
-import { archiveApplication } from "@/app/(main)/dashboard/actions";
+import { archiveApplication } from "@/app/(main)/actions";
 
 interface ButtonProps {
   application: Application;

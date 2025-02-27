@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { applicationSchema, ApplicationSchemaType } from "@/lib/schemas";
 import { X } from "@phosphor-icons/react";
-import { createApplication } from "@/app/(main)/dashboard/actions";
+import { createApplication } from "@/app/(main)/actions";
 import CustomInput from "../Inputs/CustomInput";
 import CustomDropdown from "../Inputs/CustomDropdown";
 import CustomDateInput from "../Inputs/CustomDateInput";

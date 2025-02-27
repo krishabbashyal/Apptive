@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Application } from "@prisma/client";
 import { Prohibit, BookmarkSimple, Users, CheckCircle, Hourglass } from "@phosphor-icons/react";
-import { updateApplicationStatus } from "@/app/(main)/dashboard/actions";
+import { updateApplicationStatus } from "@/app/(main)/actions";
 
 interface ButtonProps {
   application: Application;
